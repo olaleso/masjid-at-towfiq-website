@@ -4,7 +4,7 @@ A standalone, **masjid-only** cinematic website for Masjid At-Towfiq, Bolton. Th
 
 > **IMPORTANT — PREVIEW:** This repository contains **sample prayer times, sample programmes and simulated donation actions**. They are not verified masjid schedules, confirmed events or payment links. Do not remove the warning banner or anti-indexing controls until the masjid approves the live details.
 
-## Current release: v0.1.0
+## Current release: v0.2.0 (prayer reference feature)
 
 - Responsive royal-blue, gold and ivory design with user-supplied At-Towfiq logo
 - Calligraphy and bespoke CSS architectural treatments; **no AI-generated images**
@@ -55,3 +55,7 @@ Choose **GitHub integration**, not Direct Upload, so every approved `main` commi
 The logo is supplied by the masjid and should not be reused in unrelated projects. A real photo by Rumman Amin is loaded from Unsplash for this concept; it depicts Cambridge Central Mosque, not Masjid At-Towfiq. See `docs/CREATIVE_CONCEPT.md` for the external image and font credits. Replace the photograph with consent-cleared real At-Towfiq images before launch. No third-party photograph is stored in the repo.
 
 **Project status:** Pre-launch template. Content and contact details require final masjid sign-off.
+
+## Prayer time feature (v0.2)
+
+The site now provides **calculated reference prayer beginning times**, a next-prayer countdown, date navigation and a monthly timetable/CSV. The new `public/data/prayer-config.json` allows committee-approved daily **jama'ah** and **Jumu'ah** to be published without guessing. Calculated timings do NOT constitute verified masjid times. See [docs/PRAYER_TIMES.md](docs/PRAYER_TIMES.md) for approval and publication instructions.

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "location": "Bolton, United Kingdom",
+  "timeZone": "Europe/London",
+  "calculation": {
+    "provider": "AlAdhan",
+    "method": 3,
+    "methodLabel": "Muslim World League (reference calculation)",
+    "school": 1,
+    "schoolLabel": "Hanafi Asr",
+    "latitude": 53.578,
+    "longitude": -2.43,
+    "latitudeAdjustmentMethod": 3
+  },
+  "official": {
+    "approvedByMasjid": false,
+    "sourceDescription": "Masjid At-Towfiq committee-approved timetable",
+    "reviewedAt": null,
+    "days": {}
+  },
+  "independentTimetableUrl": "https://waqt.uk/attowfiiq/"
+}

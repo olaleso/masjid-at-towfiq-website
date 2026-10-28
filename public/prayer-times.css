@@ -1,0 +1,32 @@
+/* The new prayer timetable builds on At-Towfiq's original design tokens. */
+.prayer-date-controls{display:flex;gap:8px;align-items:center;margin:17px 0 6px}
+.prayer-date-controls button,.timetable-tools button{background:#f8f5ef;border:1px solid #e1d9c8;border-radius:7px;padding:8px 13px;color:var(--navy);font-size:12px;font-weight:750;min-height:34px}
+.prayer-date-controls button:hover:not(:disabled),.timetable-tools button:hover:not(:disabled){background:#f0e5cc;border-color:#d7b775}
+.prayer-date-controls button:disabled,.timetable-tools button:disabled{opacity:.5;cursor:not-allowed}
+.prayer-date-controls button:focus-visible,.timetable-tools button:focus-visible,.timetable-close:focus-visible{outline:3px solid #0752a7;outline-offset:2px}
+#prayerStatus{margin:13px 0 8px}
+#prayerStatus[data-status=approved]{background:#e5f5e8;border-left-color:#347849;color:#245834}
+#prayerStatus[data-status=error]{background:#ffedea;border-left-color:#bf5d42;color:#873d2c}
+.prayer-countdown{background:#082341;color:#fff;border-radius:9px;padding:12px 14px;margin:11px 0 12px;font-size:12px;font-weight:700;line-height:1.7;font-variant-numeric:tabular-nums}
+.prayer-jumuah{margin:16px 0 10px;background:#faf7ef;border:1px solid #eae1cd;padding:11px 12px;font-size:11px;color:#6b5531;line-height:1.65;border-radius:6px}
+.prayer-source{font-size:10px;color:#66737d;line-height:1.7;margin:8px 0}
+.prayer-published-link{display:inline-block;color:#0752a7;text-decoration:underline;text-underline-offset:3px;font-size:11px;font-weight:750;margin:8px 0}
+.timetable-dialog{background:#fcfaf5;border:0;border-top:4px solid #e1c16a;border-radius:12px;padding:27px;width:min(1100px,calc(100vw - 30px));max-height:88vh;color:var(--navy);box-shadow:0 30px 100px rgba(3,20,43,.28)}
+.timetable-dialog::backdrop{background:rgba(4,17,36,.75);backdrop-filter:blur(4px)}
+.timetable-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.timetable-dialog h2{font-family:var(--serif);font-size:clamp(25px,3vw,40px);font-weight:500;margin:7px 0 12px}
+.timetable-close{border:1px solid #d9d2c5;background:#fff;min-width:40px;min-height:40px;border-radius:50%;font-size:23px;line-height:1}
+.timetable-legal,.timetable-footer{font-size:12px;line-height:1.8;color:#5a6572;max-width:920px}
+.timetable-footer a{color:#0752a7;text-decoration:underline}
+.timetable-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:18px 0}
+.timetable-tools label{font-size:12px;font-weight:650}
+.timetable-tools input{font:inherit;padding:8px;border:1px solid #d9d2c5;border-radius:7px;min-width:140px;color:#082341}
+.timetable-tools #downloadTimetable{margin-left:auto;background:#082341;color:#fff}
+.monthly-scroll{max-width:100%;overflow:auto;border:1px solid #e9e3d9;border-radius:8px;min-height:90px;font-size:12px}
+.monthly-table{border-collapse:collapse;min-width:1050px;width:100%;font-variant-numeric:tabular-nums}
+.monthly-table th{background:#082341;color:#fff;text-align:left;padding:12px 11px;white-space:nowrap;position:sticky;top:0}
+.monthly-table td{padding:10px 11px;border-bottom:1px solid #eae6de;white-space:nowrap}
+.monthly-table tbody tr:nth-child(even){background:#f6f1e8}
+.monthly-table tbody tr.approved-day{background:#e5f5e8}
+.monthly-table tbody tr:hover{background:#e8f0fb}
+@media(max-width:540px){.prayer-countdown{font-size:11px}.timetable-dialog{padding:17px}.timetable-tools #downloadTimetable{margin-left:0;width:100%}.timetable-tools input{width:130px}.prayer-source,.prayer-published-link{font-size:11px}}
