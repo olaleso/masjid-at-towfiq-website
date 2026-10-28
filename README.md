@@ -1,0 +1,57 @@
+# Masjid At-Towfiq — Official Website (Design Preview)
+
+A standalone, **masjid-only** cinematic website for Masjid At-Towfiq, Bolton. The Madrasah and its admissions/parent portals are deliberately maintained in a **separate project**.
+
+> **IMPORTANT — PREVIEW:** This repository contains **sample prayer times, sample programmes and simulated donation actions**. They are not verified masjid schedules, confirmed events or payment links. Do not remove the warning banner or anti-indexing controls until the masjid approves the live details.
+
+## Current release: v0.1.0
+
+- Responsive royal-blue, gold and ivory design with user-supplied At-Towfiq logo
+- Calligraphy and bespoke CSS architectural treatments; **no AI-generated images**
+- Licensed third-party real mosque photograph (Cambridge Mosque, *not* At-Towfiq) for visual direction only
+- Prayer timetable design, event categories, community, visit, donations UI preview
+- Mobile navigation, modal dialogs, reduced-motion support
+- No backend, admin accounts, user data collection or payment processing
+
+## Project structure
+
+```text
+public/                    Cloudflare Pages output folder (entire published site)
+  index.html
+  styles.css
+  script.js
+  assets/at-towfiq-logo.png
+  _headers               Security headers and temporary noindex
+  robots.txt             Temporary noindex for public preview
+scripts/validate.py       No-dependency structural validation
+.github/workflows/validate.yml
+DEPLOYMENT.md             GitHub → Cloudflare Pages setup
+LAUNCH_CHECKLIST.md       Production-readiness tasks
+docs/CREATIVE_CONCEPT.md   Design research, licences and roadmap
+```
+
+## Preview locally
+
+Open `public/index.html` directly in a browser, or from the root:
+
+```sh
+python3 -m http.server 8788 --directory public
+# http://localhost:8788
+```
+
+## Validate
+
+```sh
+python3 scripts/validate.py
+node --check public/script.js
+```
+
+## Deploy to Cloudflare Pages
+
+Choose **GitHub integration**, not Direct Upload, so every approved `main` commit will automatically deploy. See [DEPLOYMENT.md](DEPLOYMENT.md) for exact setup details. No build command or database is needed for the static preview; the Cloudflare Pages **output directory is `public`**.
+
+## Asset rights and corrections
+
+The logo is supplied by the masjid and should not be reused in unrelated projects. A real photo by Rumman Amin is loaded from Unsplash for this concept; it depicts Cambridge Central Mosque, not Masjid At-Towfiq. See `docs/CREATIVE_CONCEPT.md` for the external image and font credits. Replace the photograph with consent-cleared real At-Towfiq images before launch. No third-party photograph is stored in the repo.
+
+**Project status:** Pre-launch template. Content and contact details require final masjid sign-off.

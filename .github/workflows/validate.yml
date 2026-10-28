@@ -1,0 +1,13 @@
+name: Validate static site
+on:
+  push:
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check HTML assets and preview safeguards
+        run: python3 scripts/validate.py
+      - name: Check JavaScript syntax
+        run: node --check public/script.js

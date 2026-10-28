@@ -1,0 +1,3 @@
+# Draft preview. Change only after the masjid approves production launch.
+User-agent: *
+Disallow: /
