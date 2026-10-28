@@ -97,6 +97,25 @@ for missing in required_prayer_ids - page.ids:
     problems.append(f'Prayer UI ID missing: {missing}')
 if 'https://api.aladhan.com' not in (SITE / '_headers').read_text():
     problems.append('Calculation API omitted from CSP connect-src')
+# Cloudflare Workers Builds must target this *existing* Worker, not create a Pages project.
+wrangler_path = SITE.parent / "wrangler.jsonc"
+if not wrangler_path.is_file():
+    problems.append("Cloudflare Workers configuration missing: wrangler.jsonc")
+else:
+    try:
+        wrangler = json.loads(wrangler_path.read_text(encoding="utf-8"))
+        if wrangler.get("name") != "masjid-at-towfiq-website":
+            problems.append("Wrangler name does not match the existing Cloudflare Worker")
+        if wrangler.get("assets", {}).get("directory", "").rstrip("/") not in ("./public", "public"):
+            problems.append("Wrangler static asset directory must be ./public")
+        if "main" in wrangler:
+            problems.append("No Worker entrypoint is needed for this static-only preview")
+        if "routes" in wrangler or "route" in wrangler:
+            problems.append("Routes should remain managed in the Cloudflare dashboard")
+        if wrangler.get("workers_dev") is not False:
+            problems.append("workers_dev should remain false for dashboard-managed routes")
+    except (ValueError, TypeError, AttributeError) as exc:
+        problems.append(f"Invalid Wrangler configuration: {exc}")
 if problems:
     print("FAILED:\n" + "\n".join(f" - {p}" for p in problems))
     sys.exit(1)

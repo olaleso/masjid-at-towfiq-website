@@ -1,57 +1,55 @@
-# GitHub + Cloudflare Pages — one-time setup
+# Masjid At-Towfiq — Cloudflare Workers deployment
 
-## 1. Create a separate GitHub repository
+**Actual production setup (28 October 2026):** The project is a **Cloudflare Worker**, named `masjid-at-towfiq-website`, serving `https://attowfiqmasjid.org/`. It is **not** a Cloudflare Pages project.
 
-Authenticated GitHub owner: `olaleso`.
+The static assets are in `public/`; `wrangler.jsonc` at the repository root tells Wrangler to deploy them as Workers Static Assets. This file uses the *exact* Worker name, as required by Cloudflare Workers Builds.
 
-- Open https://github.com/new
-- Repository name: `masjid-at-towfiq-website`
-- Visibility: **Private** is appropriate during development (Cloudflare connection may require granting the GitHub app repository access). If public, preview content remains accessible; the site's noindex directives only discourage search indexing, not public viewing.
-- Choose **empty repository** (no auto-generated README, licence or .gitignore; these are in the package).
+## GitHub source
 
-The **ready-to-push ZIP** includes `.git/` and a local initial commit. Extract the entire ZIP, open PowerShell within `masjid-at-towfiq-website`, then push. Alternatively clone the supplied `.bundle` via `git clone .\Masjid_At_Towfiq_Initial_Commit.bundle masjid-at-towfiq-website`. The source-only ZIP has no `.git` metadata and must be initialised separately.
+- GitHub repository: https://github.com/olaleso/masjid-at-towfiq-website
+- Production branch: `main`
+- Worker name: `masjid-at-towfiq-website`
+- Assets directory: `./public`
+- Root directory: repository root
+- No framework compilation is needed.
 
-Push the prepared `main` history:
+## One-time Cloudflare dashboard configuration
 
-```powershell
-git remote set-url origin https://github.com/olaleso/masjid-at-towfiq-website.git
-git push -u origin main
-```
+1. Open **Workers & Pages → masjid-at-towfiq-website → Settings → Builds** in the existing Cloudflare account.
+2. Under **Git repository**, confirm the connected repository is exactly `olaleso/masjid-at-towfiq-website`. This matters because GitHub Actions passing **does not** mean Cloudflare ran a deployment.
+3. If it is disconnected or points to a different repository, use **Connect**, or disconnect and reconnect the **same existing Worker**, selecting the proper GitHub account/repository. Do **not** create another Pages project or Worker.
+4. Under **Build configuration**, use:
+   - Production branch: `main`
+   - Root directory: empty / repository root
+   - Build command: empty (no compile step required)
+   - **Deploy command: `npx wrangler deploy`**
+   - Preview command: Cloudflare default, if enabled
+5. Under **Build watch paths**, include all paths (`*`) and do not exclude `public/*` or `wrangler.jsonc`. Make sure builds are **enabled**.
+6. Save settings. Push a change to `main` or use the **Build → Retry** action for a suitable build. Under **Deployments**, look for a new build tied to the GitHub commit (not only an older dashboard/manual deployment).
+7. Open `https://attowfiqmasjid.org/prayer-times.js` and `https://attowfiqmasjid.org/data/prayer-config.json` to check the new static assets. Do not assume deployment has completed until these URLs are served by the same Worker at the domain.
 
-If `origin` has already been set in the supplied `.bundle` clone or repository, use `git remote set-url origin https://github.com/olaleso/masjid-at-towfiq-website.git` before pushing.
+## Domain and safety
 
-## 2. Connect to Cloudflare Pages (recommended)
+The domain `attowfiqmasjid.org` is already routed to the Worker in Cloudflare's dashboard. The `wrangler.jsonc` intentionally does **not** declare `route` or `routes`, and includes `workers_dev: false`, to keep routes/domain managed by the Cloudflare dashboard rather than trying to create or replace them in deployment. Do not alter **Domains & Routes** for this update.
 
-- In your **correct Cloudflare account**, go to **Workers & Pages → Create → Pages → Connect to Git** (the exact dashboard labels may vary).
-- Select GitHub account **olaleso**, authorize only the masjid repository as needed, and choose `masjid-at-towfiq-website`.
-- Project name: `masjid-at-towfiq` (Cloudflare may require a unique variant).
-- Production branch: `main`.
-- Framework preset: `None`.
-- **Build command: leave empty.**
-- **Build output directory: `public`** (no initial slash).
-- Root directory: leave blank (repository root).
-- Save and deploy; Cloudflare will show the actual `*.pages.dev` URL when deployment succeeds.
+`keep_vars: true` preserves dashboard-maintained non-secret environment variables when deploying. Never commit API tokens or credentials.
 
-Each subsequent push to `main` will deploy automatically. Pull requests/other branches can produce previews without replacing the production branch. **Do not map the main masjid domain or remove pre-launch safeguards until verified.**
+The site's `public/_headers` protects static asset responses and `robots.txt` continues to discourage indexing while prayer timings are unverified. **Do not** remove the labels distinguishing calculated prayer beginnings from officially approved jama'ah and Jumu'ah.
 
-## 3. For future work
+## Future updates
 
-```powershell
-git add .
-git commit -m "Update masjid website content"
-git push origin main
-```
+After changes are merged to `main`, Workers Builds should run automatically and execute `npx wrangler deploy`, uploading the entire `public/` directory. Verify both GitHub CI and Cloudflare's **Workers Builds** result.
 
-For major changes, create a feature branch and merge an approved pull request after checking the Cloudflare preview.
+If no Cloudflare build starts after a new GitHub commit:
+- Open **Settings → Builds** and check **Git repository**, **Branch control**, **Build watch paths**, and whether automatic builds are enabled.
+- Under **Deployments**, inspect **Build History** rather than interpreting a green GitHub Actions check as a Cloudflare deployment.
+- If GitHub integration is broken, reconnect the existing Worker to the repository (Cloudflare documents this recovery in its Builds troubleshooting section).
 
-## Alternative: upload from a computer (not preferred)
+If a build starts but fails, inspect the **Build** link and full deployment logs. The Worker `name` in `wrangler.jsonc` must exactly match the dashboard Worker name.
 
-Cloudflare Direct Upload and Git Integration have different project setup paths and cannot simply be switched later. If automatic GitHub deployments are your goal, choose Git Integration from the outset.
-
-## Troubleshooting
-
-- **Blank page:** confirm Cloudflare's output directory is `public`.
-- **Logo not loading:** check `public/assets/at-towfiq-logo.png` is committed.
-- **Photograph missing:** the concept presently uses an externally hosted Unsplash photo; replace with locally stored masjid-authorized photography.
-- **Link to the Madrasah opens a modal:** expected until its separate domain is confirmed.
-- **No real payments:** expected for the preview.
+Official references:
+- https://developers.cloudflare.com/workers/ci-cd/builds/
+- https://developers.cloudflare.com/workers/ci-cd/builds/configuration/
+- https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/
+- https://developers.cloudflare.com/workers/static-assets/
+- https://developers.cloudflare.com/workers/wrangler/configuration/

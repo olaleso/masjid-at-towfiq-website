@@ -16,7 +16,7 @@ A standalone, **masjid-only** cinematic website for Masjid At-Towfiq, Bolton. Th
 ## Project structure
 
 ```text
-public/                    Cloudflare Pages output folder (entire published site)
+public/                    Cloudflare Workers static assets (entire published site)
   index.html
   styles.css
   script.js
@@ -46,9 +46,9 @@ python3 scripts/validate.py
 node --check public/script.js
 ```
 
-## Deploy to Cloudflare Pages
+## Deploy to Cloudflare Workers
 
-Choose **GitHub integration**, not Direct Upload, so every approved `main` commit will automatically deploy. See [DEPLOYMENT.md](DEPLOYMENT.md) for exact setup details. No build command or database is needed for the static preview; the Cloudflare Pages **output directory is `public`**.
+Choose **GitHub integration**, not Direct Upload, so every approved `main` commit will automatically deploy. See [DEPLOYMENT.md](DEPLOYMENT.md) for exact setup details. No framework build or database is needed for the static preview; the Cloudflare Pages **output directory is `public`**.
 
 ## Asset rights and corrections
 
@@ -59,3 +59,7 @@ The logo is supplied by the masjid and should not be reused in unrelated project
 ## Prayer time feature (v0.2)
 
 The site now provides **calculated reference prayer beginning times**, a next-prayer countdown, date navigation and a monthly timetable/CSV. The new `public/data/prayer-config.json` allows committee-approved daily **jama'ah** and **Jumu'ah** to be published without guessing. Calculated timings do NOT constitute verified masjid times. See [docs/PRAYER_TIMES.md](docs/PRAYER_TIMES.md) for approval and publication instructions.
+
+## Cloudflare Worker build integration
+
+The existing production deployment runs on **Cloudflare Workers**, not Pages. Repository root `wrangler.jsonc` specifies the existing Worker name and the `./public` asset directory. Under the Worker's **Settings → Builds**, connect this repository's `main` branch and set the deploy command to `npx wrangler deploy`. See `DEPLOYMENT.md` for troubleshooting and domain-preservation details.
