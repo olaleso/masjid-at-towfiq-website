@@ -18,6 +18,19 @@
   $$('#mobileMenu a').forEach((a) => a.addEventListener('click', () => {
     mobileNav.hidden = true; toggle.setAttribute('aria-expanded','false'); toggle.setAttribute('aria-label','Open menu');
   }));
+  // Accessible Services dropdown, including touch, keyboard and click-away dismissal.
+  const desktopServices = document.querySelector('.nav-services');
+  const mobileServices = document.querySelector('.mobile-services');
+  document.addEventListener('click', e => {
+    if (desktopServices?.open && !desktopServices.contains(e.target)) desktopServices.open = false;
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (desktopServices?.open) {desktopServices.open = false; desktopServices.querySelector('summary')?.focus();}
+    if (mobileServices?.open) mobileServices.open = false;
+  });
+  document.querySelectorAll('.nav-services-menu a').forEach(a => a.addEventListener('click', () => {desktopServices.open = false;}));
+  document.querySelectorAll('.mobile-services-items a').forEach(a => a.addEventListener('click', () => {if(mobileServices)mobileServices.open = false;}));
   document.addEventListener('keydown', e => {if(e.key === 'Escape') closeModal();});
 
   const backdrop = $('#modalBackdrop'), modal = backdrop.querySelector('.modal');
@@ -89,12 +102,12 @@
     },{threshold:.07,rootMargin:'0px 0px 30px 0px'});
     $$('.reveal').forEach(el=>observer.observe(el));
   } else $$('.reveal').forEach(el=>el.classList.add('visible'));
-  const sections=['home','prayer-times','whatson','community','visit'];
+  const sections=['home','prayer-times','videos','services','whatson','visit'];
   const navLinks=$$('.desktop-nav .nav-link');
   function updateActive(){
     let current='home';
     for(const id of sections){const s=document.getElementById(id);if(s&&s.getBoundingClientRect().top<220)current=id;}
-    navLinks.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+current));
+    navLinks.forEach(link=>link.classList.toggle('active',(link.getAttribute('href')||link.dataset.nav)==='#'+current));
   }
   window.addEventListener('scroll',updateActive,{passive:true});updateActive();
 })();
