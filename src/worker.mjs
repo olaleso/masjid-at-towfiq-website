@@ -76,6 +76,30 @@ function json(body,status=200,cache="no-store") {
 }
 export default {
   async fetch(request,env) {
+    if(new URL(request.url).pathname==="/api/public/videos") {
+      if(request.method!=="GET")return json({error:"Method not allowed"},405);
+      try{
+        const response=await fetch("https://portal.attowfiqmasjid.org/api/public/masjid-videos",
+          {headers:{Accept:"application/json"},signal:AbortSignal.timeout(8000)});
+        if(!response.ok)throw Error("Portal public feed HTTP "+response.status);
+        if(Number(response.headers.get("content-length")||0)>60_000)throw Error("Oversized video response");
+        const payload=await response.json();
+        if(!Array.isArray(payload.items))throw Error("Invalid portal feed");
+        const items=payload.items.slice(0,30).filter(v=>typeof v.youtube_id==="string" && /^[A-Za-z0-9_-]{11}$/.test(v.youtube_id) && typeof v.title==="string").map(v=>({
+          id:String(v.id||"").slice(0,100),
+          youtube_id:v.youtube_id,
+          title:String(v.title).slice(0,140),
+          description:String(v.description||"").slice(0,450),
+          category:["Khutbah","Lecture","Qur’an","Community"].includes(v.category)?v.category:"Lecture",
+          published_at:typeof v.published_at==="string"?v.published_at:null,
+          featured:v.featured===true
+        }));
+        return json({items},200,"public, max-age=30, s-maxage=60");
+      }catch(err){
+        console.error("Masjid video feed unavailable:",err instanceof Error?err.message:String(err));
+        return json({error:"Video library temporarily unavailable"},503);
+      }
+    }
     if(new URL(request.url).pathname==="/api/public/prayer-times") {
       if(request.method!=="GET") return json({error:"Method not allowed"},405);
       try {
