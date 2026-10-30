@@ -11,7 +11,7 @@ A standalone, **masjid-only** cinematic website for Masjid At-Towfiq, Bolton. Th
 - Licensed third-party real mosque photograph (Cambridge Mosque, *not* At-Towfiq) for visual direction only
 - Prayer timetable design, event categories, community, visit, donations UI preview
 - Mobile navigation, modal dialogs, reduced-motion support
-- No backend, admin accounts, user data collection or payment processing
+- A small read-only Worker prayer-time API; no admin accounts, user data collection or payment processing
 
 ## Project structure
 
@@ -56,9 +56,9 @@ The logo is supplied by the masjid and should not be reused in unrelated project
 
 **Project status:** Pre-launch template. Content and contact details require final masjid sign-off.
 
-## Prayer time feature (v0.3: MasjidBox)
+## Prayer time feature (v0.4: native live timetable)
 
-The live page now embeds the MasjidBox listing for Masjid At-Towfiiq: https://masjidbox.com/prayer-times/masjid-at-towfiiq. It avoids presenting generic calculated beginnings as the masjid's prayer times. A direct link remains available if framing is blocked. See [docs/PRAYER_TIMES.md](docs/PRAYER_TIMES.md).
+The native hero iqamah bar and detailed timetable use a server-side MasjidBox reader in the existing Cloudflare Worker. It retrieves published times for **Masjid At-Towfiiq**, not Al-Hidaya, without embedding MasjidBox's webpage or inventing generic prayer starts. See [docs/PRAYER_TIMES.md](docs/PRAYER_TIMES.md).
 
 ## Cloudflare Worker build integration
 
