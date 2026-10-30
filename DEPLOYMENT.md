@@ -26,7 +26,7 @@ The static assets are in `public/`; `wrangler.jsonc` at the repository root tell
    - Preview command: Cloudflare default, if enabled
 5. Under **Build watch paths**, include all paths (`*`) and do not exclude `public/*` or `wrangler.jsonc`. Make sure builds are **enabled**.
 6. Save settings. Push a change to `main` or use the **Build → Retry** action for a suitable build. Under **Deployments**, look for a new build tied to the GitHub commit (not only an older dashboard/manual deployment).
-7. Open `https://attowfiqmasjid.org/#prayer-times` to check that the MasjidBox iframe and direct link target At-Towfiiq. Do not assume deployment has completed until the new HTML is available on the production domain.
+7. Check `https://attowfiqmasjid.org/api/public/prayer-times` for five prayer JSON entries and `https://attowfiqmasjid.org/#prayer-times` for the native timetable; confirm the direct link points to At-Towfiiq. If the API returns HTTP 503, inspect Worker logs for upstream MasjidBox changes.
 
 ## Domain and safety
 
