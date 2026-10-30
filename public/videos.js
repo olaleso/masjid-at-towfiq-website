@@ -23,7 +23,7 @@
   };
   function render(){
     const matches=items.filter(v=>active==="All"||v.category===active);
-    const visible=expanded?matches:matches.slice(0,6);
+    const visible=expanded?matches:matches.slice(0,8);
     grid.replaceChildren();
     if(!matches.length){
       const empty=make("div","masjid-videos-empty");
@@ -32,28 +32,29 @@
       grid.append(empty);
     }
     for(const [index,video] of visible.entries()){
+      // Compact, consistent YouTube-style tiles. Metadata stays in the CMS
+      // but descriptions and large action buttons do not fill the homepage.
       const card=make("article","masjid-video-card"+(video.featured&&active==="All"&&index===0?" is-featured":""));
       const picture=make("button","masjid-video-poster");
-      picture.type="button";picture.dataset.videoId=video.youtube_id;
+      picture.type="button";
+      picture.dataset.videoId=video.youtube_id;
       picture.setAttribute("aria-label","Play "+video.title);
-      const image=make("img");image.src="https://i.ytimg.com/vi/"+video.youtube_id+"/hqdefault.jpg";
-      image.alt="";image.loading=index>2?"lazy":"eager";image.decoding="async";image.width=480;image.height=270;
-      const play=make("span","masjid-video-play","▶");play.setAttribute("aria-hidden","true");
+      const image=make("img");
+      image.src="https://i.ytimg.com/vi/"+video.youtube_id+"/hqdefault.jpg";
+      image.alt="";image.loading=index>3?"lazy":"eager";
+      image.decoding="async";image.width=480;image.height=270;
+      const play=make("span","masjid-video-play","▶");
+      play.setAttribute("aria-hidden","true");
       picture.append(image,play);
-      const body=make("div","masjid-video-info");
-      const category=make("span","masjid-video-category",video.category);
-      const title=make("h3","",video.title);
-      const description=make("p","",video.description||"Watch this recording from Masjid At-Towfiiq.");
-      const actions=make("div","masjid-video-actions");
-      const playButton=make("button","masjid-video-watch","Watch video ↗");
-      playButton.type="button";playButton.dataset.videoId=video.youtube_id;
-      const link=make("a","masjid-video-youtube","Open on YouTube");
-      link.href="https://www.youtube.com/watch?v="+video.youtube_id;link.target="_blank";link.rel="noopener noreferrer";
-      actions.append(playButton,link);
-      body.append(category,title,description,actions);
-      card.append(picture,body);grid.append(card);
+      const title=make("h3","masjid-video-title");
+      const titleButton=make("button","masjid-video-title-button",video.title);
+      titleButton.type="button";titleButton.dataset.videoId=video.youtube_id;
+      titleButton.setAttribute("aria-label","Play "+video.title);
+      title.append(titleButton);
+      card.append(picture,title);
+      grid.append(card);
     }
-    more.hidden=matches.length<=6;
+    more.hidden=matches.length<=8;
     more.textContent=expanded?"Show fewer videos":"Show all "+matches.length+" videos";
   }
   function openPlayer(id){
