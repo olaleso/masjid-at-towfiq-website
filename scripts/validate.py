@@ -54,12 +54,19 @@ if "Disallow: /" not in (SITE / "robots.txt").read_text():
 html = (SITE / "index.html").read_text(encoding="utf-8")
 if "WEBSITE CONCEPT PREVIEW" in html:
     problems.append("Concept-preview banner must be removed")
-if "https://masjidbox.com/prayer-times/masjid-at-towfiiq" not in html or 'id="prayerDockToggle"' not in html or 'id="prayerRows"' not in html:
-    problems.append("Native At-Towfiiq timetable is missing")
+if "https://masjidbox.com/prayer-times/masjid-at-towfiiq" not in html or 'id="prayerDockToggle"' not in html or 'id="prayerDockRows"' not in html:
+    problems.append("Native At-Towfiiq prayer dock missing")
+if 'id="masjidVideosGrid"' not in html or 'id="masjidVideoDialog"' not in html or 'id="videos"' not in html:
+    problems.append("Native published-video gallery is missing")
+if 'id="prayer-times"' not in html:
+    problems.append("Prayer times navigation anchor missing")
+for asset in ["videos.css","videos.js"]:
+    if not (SITE / asset).is_file():
+        problems.append("Website video asset missing: "+asset)
 # Ensure external MasjidBox link remains available even if an iframe is blocked.
 if html.count('href="https://masjidbox.com/prayer-times/masjid-at-towfiiq"') < 1:
     problems.append("Fallback link to At-Towfiiq MasjidBox missing")
-if 'id="masjidboxTimetable"' in html or '<iframe' in html:
+if 'id="masjidboxTimetable"' in html or 'src="https://masjidbox.com' in html:
     problems.append("MasjidBox iframe must not appear in native prayer interface")
 if not (SITE / "prayer-live.js").is_file():
     problems.append("Native prayer UI JavaScript missing")
