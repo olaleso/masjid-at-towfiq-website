@@ -1,4 +1,4 @@
-/* At-Towfiq Services and accessible responsive dropdown */
+/* Masjid At-Towfiq: understated services design with accessible navigation. */
 .nav-services{position:relative;align-self:center}
 .nav-services-trigger{display:flex;align-items:center;gap:9px;cursor:pointer;list-style:none}
 .nav-services-trigger::-webkit-details-marker{display:none}
@@ -6,50 +6,38 @@
 .nav-services-chevron{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
 .nav-services[open] .nav-services-chevron{transform:translateY(2px) rotate(225deg)}
 .nav-services[open] .nav-services-trigger{color:#f4dc9c}
-.nav-services-menu{position:absolute;top:calc(100% + 28px);left:-18px;z-index:90;width:260px;padding:8px;background:#fff;border-top:3px solid #d8bb75;box-shadow:0 20px 48px #0005;color:#112b4b}
-.nav-services-menu a{display:block;padding:13px 15px;font-size:12px;font-weight:750;line-height:1.4;border-bottom:1px solid #eae6dc}
+.nav-services-menu{position:absolute;top:calc(100% + 28px);left:-18px;z-index:90;width:260px;padding:7px;background:#fff;border:1px solid #e5e7e7;box-shadow:0 14px 32px #0d223d26;color:#112b4b}
+.nav-services-menu a{display:block;padding:13px 15px;font-size:12px;font-weight:700;line-height:1.4;border-bottom:1px solid #eceef0}
 .nav-services-menu a:last-child{border-bottom:0}
-.nav-services-menu a:hover,.nav-services-menu a:focus-visible{background:#f5eedf;color:#89672d}
+.nav-services-menu a:hover,.nav-services-menu a:focus-visible{background:#f3f5f6;color:#173a5f}
 .mobile-services{border-bottom:1px solid #ffffff1a}
 .mobile-services summary{display:flex;justify-content:space-between;align-items:center;padding:15px 0;color:#fff;font-size:14px;cursor:pointer;list-style:none}
 .mobile-services summary::-webkit-details-marker{display:none}
 .mobile-services[open] summary>span{transform:rotate(180deg)}
-.mobile-services-items{padding:0 0 10px 17px;border-left:2px solid #ceac65}
-.mobile-nav .mobile-services-items a{font-size:13px;color:#e2d9bd;padding:12px 10px}
-.masjid-services-section{position:relative;overflow:hidden;background:radial-gradient(ellipse at 92% 8%,#15466d 0%,#09284b 42%,#041a34 100%);color:#fff;scroll-margin-top:85px}
-.masjid-services-section::before{content:'';position:absolute;right:-140px;top:-180px;width:580px;height:580px;border:1px solid #d9bf7750;border-radius:50%;box-shadow:0 0 0 65px #d9bf7709,0 0 0 130px #d9bf7707;pointer-events:none}
+.mobile-services-items{padding:0 0 10px 17px;border-left:2px solid #94a3b8}
+.mobile-nav .mobile-services-items a{font-size:13px;color:#e2e9f1;padding:12px 10px}
+
+/* Services: light, simple and readable. No artificial ornament or tile effects. */
+.masjid-services-section{position:relative;background:#f9faf9;color:#1a3147;scroll-margin-top:90px;padding:86px 0 76px;border-top:1px solid #e8e9e7}
 .services-legacy-anchor{display:block;position:relative;top:-105px;height:0;visibility:hidden}
-.masjid-services-heading{position:relative;display:flex;align-items:end;justify-content:space-between;gap:60px;margin-bottom:40px}
-.masjid-services-intro{flex:1;min-width:0}
-.masjid-services-heading h2{font-size:clamp(44px,5vw,72px);font-weight:400;line-height:1.15;letter-spacing:-.045em;margin:22px 0 18px}
-.masjid-services-heading h2 em{color:#d6b877;font-weight:400}
-.masjid-services-ornament{color:#c7ad75;font-family:var(--serif);font-size:16px;letter-spacing:.05em}
-.masjid-services-ornament span{display:inline-block;vertical-align:middle;width:40px;height:1px;background:#ba9b5c;margin:0 15px}
-.masjid-services-overview{max-width:367px;padding-bottom:5px}
-.masjid-services-overview p{font-size:13px;line-height:1.9;color:#c3cfdb;margin-bottom:22px}
-.masjid-services-contact{color:#edd396;font-size:12px;font-weight:850;display:inline-flex;gap:14px;padding-bottom:8px;border-bottom:1px solid #c8a666}
-.masjid-services-contact:hover{color:#fff}
-.masjid-service-grid{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
-.masjid-service-tile{scroll-margin-top:115px;min-width:0;min-height:355px;display:flex;flex-direction:column;position:relative;overflow:hidden;padding:25px 22px;background:linear-gradient(150deg,#113e67 0%,#062342 100%);border:1px solid #dfc17b59;transition:transform .2s,border-color .2s}
-.masjid-service-tile:hover{transform:translateY(-5px);border-color:#e0c27e}
-.masjid-service-tile:target{outline:2px solid #e4c276;outline-offset:4px}
-.masjid-service-tile::before{content:'';position:absolute;left:50%;top:67px;transform:translateX(-50%);width:170px;height:185px;border:1px solid #d7b66c39;border-radius:90px 90px 0 0;pointer-events:none}
-.masjid-service-tile-top{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}
-.masjid-service-number{font-size:9px;letter-spacing:.1em;color:#e0c282;font-weight:900;line-height:1.5}
-.masjid-service-symbol{font-size:22px;color:#e9cc8a}
-.masjid-service-art{font-family:var(--arabic);font-size:clamp(40px,3.8vw,58px);line-height:1.3;color:#e8cc8bbd;text-align:center;margin:33px 0 22px;position:relative;z-index:1;white-space:nowrap}
-.masjid-service-tile-bottom{display:flex;flex:1;flex-direction:column;position:relative;z-index:1}
-.masjid-service-tile h3{font-family:var(--serif);font-size:clamp(22px,2vw,27px);line-height:1.3;font-weight:500;margin:0 0 12px}
-.masjid-service-tile h3 span{color:#f0d9a1}
-.masjid-service-tile p{font-size:11px;color:#b6cadb;line-height:1.75;margin-bottom:22px}
-.masjid-service-action{display:inline-flex;justify-content:space-between;align-items:center;gap:12px;color:#eed59b;font-size:11px;font-weight:850;margin-top:auto;padding:13px 0 0;border-top:1px solid #fff3}
-.masjid-service-action:hover{text-decoration:underline;text-underline-offset:4px;color:#fff}
-.masjid-services-note{display:flex;gap:13px;align-items:flex-start;margin-top:29px;color:#b4c5d4;font-size:11px}
-.masjid-services-note>span{font-size:17px;color:#e4c582;line-height:1.6}
-.masjid-services-note p{margin:0;line-height:1.8}
-.masjid-services-note a{text-decoration:underline;text-underline-offset:3px;color:#eed393}
-@media(max-width:1200px){.masjid-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.masjid-service-tile{min-height:318px}.masjid-service-art{font-size:53px;margin:22px 0 15px}}
+.masjid-services-heading{display:flex;align-items:end;justify-content:space-between;gap:50px;margin-bottom:40px}
+.masjid-services-intro{min-width:0}
+.masjid-services-eyebrow{font:700 11px/1.4 var(--sans);letter-spacing:.12em;color:#6a7783;margin:0 0 15px}
+.masjid-services-heading h2{font-family:var(--serif);font-size:clamp(39px,4vw,54px);font-weight:500;line-height:1.13;letter-spacing:-.025em;color:#152c45;margin:0}
+.masjid-services-overview{font-size:14px;line-height:1.8;color:#667380;max-width:455px;margin:0 0 3px}
+.masjid-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:55px;row-gap:0;border-top:1px solid #d8dde0}
+.masjid-service-tile{display:grid;grid-template-columns:42px minmax(0,1fr);gap:15px;min-width:0;min-height:190px;padding:29px 3px 27px 0;border-bottom:1px solid #d8dde0;scroll-margin-top:118px;align-content:start}
+.masjid-service-tile:target{background:#eef2f3;outline:0}
+.masjid-service-number{font-size:13px;font-weight:600;line-height:1.7;color:#96a0a9;font-variant-numeric:tabular-nums}
+.masjid-service-tile-content{min-width:0}
+.masjid-service-tile h3{font-family:var(--serif);font-size:clamp(22px,2vw,28px);line-height:1.3;font-weight:500;letter-spacing:-.01em;color:#182e47;margin:0 0 9px}
+.masjid-service-tile p{font-size:13px;line-height:1.75;color:#657382;margin:0 0 16px;max-width:420px}
+.masjid-service-action{display:inline-flex;align-items:center;gap:12px;font-size:12px;line-height:1.5;color:#193f67;font-weight:750;text-decoration:underline;text-decoration-color:#bbc7d0;text-underline-offset:4px}
+.masjid-service-action:hover{color:#8d713f;text-decoration-color:currentColor}
+.masjid-service-action:focus-visible{outline:2px solid #193f67;outline-offset:4px}
+.masjid-services-note{font-size:12px;color:#7a858e;line-height:1.8;margin:21px 0 0;max-width:850px}
+.masjid-services-note a{text-decoration:underline;text-underline-offset:3px;color:#213e59}
 @media(max-width:1050px){.nav-services-menu{display:none}}
-@media(max-width:720px){.masjid-services-heading{flex-direction:column;align-items:start;gap:15px}.masjid-services-overview{max-width:100%}.masjid-service-grid{gap:13px}}
-@media(max-width:540px){.masjid-service-grid{grid-template-columns:1fr}.masjid-service-tile{min-height:290px;padding:24px}.masjid-service-art{font-size:47px;margin:24px 0 12px}.masjid-services-heading h2{font-size:44px}}
-@media(prefers-reduced-motion:reduce){.nav-services-chevron,.masjid-service-tile{transition:none}}
+@media(max-width:760px){.masjid-services-section{padding:65px 0 60px}.masjid-services-heading{align-items:start;flex-direction:column;gap:15px;margin-bottom:30px}.masjid-service-grid{grid-template-columns:1fr;gap:0}.masjid-service-tile{min-height:0;padding:27px 0 26px}.masjid-services-overview{max-width:600px}}
+@media(max-width:490px){.masjid-services-heading h2{font-size:40px}.masjid-service-tile{grid-template-columns:32px minmax(0,1fr);gap:9px}.masjid-service-tile h3{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.nav-services-chevron{transition:none}}
