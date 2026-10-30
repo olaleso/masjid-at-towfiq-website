@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 import sys
+import json
 
 SITE = Path(__file__).resolve().parents[1] / "public"
 
