@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="prayer-times.css">
+  <link rel="stylesheet" href="masjidbox.css">
 </head>
 <body>
   <div class="utility-bar">
@@ -82,42 +82,41 @@
       <div class="hero-photo-credit">Concept imagery: verified architectural photography; not the At-Towfiq building</div>
     </section>
 
+
+    <section class="masjid-quick-bar" aria-label="Today's mosque prayer times">
+      <div class="site-shell masjid-quick-inner">
+        <div class="masjid-quick-title">
+          <span class="masjid-live-dot" aria-hidden="true"></span>
+          <div><small>MASJID AT-TOWFIIQ</small><strong>Live Athan &amp; Iqamah</strong></div>
+        </div>
+        <div class="masjid-quick-labels" aria-label="Daily prayers">
+          <span>FAJR</span><span>DHUHR</span><span>ASR</span><span>MAGHRIB</span><span>ISHA</span>
+        </div>
+        <a class="masjid-quick-cta" href="#prayer-times">View timetable <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
     <section class="prayer-zone" id="prayer-times" aria-labelledby="prayerTitle">
       <div class="site-shell prayer-shell">
         <div class="prayer-intro">
           <div class="mini-eyebrow"><span class="dot-gold"></span> YOUR DAILY COMPANION</div>
           <h2 id="prayerTitle">Make time<br><em>for what matters.</em></h2>
-          <p>Salah anchors our day. Find your prayer information at a glance, whether you're joining us for Fajr or coming together at Jumu’ah.</p>
-          <a class="text-cta" href="#visit">Finding the masjid <span>↗</span></a>
+          <p>Find prayer beginning, iqamah and Jumu’ah times from Masjid At-Towfiiq’s live MasjidBox listing. The mosque’s published timetable takes precedence over general calculated prayer times.</p>
+          <a class="text-cta" href="https://masjidbox.com/prayer-times/masjid-at-towfiiq" target="_blank" rel="noopener noreferrer">View the full MasjidBox timetable <span aria-hidden="true">↗</span></a>
           <div class="prayer-decorative-arabic" aria-hidden="true">الصَّلَاةُ</div>
         </div>
-        <div class="prayer-card">
+        <div class="prayer-card masjidbox-card">
           <div class="prayer-card-top">
-            <div><div class="card-eyebrow">THE FIVE DAILY PRAYERS</div><h3>Prayer timetable</h3><span class="date-label" id="todayDate">Bolton, United Kingdom</span></div>
+            <div><div class="card-eyebrow">MASJID AT-TOWFIIQ · MASJIDBOX</div><h3>Today's prayer timetable</h3><span class="date-label" id="todayDate">Bolton, United Kingdom</span></div>
             <div class="prayer-card-mark" aria-hidden="true">☪</div>
           </div>
-          <div class="prayer-date-controls" role="group" aria-label="Choose prayer date">
-            <button type="button" id="prayerPrev" aria-label="Previous date">←</button>
-            <button type="button" id="prayerToday">Today</button>
-            <button type="button" id="prayerNextDay" aria-label="Next date">→</button>
+          <div class="masjidbox-source-strip"><span class="masjid-live-dot" aria-hidden="true"></span> Live source · 24 Punch Street, Bolton</div>
+          <div class="masjidbox-embed-frame">
+            <iframe id="masjidboxTimetable" src="https://masjidbox.com/prayer-times/masjid-at-towfiiq" title="Masjid At-Towfiiq prayer begins, iqamah and Jumu'ah on MasjidBox" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
           </div>
-          <p id="prayerStatus" class="sample-alert" role="status" aria-live="polite">Loading calculated prayer beginnings…</p>
-          <div id="prayerNext" class="prayer-countdown" role="timer" aria-live="off">Checking the next prayer…</div>
-          <div class="prayer-table-head"><span>PRAYER</span><span>BEGINS</span><span>IQAMAH</span></div>
-          <div class="prayer-rows" id="prayerRows" role="table" aria-label="Daily prayer beginning and congregation times">
-            <div class="prayer-row" role="row"><span class="prayer-name">Fajr</span><time>—</time><strong>—</strong></div>
-            <div class="prayer-row" role="row"><span class="prayer-name">Dhuhr</span><time>—</time><strong>—</strong></div>
-            <div class="prayer-row" role="row"><span class="prayer-name">Asr</span><time>—</time><strong>—</strong></div>
-            <div class="prayer-row" role="row"><span class="prayer-name">Maghrib</span><time>—</time><strong>—</strong></div>
-            <div class="prayer-row" role="row"><span class="prayer-name">Isha</span><time>—</time><strong>—</strong></div>
+          <div class="masjidbox-footer">
+            <p>Timings are provided by MasjidBox. If the embedded display is unavailable, open the live timetable directly. Confirm exceptional schedule changes with the masjid.</p>
+            <a href="https://masjidbox.com/prayer-times/masjid-at-towfiiq" target="_blank" rel="noopener noreferrer">Open live timetable on MasjidBox <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="prayer-iqamah-guidance" role="note">
-            <strong>Looking for iqamah (jama’ah) times?</strong>
-            <span>Our approved schedule has not yet been supplied. <a id="externalTimetable" href="https://waqt.uk/attowfiiq/" target="_blank" rel="noopener noreferrer">View the independently published At-Towfiiq timetable ↗</a> and confirm with the masjid before travelling.</span>
-          </div>
-          <div class="prayer-card-bottom"><div><span class="sun-small" aria-hidden="true">☼</span> Sunrise <strong id="sunriseTime">—</strong></div><button id="timetableAction" type="button">Full timetable <span>↗</span></button></div>
-          <div class="prayer-jumuah" id="jumuahMessage">Jumu’ah time will be shown once confirmed by the masjid.</div>
-          <p id="prayerSource" class="prayer-source">Reference calculations are not official Masjid At-Towfiq times.</p>
         </div>
       </div>
     </section>
@@ -184,14 +183,6 @@
   </main>
   <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#whatson">What's on</a><a href="#community">Our community</a></div><div><h4>GET INVOLVED</h4><a href="#give">Donate</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><button type="button" id="footerMadrasah">Madrasah website ↗</button></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
   <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><div class="modal-ornament" aria-hidden="true">✦</div><button class="modal-close" type="button" id="modalClose" aria-label="Close dialog">×</button><div class="modal-kicker" id="modalKicker">MASJID AT-TOWFIQ</div><h2 id="modalTitle">More information</h2><div class="modal-content" id="modalContent"></div><button class="button button-dark modal-dismiss" type="button" id="modalDismiss">Understood <span>↗</span></button></div></div>
-  <dialog id="timetableDialog" class="timetable-dialog" aria-labelledby="monthHeading">
-    <div class="timetable-dialog-head"><div><div class="card-eyebrow">PRAYER TIMES · BOLTON</div><h2 id="monthHeading">Monthly timetable</h2></div><button id="timetableClose" class="timetable-close" aria-label="Close monthly timetable" type="button">×</button></div>
-    <p class="timetable-legal">Beginning times are <strong>calculated references, not confirmed At-Towfiq times</strong>, unless a day is explicitly marked as masjid-approved. Blank iqamah (jama’ah) columns mean the masjid has not supplied its approved schedule to this website. Consult the linked published listing and confirm with the masjid before travelling.</p>
-    <div class="timetable-tools"><button type="button" id="monthPrev" aria-label="Previous month">←</button><label for="monthPicker">Select month</label><input type="month" id="monthPicker"><button type="button" id="monthNext" aria-label="Next month">→</button><button type="button" id="downloadTimetable" disabled>Download reference CSV ↓</button></div>
-    <div id="monthlyRows" class="monthly-scroll" role="region" tabindex="0" aria-label="Monthly prayer timetable">Loading…</div>
-    <p class="timetable-footer">All times use Europe/London (GMT/BST). Asr calculation uses the Hanafi option for the reference only. <a href="https://waqt.uk/attowfiiq/" target="_blank" rel="noopener noreferrer">View independent published timetable ↗</a></p>
-  </dialog>
   <script src="script.js"></script>
-  <script src="prayer-times.js"></script>
 </body>
 </html>

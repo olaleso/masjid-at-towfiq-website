@@ -2,7 +2,7 @@
 
 A standalone, **masjid-only** cinematic website for Masjid At-Towfiq, Bolton. The Madrasah and its admissions/parent portals are deliberately maintained in a **separate project**.
 
-> **IMPORTANT — PREVIEW:** This repository contains **sample prayer times, sample programmes and simulated donation actions**. They are not verified masjid schedules, confirmed events or payment links. Do not remove the warning banner or anti-indexing controls until the masjid approves the live details.
+> **IMPORTANT — PREVIEW:** This repository contains **sample prayer times, sample programmes and simulated donation actions**. They are not verified masjid schedules, confirmed events or payment links. Keep anti-indexing controls until the masjid approves remaining pre-launch details.
 
 ## Current release: v0.2.0 (prayer reference feature)
 
@@ -56,9 +56,9 @@ The logo is supplied by the masjid and should not be reused in unrelated project
 
 **Project status:** Pre-launch template. Content and contact details require final masjid sign-off.
 
-## Prayer time feature (v0.2)
+## Prayer time feature (v0.3: MasjidBox)
 
-The site now provides **calculated reference prayer beginning times**, a next-prayer countdown, date navigation and a monthly timetable/CSV. The new `public/data/prayer-config.json` allows committee-approved daily **jama'ah** and **Jumu'ah** to be published without guessing. Calculated timings do NOT constitute verified masjid times. See [docs/PRAYER_TIMES.md](docs/PRAYER_TIMES.md) for approval and publication instructions.
+The live page now embeds the MasjidBox listing for Masjid At-Towfiiq: https://masjidbox.com/prayer-times/masjid-at-towfiiq. It avoids presenting generic calculated beginnings as the masjid's prayer times. A direct link remains available if framing is blocked. See [docs/PRAYER_TIMES.md](docs/PRAYER_TIMES.md).
 
 ## Cloudflare Worker build integration
 

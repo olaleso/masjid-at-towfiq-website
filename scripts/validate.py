@@ -56,8 +56,8 @@ if "Disallow: /" not in (SITE / "robots.txt").read_text():
 html = (SITE / "index.html").read_text(encoding="utf-8")
 if "WEBSITE CONCEPT PREVIEW" in html:
     problems.append("Concept-preview banner must be removed")
-if "calculated references, not confirmed At-Towfiq times" not in html:
-    problems.append("Prayer calculation disclaimer missing")
+if "https://masjidbox.com/prayer-times/masjid-at-towfiiq" not in html or 'id="masjidboxTimetable"' not in html:
+    problems.append("Live MasjidBox timetable is missing")
 if 'id="externalTimetable"' not in html:
     problems.append("Independent iqamah timetable link missing")
 # Prayer-times configuration is part of the deployable publication contract.
@@ -96,12 +96,10 @@ else:
                         problems.append(f'Invalid Jumuah time/date: {iso}')
     except (ValueError, KeyError, TypeError, AttributeError, json.JSONDecodeError) as exc:
         problems.append(f'Prayer config invalid: {exc}')
-required_prayer_ids = {'prayerRows','prayerStatus','prayerNext','prayerPrev','prayerToday','prayerNextDay',
-                       'sunriseTime','jumuahMessage','prayerSource','timetableDialog','monthPicker','monthlyRows'}
-for missing in required_prayer_ids - page.ids:
-    problems.append(f'Prayer UI ID missing: {missing}')
-if 'https://api.aladhan.com' not in (SITE / '_headers').read_text():
-    problems.append('Calculation API omitted from CSP connect-src')
+if "frame-src https://masjidbox.com" not in (SITE / "_headers").read_text(encoding="utf-8"):
+    problems.append("MasjidBox missing from frame-src policy")
+if 'prayer-times.js' in html or 'api.aladhan.com' in html:
+    problems.append("Legacy calculated prayer timetable still loaded")
 # Cloudflare Workers Builds must target this *existing* Worker, not create a Pages project.
 wrangler_path = SITE.parent / "wrangler.jsonc"
 if not wrangler_path.is_file():
