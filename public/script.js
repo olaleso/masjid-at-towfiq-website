@@ -4,7 +4,8 @@
   const $$ = (s) => [...document.querySelectorAll(s)];
   $('#currentYear').textContent = String(new Date().getFullYear());
   const fmt = new Intl.DateTimeFormat('en-GB', {timeZone:'Europe/London',weekday:'long',day:'numeric',month:'long',year:'numeric'});
-  $('#todayDate').textContent = fmt.format(new Date()) + ' · Bolton';
+  const fullPrayerDate = $('#todayDate');
+  if (fullPrayerDate) fullPrayerDate.textContent = fmt.format(new Date()) + ' · Bolton';
 
   // Responsive menu
   const toggle = $('#menuToggle'), mobileNav = $('#mobileMenu');
