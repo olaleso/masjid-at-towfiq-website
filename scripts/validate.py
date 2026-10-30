@@ -60,6 +60,16 @@ if 'id="masjidVideosGrid"' not in html or 'id="masjidVideoDialog"' not in html o
     problems.append("Native published-video gallery is missing")
 if 'id="prayer-times"' not in html:
     problems.append("Prayer times navigation anchor missing")
+for service_id in ["services","service-nikah","service-counselling","service-funeral","service-sheikhs"]:
+    if f'id="{service_id}"' not in html:
+        problems.append(f"Masjid service anchor missing: {service_id}")
+if 'class="nav-services"' not in html or 'class="mobile-services"' not in html:
+    problems.append("Desktop/mobile Services dropdown missing")
+if not (SITE / "services.css").is_file():
+    problems.append("Services stylesheet missing")
+if 'class="welcome-section' in html or 'class="services-section' in html:
+    problems.append("Old community sections still present")
+
 for asset in ["videos.css","videos.js"]:
     if not (SITE / asset).is_file():
         problems.append("Website video asset missing: "+asset)
