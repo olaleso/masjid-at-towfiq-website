@@ -10,4 +10,4 @@ jobs:
       - name: Check HTML assets and preview safeguards
         run: python3 scripts/validate.py
       - name: Check JavaScript syntax
-        run: node --check public/script.js && node --check public/prayer-times.js
+        run: node --check public/script.js

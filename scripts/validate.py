@@ -3,9 +3,6 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 import sys
-import json
-import re
-from datetime import date
 
 SITE = Path(__file__).resolve().parents[1] / "public"
 
@@ -58,48 +55,13 @@ if "WEBSITE CONCEPT PREVIEW" in html:
     problems.append("Concept-preview banner must be removed")
 if "https://masjidbox.com/prayer-times/masjid-at-towfiiq" not in html or 'id="masjidboxTimetable"' not in html:
     problems.append("Live MasjidBox timetable is missing")
-if 'id="externalTimetable"' not in html:
-    problems.append("Independent iqamah timetable link missing")
-# Prayer-times configuration is part of the deployable publication contract.
-config_path = SITE / 'data' / 'prayer-config.json'
-if not config_path.is_file():
-    problems.append('Prayer configuration file missing')
-else:
-    try:
-        conf = json.loads(config_path.read_text(encoding='utf-8'))
-        if conf.get('schemaVersion') != 1 or conf.get('timeZone') != 'Europe/London':
-            problems.append('Unsupported prayer config schema/time zone')
-        calc = conf.get('calculation', {})
-        if calc.get('method') not in range(24) or calc.get('school') not in [0, 1]:
-            problems.append('Invalid prayer calculation method/school')
-        official = conf.get('official', {})
-        if not isinstance(official.get('approvedByMasjid'), bool):
-            problems.append('Masjid approval flag must be boolean')
-        if official.get('approvedByMasjid'):
-            date.fromisoformat(official['reviewedAt'])
-        if not isinstance(official.get('days'), dict):
-            problems.append('Official prayer schedule must be a date-keyed object')
-        else:
-            starts = {'Fajr','Sunrise','Dhuhr','Asr','Maghrib','Isha'}
-            congregations = starts - {'Sunrise'}
-            for iso, entry in official['days'].items():
-                d = date.fromisoformat(iso)
-                if entry.get('status') != 'approved':
-                    problems.append(f'Unapproved date included in official schedule: {iso}')
-                if set(entry.get('begins', {})) != starts or set(entry.get('jamaah', {})) != congregations:
-                    problems.append(f'Missing/extra prayer keys for {iso}')
-                for v in list(entry.get('begins', {}).values()) + list(entry.get('jamaah', {}).values()):
-                    if not re.fullmatch(r'(?:[01]\d|2[0-3]):[0-5]\d', str(v)):
-                        problems.append(f'Invalid time format for {iso}: {v}')
-                if 'jumuah' in entry:
-                    if d.weekday() != 4 or not re.fullmatch(r'(?:[01]\d|2[0-3]):[0-5]\d', str(entry['jumuah'])):
-                        problems.append(f'Invalid Jumuah time/date: {iso}')
-    except (ValueError, KeyError, TypeError, AttributeError, json.JSONDecodeError) as exc:
-        problems.append(f'Prayer config invalid: {exc}')
+# Ensure external MasjidBox link remains available even if an iframe is blocked.
+if html.count('href="https://masjidbox.com/prayer-times/masjid-at-towfiiq"') < 1:
+    problems.append("Fallback link to At-Towfiiq MasjidBox missing")
 if "frame-src https://masjidbox.com" not in (SITE / "_headers").read_text(encoding="utf-8"):
-    problems.append("MasjidBox missing from frame-src policy")
+    problems.append("MasjidBox frame source omitted from CSP")
 if 'prayer-times.js' in html or 'api.aladhan.com' in html:
-    problems.append("Legacy calculated prayer timetable still loaded")
+    problems.append("Legacy calculated timetable still loaded")
 # Cloudflare Workers Builds must target this *existing* Worker, not create a Pages project.
 wrangler_path = SITE.parent / "wrangler.jsonc"
 if not wrangler_path.is_file():

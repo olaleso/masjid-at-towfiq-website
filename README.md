@@ -2,9 +2,9 @@
 
 A standalone, **masjid-only** cinematic website for Masjid At-Towfiq, Bolton. The Madrasah and its admissions/parent portals are deliberately maintained in a **separate project**.
 
-> **IMPORTANT — PREVIEW:** This repository contains **sample prayer times, sample programmes and simulated donation actions**. They are not verified masjid schedules, confirmed events or payment links. Keep anti-indexing controls until the masjid approves remaining pre-launch details.
+> **IMPORTANT — PREVIEW:** Prayer times now use the named MasjidBox listing; programmes and donation actions may remain illustrative. They are not verified masjid schedules, confirmed events or payment links. Keep anti-indexing controls until the masjid approves remaining pre-launch details.
 
-## Current release: v0.2.0 (prayer reference feature)
+## Current release: v0.3.0 (MasjidBox live timetable)
 
 - Responsive royal-blue, gold and ivory design with user-supplied At-Towfiq logo
 - Calligraphy and bespoke CSS architectural treatments; **no AI-generated images**
@@ -25,7 +25,7 @@ public/                    Cloudflare Workers static assets (entire published si
   robots.txt             Temporary noindex for public preview
 scripts/validate.py       No-dependency structural validation
 .github/workflows/validate.yml
-DEPLOYMENT.md             GitHub → Cloudflare Pages setup
+DEPLOYMENT.md             GitHub → Cloudflare Workers setup
 LAUNCH_CHECKLIST.md       Production-readiness tasks
 docs/CREATIVE_CONCEPT.md   Design research, licences and roadmap
 ```
@@ -48,7 +48,7 @@ node --check public/script.js
 
 ## Deploy to Cloudflare Workers
 
-Choose **GitHub integration**, not Direct Upload, so every approved `main` commit will automatically deploy. See [DEPLOYMENT.md](DEPLOYMENT.md) for exact setup details. No framework build or database is needed for the static preview; the Cloudflare Pages **output directory is `public`**.
+Choose **GitHub integration**, not Direct Upload, so every approved `main` commit will automatically deploy. See [DEPLOYMENT.md](DEPLOYMENT.md) for exact setup details. No framework build or database is needed for the static preview; Cloudflare Workers assets directory is `./public`.
 
 ## Asset rights and corrections
 

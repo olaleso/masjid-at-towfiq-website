@@ -12,4 +12,4 @@ MasjidBox documentation:
 https://support.masjidbox.com/add-the-small-prayer-times-website-widget-pltke
 https://support.masjidbox.com/does-masjidbox-have-a-public-api-for-prayer-times-sfnfd
 
-The former `prayer-times.js`, `prayer-times.css` and `data/prayer-config.json` are retained temporarily as unused historical files pending cleanup. Neither script nor reference stylesheet is loaded on the public page.
+The former AlAdhan calculation script, styles, and configuration have been removed from the deployed assets; historical revisions remain accessible through Git history.

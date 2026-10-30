@@ -26,7 +26,7 @@ The static assets are in `public/`; `wrangler.jsonc` at the repository root tell
    - Preview command: Cloudflare default, if enabled
 5. Under **Build watch paths**, include all paths (`*`) and do not exclude `public/*` or `wrangler.jsonc`. Make sure builds are **enabled**.
 6. Save settings. Push a change to `main` or use the **Build → Retry** action for a suitable build. Under **Deployments**, look for a new build tied to the GitHub commit (not only an older dashboard/manual deployment).
-7. Open `https://attowfiqmasjid.org/prayer-times.js` and `https://attowfiqmasjid.org/data/prayer-config.json` to check the new static assets. Do not assume deployment has completed until these URLs are served by the same Worker at the domain.
+7. Open `https://attowfiqmasjid.org/#prayer-times` to check that the MasjidBox iframe and direct link target At-Towfiiq. Do not assume deployment has completed until the new HTML is available on the production domain.
 
 ## Domain and safety
 
@@ -34,7 +34,7 @@ The domain `attowfiqmasjid.org` is already routed to the Worker in Cloudflare's 
 
 `keep_vars: true` preserves dashboard-maintained non-secret environment variables when deploying. Never commit API tokens or credentials.
 
-The site's `public/_headers` protects static asset responses and `robots.txt` continues to discourage indexing while prayer timings are unverified. **Do not** remove the labels distinguishing calculated prayer beginnings from officially approved jama'ah and Jumu'ah.
+The site's `public/_headers` protects static asset responses and `robots.txt` continues to discourage indexing while prayer timings are unverified. Do not reintroduce generic calculated prayer starts or times from other masjids.
 
 ## Future updates
 
