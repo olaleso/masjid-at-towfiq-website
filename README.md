@@ -63,3 +63,12 @@ The native hero iqamah bar and detailed timetable use a server-side MasjidBox re
 ## Cloudflare Worker build integration
 
 The existing production deployment runs on **Cloudflare Workers**, not Pages. Repository root `wrangler.jsonc` specifies the existing Worker name and the `./public` asset directory. Under the Worker's **Settings → Builds**, connect this repository's `main` branch and set the deploy command to `npx wrangler deploy`. See `DEPLOYMENT.md` for troubleshooting and domain-preservation details.
+
+
+## Video library published from the Madrasah portal
+
+The previous redundant full-page prayer card has been replaced with a native **Lectures & Khutbahs** section. The compact hero prayer dock and its drilldown remain available. The new section shows curated YouTube thumbnail cards, category filters, an optional featured video and a privacy-conscious click-to-play player. It never auto-plays on page load.
+
+The **admin source of truth** is the separate portal at `https://portal.attowfiqmasjid.org/`, under **Community → Website videos**. Only published entries are returned by `GET https://portal.attowfiqmasjid.org/api/public/masjid-videos`. The masjid Worker exposes the same data from `GET /api/public/videos` after validating the public metadata. No portal private data, API tokens, YouTube credentials or editor actions are exposed by the public website.
+
+When the portal API is unavailable, the section shows a link to the masjid's public YouTube channel instead of inventing recordings or keeping obsolete cached video listings. No database migration or subsequent website rebuild is needed when an administrator adds a video. The portal source code itself must first be deployed once.
