@@ -54,13 +54,15 @@ if "Disallow: /" not in (SITE / "robots.txt").read_text():
 html = (SITE / "index.html").read_text(encoding="utf-8")
 if "WEBSITE CONCEPT PREVIEW" in html:
     problems.append("Concept-preview banner must be removed")
-if "https://masjidbox.com/prayer-times/masjid-at-towfiiq" not in html or 'id="masjidboxTimetable"' not in html:
-    problems.append("Live MasjidBox timetable is missing")
+if "https://masjidbox.com/prayer-times/masjid-at-towfiiq" not in html or 'id="prayerDockToggle"' not in html or 'id="prayerRows"' not in html:
+    problems.append("Native At-Towfiiq timetable is missing")
 # Ensure external MasjidBox link remains available even if an iframe is blocked.
 if html.count('href="https://masjidbox.com/prayer-times/masjid-at-towfiiq"') < 1:
     problems.append("Fallback link to At-Towfiiq MasjidBox missing")
-if "frame-src https://masjidbox.com" not in (SITE / "_headers").read_text(encoding="utf-8"):
-    problems.append("MasjidBox frame source omitted from CSP")
+if 'id="masjidboxTimetable"' in html or '<iframe' in html:
+    problems.append("MasjidBox iframe must not appear in native prayer interface")
+if not (SITE / "prayer-live.js").is_file():
+    problems.append("Native prayer UI JavaScript missing")
 if 'prayer-times.js' in html or 'api.aladhan.com' in html:
     problems.append("Legacy calculated timetable still loaded")
 # Cloudflare Workers Builds must target this *existing* Worker, not create a Pages project.
@@ -74,8 +76,12 @@ else:
             problems.append("Wrangler name does not match the existing Cloudflare Worker")
         if wrangler.get("assets", {}).get("directory", "").rstrip("/") not in ("./public", "public"):
             problems.append("Wrangler static asset directory must be ./public")
-        if "main" in wrangler:
-            problems.append("No Worker entrypoint is needed for this static-only preview")
+        if wrangler.get("main") != "./src/worker.mjs":
+            problems.append("Prayer feed Worker entrypoint missing")
+        if wrangler.get("assets", {}).get("binding") != "ASSETS":
+            problems.append("Cloudflare ASSETS binding missing")
+        if "/api/*" not in wrangler.get("assets", {}).get("run_worker_first", []):
+            problems.append("Prayer API route must run Worker first")
         if "routes" in wrangler or "route" in wrangler:
             problems.append("Routes should remain managed in the Cloudflare dashboard")
         if wrangler.get("workers_dev") is not False:
