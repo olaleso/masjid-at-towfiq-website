@@ -17,6 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="masjidbox.css">
+  <link rel="stylesheet" href="videos.css">
 </head>
 <body>
   <div class="utility-bar">
@@ -35,6 +36,7 @@
       <nav class="desktop-nav" aria-label="Main navigation">
         <a href="#home" class="nav-link active">Home</a>
         <a href="#prayer-times" class="nav-link">Prayer times</a>
+        <a href="#videos" class="nav-link">Lectures &amp; khutbahs</a>
         <a href="#whatson" class="nav-link">What's on</a>
         <a href="#community" class="nav-link">Our community</a>
         <a href="#visit" class="nav-link">Visit us</a>
@@ -46,7 +48,7 @@
       <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
     </div>
     <nav class="mobile-nav" id="mobileMenu" aria-label="Mobile navigation" hidden>
-      <a href="#home">Home</a><a href="#prayer-times">Prayer times</a><a href="#whatson">What's on</a><a href="#community">Our community</a><a href="#visit">Visit us</a><a href="#give">Support the masjid</a><button id="mobileMadrasah" type="button">Madrasah website ↗</button>
+      <a href="#home">Home</a><a href="#prayer-times">Prayer times</a><a href="#videos">Videos</a><a href="#whatson">What's on</a><a href="#community">Our community</a><a href="#visit">Visit us</a><a href="#give">Support the masjid</a><button id="mobileMadrasah" type="button">Madrasah website ↗</button>
     </nav>
   </header>
   <main>
@@ -58,6 +60,7 @@
         <div class="geo-star">✦</div>
       </div>
       <div class="hero-noise" aria-hidden="true"></div>
+      <span id="prayer-times" class="masjid-prayer-anchor" aria-hidden="true"></span>
       <div class="at-prayer-dock" id="prayerDock">
         <button type="button" class="at-dock-trigger" id="prayerDockToggle" aria-expanded="false" aria-controls="prayerDockPanel">
           <span class="at-dock-label"><i aria-hidden="true"></i> TODAY’S IQAMAH</span>
@@ -96,34 +99,29 @@
     </section>
 
 
-    <section class="prayer-zone" id="prayer-times" aria-labelledby="prayerTitle">
-      <div class="site-shell prayer-shell">
-        <div class="prayer-intro">
-          <div class="mini-eyebrow"><span class="dot-gold"></span> YOUR DAILY COMPANION</div>
-          <h2 id="prayerTitle">Make time<br><em>for what matters.</em></h2>
-          <p>Today’s Athan, Iqamah and Jumu’ah times for Masjid At-Towfiiq. This timetable follows the masjid's published MasjidBox schedule rather than a generic prayer-time estimate.</p>
-          <a class="text-cta" href="https://masjidbox.com/prayer-times/masjid-at-towfiiq" target="_blank" rel="noopener noreferrer">View the full MasjidBox timetable <span aria-hidden="true">↗</span></a>
-          <div class="prayer-decorative-arabic" aria-hidden="true">الصَّلَاةُ</div>
-        </div>
-        <div class="prayer-card at-native-card">
-          <div class="prayer-card-top">
-            <div><div class="card-eyebrow">MASJID AT-TOWFIIQ · BOLTON</div><h3>Today's prayer times</h3><span class="date-label" id="todayDate">Bolton · UK time</span></div>
-            <div class="prayer-card-mark" aria-hidden="true">☪</div>
+
+    <section class="masjid-videos-section" id="videos" aria-labelledby="masjidVideosHeading">
+      <div class="site-shell masjid-videos-inner">
+        <div class="masjid-videos-head">
+          <div class="masjid-videos-copy">
+            <div class="mini-eyebrow"><span class="dot-gold"></span> FROM OUR MIMBAR &amp; COMMUNITY</div>
+            <h2 id="masjidVideosHeading">Listen. Reflect.<br><em>Grow together.</em></h2>
+            <p>Explore inspiring Friday khutbahs, Islamic lectures, Qur’an recitation and community recordings from Masjid At-Towfiiq. New recordings are added by the masjid team.</p>
           </div>
-          <p id="prayerTimesStatus" class="at-source-status" role="status" aria-live="polite">Loading At-Towfiiq's published prayer times…</p>
-          <div id="prayerNext" class="at-next-prayer">Checking next iqamah…</div>
-          <div class="at-card-head"><span>PRAYER</span><span>ATHAN</span><span>IQAMAH</span></div>
-          <div id="prayerRows" class="at-card-rows" aria-label="At-Towfiiq Athan and Iqamah times"></div>
-          <div class="at-jumuah"><span><small>FRIDAY PRAYER</small><strong>Jumu’ah</strong></span><strong id="jumuahTime">—</strong></div>
-          <p id="prayerDataNote" class="at-source-note">Live times from At-Towfiiq's MasjidBox listing.</p>
-          <div class="at-card-actions">
-            <a href="https://masjidbox.com/prayer-times/masjid-at-towfiiq" target="_blank" rel="noopener noreferrer">Full live timetable <span aria-hidden="true">↗</span></a>
-            <button type="button" id="prayerRetry">Refresh times ↻</button>
-          </div>
+          <a href="https://www.youtube.com/@AttowfiqmasjidBolton" target="_blank" rel="noopener noreferrer">Our YouTube channel <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="masjid-videos-filters" id="masjidVideoFilters" role="group" aria-label="Filter videos by category">
+          <button type="button" data-video-category="All" aria-pressed="true">All videos</button>
+          <button type="button" data-video-category="Khutbah" aria-pressed="false">Friday khutbahs</button>
+          <button type="button" data-video-category="Lecture" aria-pressed="false">Lectures</button>
+          <button type="button" data-video-category="Qur’an" aria-pressed="false">Qur’an</button>
+          <button type="button" data-video-category="Community" aria-pressed="false">Community</button>
+        </div>
+        <p id="masjidVideosStatus" class="masjid-videos-status" role="status" aria-live="polite">Loading published videos…</p>
+        <div id="masjidVideosGrid" class="masjid-videos-grid" aria-label="Published masjid YouTube recordings"></div>
+        <button id="masjidVideoMore" class="masjid-videos-more" type="button" hidden>Show more recordings</button>
       </div>
     </section>
-
     <section class="welcome-section section-space" id="about">
       <div class="site-shell welcome-grid">
         <div class="welcome-art reveal">
@@ -184,9 +182,15 @@
 
     <section class="closing-section"><div class="site-shell closing-inner"><span lang="ar" class="closing-arabic">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ</span><h2>May peace be upon you.</h2><p>And may this always be a place where hearts come together.</p><a href="#top" class="back-top">BACK TO TOP ↑</a></div></section>
   </main>
-  <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#whatson">What's on</a><a href="#community">Our community</a></div><div><h4>GET INVOLVED</h4><a href="#give">Donate</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><button type="button" id="footerMadrasah">Madrasah website ↗</button></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
+  <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#videos">Lectures &amp; khutbahs</a><a href="#whatson">What's on</a><a href="#community">Our community</a></div><div><h4>GET INVOLVED</h4><a href="#give">Donate</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><button type="button" id="footerMadrasah">Madrasah website ↗</button></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
   <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><div class="modal-ornament" aria-hidden="true">✦</div><button class="modal-close" type="button" id="modalClose" aria-label="Close dialog">×</button><div class="modal-kicker" id="modalKicker">MASJID AT-TOWFIQ</div><h2 id="modalTitle">More information</h2><div class="modal-content" id="modalContent"></div><button class="button button-dark modal-dismiss" type="button" id="modalDismiss">Understood <span>↗</span></button></div></div>
+
+  <dialog class="masjid-video-dialog" id="masjidVideoDialog" aria-labelledby="masjidVideoDialogTitle">
+    <div class="masjid-video-dialog-head"><h2 id="masjidVideoDialogTitle">Masjid At-Towfiiq video</h2><button type="button" id="masjidVideoClose" aria-label="Close video">×</button></div>
+    <div class="masjid-video-frame-wrap"><iframe id="masjidVideoFrame" title="YouTube video player" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  </dialog>
   <script src="script.js"></script>
   <script src="prayer-live.js" defer></script>
+  <script src="videos.js" defer></script>
 </body>
 </html>
