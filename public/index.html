@@ -58,6 +58,19 @@
         <div class="geo-star">✦</div>
       </div>
       <div class="hero-noise" aria-hidden="true"></div>
+      <div class="at-prayer-dock" id="prayerDock">
+        <button type="button" class="at-dock-trigger" id="prayerDockToggle" aria-expanded="false" aria-controls="prayerDockPanel">
+          <span class="at-dock-label"><i aria-hidden="true"></i> TODAY’S IQAMAH</span>
+          <span id="prayerDockTimes" class="at-dock-times" aria-label="Congregation times"></span>
+          <span class="at-dock-expand">Full timetable <span aria-hidden="true">⌄</span></span>
+        </button>
+        <div class="at-dock-panel" id="prayerDockPanel" hidden>
+          <div class="at-dock-panel-head"><div><small>MASJID AT-TOWFIIQ · LIVE TIMETABLE</small><strong id="prayerDockDate">Bolton · UK time</strong></div><button type="button" id="prayerDockClose" aria-label="Close timetable">×</button></div>
+          <div class="at-dock-head"><span>PRAYER</span><span>ATHAN</span><span>IQAMAH</span></div>
+          <div class="at-dock-rows" id="prayerDockRows"></div>
+          <div class="at-dock-foot"><span>Jumu’ah <strong id="prayerDockJumuah">—</strong></span><a href="https://masjidbox.com/prayer-times/masjid-at-towfiiq" target="_blank" rel="noopener noreferrer">MasjidBox ↗</a></div>
+        </div>
+      </div>
       <div class="site-shell hero-inner">
         <div class="hero-copy">
           <div class="eyebrow hero-eyebrow"><span class="rule"></span> WELCOME TO MASJID AT-TOWFIQ <span class="eyebrow-dot">✦</span> BOLTON</div>
@@ -83,39 +96,29 @@
     </section>
 
 
-    <section class="masjid-quick-bar" aria-label="Today's mosque prayer times">
-      <div class="site-shell masjid-quick-inner">
-        <div class="masjid-quick-title">
-          <span class="masjid-live-dot" aria-hidden="true"></span>
-          <div><small>MASJID AT-TOWFIIQ</small><strong>Live Athan &amp; Iqamah</strong></div>
-        </div>
-        <div class="masjid-quick-labels" aria-label="Daily prayers">
-          <span>FAJR</span><span>DHUHR</span><span>ASR</span><span>MAGHRIB</span><span>ISHA</span>
-        </div>
-        <a class="masjid-quick-cta" href="#prayer-times">View timetable <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
     <section class="prayer-zone" id="prayer-times" aria-labelledby="prayerTitle">
       <div class="site-shell prayer-shell">
         <div class="prayer-intro">
           <div class="mini-eyebrow"><span class="dot-gold"></span> YOUR DAILY COMPANION</div>
           <h2 id="prayerTitle">Make time<br><em>for what matters.</em></h2>
-          <p>Find prayer beginning, iqamah and Jumu’ah times from Masjid At-Towfiiq’s live MasjidBox listing. The mosque’s published timetable takes precedence over general calculated prayer times.</p>
+          <p>Today’s Athan, Iqamah and Jumu’ah times for Masjid At-Towfiiq. This timetable follows the masjid's published MasjidBox schedule rather than a generic prayer-time estimate.</p>
           <a class="text-cta" href="https://masjidbox.com/prayer-times/masjid-at-towfiiq" target="_blank" rel="noopener noreferrer">View the full MasjidBox timetable <span aria-hidden="true">↗</span></a>
           <div class="prayer-decorative-arabic" aria-hidden="true">الصَّلَاةُ</div>
         </div>
-        <div class="prayer-card masjidbox-card">
+        <div class="prayer-card at-native-card">
           <div class="prayer-card-top">
-            <div><div class="card-eyebrow">MASJID AT-TOWFIIQ · MASJIDBOX</div><h3>Today's prayer timetable</h3><span class="date-label" id="todayDate">Bolton, United Kingdom</span></div>
+            <div><div class="card-eyebrow">MASJID AT-TOWFIIQ · BOLTON</div><h3>Today's prayer times</h3><span class="date-label" id="todayDate">Bolton · UK time</span></div>
             <div class="prayer-card-mark" aria-hidden="true">☪</div>
           </div>
-          <div class="masjidbox-source-strip"><span class="masjid-live-dot" aria-hidden="true"></span> Live source · 24 Punch Street, Bolton</div>
-          <div class="masjidbox-embed-frame">
-            <iframe id="masjidboxTimetable" src="https://masjidbox.com/prayer-times/masjid-at-towfiiq" title="Masjid At-Towfiiq prayer begins, iqamah and Jumu'ah on MasjidBox" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-          </div>
-          <div class="masjidbox-footer">
-            <p>Timings are provided by MasjidBox. If the embedded display is unavailable, open the live timetable directly. Confirm exceptional schedule changes with the masjid.</p>
-            <a href="https://masjidbox.com/prayer-times/masjid-at-towfiiq" target="_blank" rel="noopener noreferrer">Open live timetable on MasjidBox <span aria-hidden="true">↗</span></a>
+          <p id="prayerTimesStatus" class="at-source-status" role="status" aria-live="polite">Loading At-Towfiiq's published prayer times…</p>
+          <div id="prayerNext" class="at-next-prayer">Checking next iqamah…</div>
+          <div class="at-card-head"><span>PRAYER</span><span>ATHAN</span><span>IQAMAH</span></div>
+          <div id="prayerRows" class="at-card-rows" aria-label="At-Towfiiq Athan and Iqamah times"></div>
+          <div class="at-jumuah"><span><small>FRIDAY PRAYER</small><strong>Jumu’ah</strong></span><strong id="jumuahTime">—</strong></div>
+          <p id="prayerDataNote" class="at-source-note">Live times from At-Towfiiq's MasjidBox listing.</p>
+          <div class="at-card-actions">
+            <a href="https://masjidbox.com/prayer-times/masjid-at-towfiiq" target="_blank" rel="noopener noreferrer">Full live timetable <span aria-hidden="true">↗</span></a>
+            <button type="button" id="prayerRetry">Refresh times ↻</button>
           </div>
         </div>
       </div>
@@ -184,5 +187,6 @@
   <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#whatson">What's on</a><a href="#community">Our community</a></div><div><h4>GET INVOLVED</h4><a href="#give">Donate</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><button type="button" id="footerMadrasah">Madrasah website ↗</button></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
   <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><div class="modal-ornament" aria-hidden="true">✦</div><button class="modal-close" type="button" id="modalClose" aria-label="Close dialog">×</button><div class="modal-kicker" id="modalKicker">MASJID AT-TOWFIQ</div><h2 id="modalTitle">More information</h2><div class="modal-content" id="modalContent"></div><button class="button button-dark modal-dismiss" type="button" id="modalDismiss">Understood <span>↗</span></button></div></div>
   <script src="script.js"></script>
+  <script src="prayer-live.js" defer></script>
 </body>
 </html>
