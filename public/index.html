@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="masjidbox.css">
   <link rel="stylesheet" href="videos.css">
+  <link rel="stylesheet" href="services.css">
 </head>
 <body>
   <div class="utility-bar">
@@ -38,7 +39,15 @@
         <a href="#prayer-times" class="nav-link">Prayer times</a>
         <a href="#videos" class="nav-link">Lectures &amp; khutbahs</a>
         <a href="#whatson" class="nav-link">What's on</a>
-        <a href="#community" class="nav-link">Our community</a>
+        <details class="nav-services">
+          <summary class="nav-link nav-services-trigger" data-nav="#services">Services <span class="nav-services-chevron" aria-hidden="true"></span></summary>
+          <div class="nav-services-menu" aria-label="Masjid services">
+            <a href="#service-nikah">Marriage (Nikah) service</a>
+            <a href="#service-counselling">Counselling service</a>
+            <a href="#service-funeral">Funeral service</a>
+            <a href="#service-sheikhs">Book the sheikhs</a>
+          </div>
+        </details>
         <a href="#visit" class="nav-link">Visit us</a>
       </nav>
       <div class="header-actions">
@@ -48,7 +57,15 @@
       <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
     </div>
     <nav class="mobile-nav" id="mobileMenu" aria-label="Mobile navigation" hidden>
-      <a href="#home">Home</a><a href="#prayer-times">Prayer times</a><a href="#videos">Videos</a><a href="#whatson">What's on</a><a href="#community">Our community</a><a href="#visit">Visit us</a><a href="#give">Support the masjid</a><button id="mobileMadrasah" type="button">Madrasah website ↗</button>
+      <a href="#home">Home</a><a href="#prayer-times">Prayer times</a><a href="#videos">Videos</a><a href="#whatson">What's on</a><details class="mobile-services">
+        <summary>Services <span aria-hidden="true">⌄</span></summary>
+        <div class="mobile-services-items">
+          <a href="#service-nikah">Marriage (Nikah) service</a>
+          <a href="#service-counselling">Counselling service</a>
+          <a href="#service-funeral">Funeral service</a>
+          <a href="#service-sheikhs">Book the sheikhs</a>
+        </div>
+      </details><a href="#visit">Visit us</a><a href="#give">Support the masjid</a><button id="mobileMadrasah" type="button">Madrasah website ↗</button>
     </nav>
   </header>
   <main>
@@ -122,34 +139,43 @@
         <button id="masjidVideoMore" class="masjid-videos-more" type="button" hidden>Show more recordings</button>
       </div>
     </section>
-    <section class="welcome-section section-space" id="about">
-      <div class="site-shell welcome-grid">
-        <div class="welcome-art reveal">
-          <div class="welcome-photo" role="img" aria-label="Atmospheric editorial image of Islamic architecture, not an image of the At-Towfiq masjid"></div>
-          <div class="welcome-photo-frame"></div>
-          <div class="welcome-art-caption"><span class="mini-line"></span> A SANCTUARY IN EVERY SEASON</div>
-          <div class="welcome-medallion" aria-hidden="true"><span>وَأَنَّ الْمَسَاجِدَ لِلَّهِ</span><small>QUR’AN 72:18</small></div>
-        </div>
-        <div class="welcome-content reveal">
-          <div class="section-kicker">01 / WHO WE ARE</div>
-          <h2>More than a masjid.<br><em>A place of belonging.</em></h2>
-          <div class="heading-ornament"><span></span> ✧ <span></span></div>
-          <p>For every person who walks through our doors, we hope this feels like a place to pause, reconnect with Allah and find strength in community.</p>
-          <p>At-Towfiq is rooted in Bolton, with a charitable mission encompassing worship, Islamic learning, community gatherings and support for those around us.</p>
-          <div class="welcome-stats"><div><span class="stat-icon">✳</span><strong>Worship</strong><small>Faith at the centre</small></div><div><span class="stat-icon">✳</span><strong>Community</strong><small>Connection for all</small></div><div><span class="stat-icon">✳</span><strong>Care</strong><small>Service with purpose</small></div></div>
-          <a href="#community" class="button button-dark">Discover our community <span>↗</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="services-section section-space" id="community">
+    <section class="masjid-services-section section-space" id="services" aria-labelledby="servicesHeading">
+      <span id="community" class="services-legacy-anchor" aria-hidden="true"></span>
       <div class="site-shell">
-        <div class="section-heading reveal"><div><div class="section-kicker light-kicker">02 / LIFE AT AT-TOWFIQ</div><h2>There is a place <br><em>for you here.</em></h2></div><p>From moments of worship to meaningful connections, discover the many ways our masjid can bring us together.</p></div>
-        <div class="service-grid">
-          <a href="#prayer-times" class="service-card service-card-first reveal"><div class="service-top"><span class="service-index">01 / SPIRITUAL LIFE</span><span class="service-arrow">↗</span></div><div class="service-callig" lang="ar">صلاة</div><div class="service-bottom"><span>01</span><h3>Prayer & worship</h3><p>Daily salah, Jumu’ah, Ramadan and the spiritual rhythm of masjid life.</p><span class="service-more">EXPLORE <span>↗</span></span></div></a>
-          <a href="#whatson" class="service-card reveal"><div class="service-top"><span class="service-index">02 / LEARNING & GROWTH</span><span class="service-arrow">↗</span></div><div class="service-callig" lang="ar">عِلم</div><div class="service-bottom"><span>02</span><h3>Knowledge & reflection</h3><p>Khutbahs, adult learning, inspirational reminders and meaningful conversation.</p><span class="service-more">EXPLORE <span>↗</span></span></div></a>
-          <a href="#whatson" class="service-card reveal"><div class="service-top"><span class="service-index">03 / COMMUNITY LIFE</span><span class="service-arrow">↗</span></div><div class="service-callig" lang="ar">أُخُوَّة</div><div class="service-bottom"><span>03</span><h3>Gatherings & connection</h3><p>Shared iftars, Eid celebrations and opportunities for every generation to belong.</p><span class="service-more">EXPLORE <span>↗</span></span></div></a>
-          <a href="#give" class="service-card reveal"><div class="service-top"><span class="service-index">04 / COMMUNITY SUPPORT</span><span class="service-arrow">↗</span></div><div class="service-callig" lang="ar">إحسان</div><div class="service-bottom"><span>04</span><h3>Care & giving</h3><p>Volunteering, practical support and looking after one another with compassion.</p><span class="service-more">EXPLORE <span>↗</span></span></div></a>
+        <div class="masjid-services-heading reveal">
+          <div class="masjid-services-intro">
+            <div class="section-kicker light-kicker">01 / SERVICES &amp; SUPPORT</div>
+            <h2 id="servicesHeading">Here for life's<br><em>important moments.</em></h2>
+            <div class="masjid-services-ornament" aria-hidden="true">✦ <span></span> خدمات المجتمع</div>
+          </div>
+          <div class="masjid-services-overview"><p>From family milestones to guidance in difficult times, discover how to enquire about support and services through Masjid At-Towfiq.</p>
+            <a href="#visit" class="masjid-services-contact">Contact the masjid <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="masjid-service-grid">
+          <article class="masjid-service-tile reveal" id="service-nikah">
+            <div class="masjid-service-tile-top"><span class="masjid-service-number">01 / FAMILY & MARRIAGE</span><span class="masjid-service-symbol" aria-hidden="true">✧</span></div>
+            <div class="masjid-service-art" lang="ar" dir="rtl" aria-hidden="true">النكاح</div>
+            <div class="masjid-service-tile-bottom"><h3>Marriage <span>(Nikah)</span></h3><p>Enquire about Islamic marriage arrangements, requirements and potential ceremony dates.</p><a href="mailto:info@attowfiiqmasjid.org?subject=Nikah%20service%20enquiry" class="masjid-service-action">Enquire about Nikah <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="masjid-service-tile reveal" id="service-counselling">
+            <div class="masjid-service-tile-top"><span class="masjid-service-number">02 / GUIDANCE & CARE</span><span class="masjid-service-symbol" aria-hidden="true">✦</span></div>
+            <div class="masjid-service-art" lang="ar" dir="rtl" aria-hidden="true">النصيحة</div>
+            <div class="masjid-service-tile-bottom"><h3>Counselling <span>service</span></h3><p>Ask about pastoral guidance, a listening ear and the support options available through the masjid.</p><a href="mailto:info@attowfiiqmasjid.org?subject=Counselling%20service%20enquiry" class="masjid-service-action">Enquire about support <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="masjid-service-tile reveal" id="service-funeral">
+            <div class="masjid-service-tile-top"><span class="masjid-service-number">03 / COMPASSION & SUPPORT</span><span class="masjid-service-symbol" aria-hidden="true">✧</span></div>
+            <div class="masjid-service-art" lang="ar" dir="rtl" aria-hidden="true">الجنازة</div>
+            <div class="masjid-service-tile-bottom"><h3>Funeral <span>service</span></h3><p>Contact the team for guidance on funeral arrangements, bereavement support and next steps.</p><a href="mailto:info@attowfiiqmasjid.org?subject=Funeral%20service%20enquiry" class="masjid-service-action">Funeral enquiries <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="masjid-service-tile reveal" id="service-sheikhs">
+            <div class="masjid-service-tile-top"><span class="masjid-service-number">04 / SCHOLARS & EVENTS</span><span class="masjid-service-symbol" aria-hidden="true">✦</span></div>
+            <div class="masjid-service-art" lang="ar" dir="rtl" aria-hidden="true">العلم</div>
+            <div class="masjid-service-tile-bottom"><h3>Book <span>the sheikhs</span></h3><p>Enquire about a sheikh’s availability for lectures, programmes or community occasions.</p><a href="mailto:info@attowfiiqmasjid.org?subject=Sheikh%20booking%20enquiry" class="masjid-service-action">Request a sheikh <span aria-hidden="true">↗</span></a></div>
+          </article>
+        </div>
+        <div class="masjid-services-note reveal"><span aria-hidden="true">✳</span>
+          <p>All requests are enquiries. Please contact the masjid to confirm current availability and any arrangements. For time-sensitive funeral enquiries, you may also <a href="tel:+441204775864">call 01204 775864</a> during available contact hours.</p>
         </div>
       </div>
     </section>
@@ -182,7 +208,7 @@
 
     <section class="closing-section"><div class="site-shell closing-inner"><span lang="ar" class="closing-arabic">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ</span><h2>May peace be upon you.</h2><p>And may this always be a place where hearts come together.</p><a href="#top" class="back-top">BACK TO TOP ↑</a></div></section>
   </main>
-  <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#videos">Lectures &amp; khutbahs</a><a href="#whatson">What's on</a><a href="#community">Our community</a></div><div><h4>GET INVOLVED</h4><a href="#give">Donate</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><button type="button" id="footerMadrasah">Madrasah website ↗</button></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
+  <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#videos">Lectures &amp; khutbahs</a><a href="#whatson">What's on</a><a href="#services">Services</a></div><div><h4>GET INVOLVED</h4><a href="#give">Donate</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><button type="button" id="footerMadrasah">Madrasah website ↗</button></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
   <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><div class="modal-ornament" aria-hidden="true">✦</div><button class="modal-close" type="button" id="modalClose" aria-label="Close dialog">×</button><div class="modal-kicker" id="modalKicker">MASJID AT-TOWFIQ</div><h2 id="modalTitle">More information</h2><div class="modal-content" id="modalContent"></div><button class="button button-dark modal-dismiss" type="button" id="modalDismiss">Understood <span>↗</span></button></div></div>
 
   <dialog class="masjid-video-dialog" id="masjidVideoDialog" aria-labelledby="masjidVideoDialogTitle">
