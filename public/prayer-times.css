@@ -10,7 +10,10 @@
 .prayer-countdown{background:#082341;color:#fff;border-radius:9px;padding:12px 14px;margin:11px 0 12px;font-size:12px;font-weight:700;line-height:1.7;font-variant-numeric:tabular-nums}
 .prayer-jumuah{margin:16px 0 10px;background:#faf7ef;border:1px solid #eae1cd;padding:11px 12px;font-size:11px;color:#6b5531;line-height:1.65;border-radius:6px}
 .prayer-source{font-size:10px;color:#66737d;line-height:1.7;margin:8px 0}
-.prayer-published-link{display:inline-block;color:#0752a7;text-decoration:underline;text-underline-offset:3px;font-size:11px;font-weight:750;margin:8px 0}
+.prayer-iqamah-guidance{display:grid;gap:3px;border-top:1px solid #e7e2d8;padding:14px 0 3px;margin-top:2px;color:#58697c;font-size:11px;line-height:1.7}
+.prayer-iqamah-guidance strong{font-weight:750;color:#102a49}
+.prayer-iqamah-guidance a{color:#0752a7;text-decoration:underline;text-underline-offset:3px;font-weight:750}
+.prayer-iqamah-guidance a:focus-visible{outline:3px solid #0752a7;outline-offset:3px}
 .timetable-dialog{background:#fcfaf5;border:0;border-top:4px solid #e1c16a;border-radius:12px;padding:27px;width:min(1100px,calc(100vw - 30px));max-height:88vh;color:var(--navy);box-shadow:0 30px 100px rgba(3,20,43,.28)}
 .timetable-dialog::backdrop{background:rgba(4,17,36,.75);backdrop-filter:blur(4px)}
 .timetable-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
@@ -29,4 +32,4 @@
 .monthly-table tbody tr:nth-child(even){background:#f6f1e8}
 .monthly-table tbody tr.approved-day{background:#e5f5e8}
 .monthly-table tbody tr:hover{background:#e8f0fb}
-@media(max-width:540px){.prayer-countdown{font-size:11px}.timetable-dialog{padding:17px}.timetable-tools #downloadTimetable{margin-left:0;width:100%}.timetable-tools input{width:130px}.prayer-source,.prayer-published-link{font-size:11px}}
+@media(max-width:540px){.prayer-countdown{font-size:11px}.timetable-dialog{padding:17px}.timetable-tools #downloadTimetable{margin-left:0;width:100%}.timetable-tools input{width:130px}.prayer-source,.prayer-iqamah-guidance{font-size:11px}}

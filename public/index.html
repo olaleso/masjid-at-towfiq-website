@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="prayer-times.css">
 </head>
 <body>
-  <div class="concept-ribbon" role="note"><span class="ribbon-spark"></span> WEBSITE CONCEPT PREVIEW <span class="ribbon-sep">/</span> PRAYER TIMES & PROGRAMMES BELOW ARE ILLUSTRATIVE UNTIL VERIFIED</div>
   <div class="utility-bar">
     <div class="site-shell utility-inner">
       <span class="utility-location"><span class="dot-gold"></span> 24 Punch Street, Bolton BL3 5BJ</span>
@@ -104,7 +103,7 @@
           </div>
           <p id="prayerStatus" class="sample-alert" role="status" aria-live="polite">Loading calculated prayer beginnings…</p>
           <div id="prayerNext" class="prayer-countdown" role="timer" aria-live="off">Checking the next prayer…</div>
-          <div class="prayer-table-head"><span>PRAYER</span><span>BEGINS</span><span>JAMA’AH</span></div>
+          <div class="prayer-table-head"><span>PRAYER</span><span>BEGINS</span><span>IQAMAH</span></div>
           <div class="prayer-rows" id="prayerRows" role="table" aria-label="Daily prayer beginning and congregation times">
             <div class="prayer-row" role="row"><span class="prayer-name">Fajr</span><time>—</time><strong>—</strong></div>
             <div class="prayer-row" role="row"><span class="prayer-name">Dhuhr</span><time>—</time><strong>—</strong></div>
@@ -112,10 +111,13 @@
             <div class="prayer-row" role="row"><span class="prayer-name">Maghrib</span><time>—</time><strong>—</strong></div>
             <div class="prayer-row" role="row"><span class="prayer-name">Isha</span><time>—</time><strong>—</strong></div>
           </div>
+          <div class="prayer-iqamah-guidance" role="note">
+            <strong>Looking for iqamah (jama’ah) times?</strong>
+            <span>Our approved schedule has not yet been supplied. <a id="externalTimetable" href="https://waqt.uk/attowfiiq/" target="_blank" rel="noopener noreferrer">View the independently published At-Towfiiq timetable ↗</a> and confirm with the masjid before travelling.</span>
+          </div>
           <div class="prayer-card-bottom"><div><span class="sun-small" aria-hidden="true">☼</span> Sunrise <strong id="sunriseTime">—</strong></div><button id="timetableAction" type="button">Full timetable <span>↗</span></button></div>
           <div class="prayer-jumuah" id="jumuahMessage">Jumu’ah time will be shown once confirmed by the masjid.</div>
           <p id="prayerSource" class="prayer-source">Reference calculations are not official Masjid At-Towfiq times.</p>
-          <a id="externalTimetable" class="prayer-published-link" href="https://waqt.uk/attowfiiq/" target="_blank" rel="noopener noreferrer">Independent published At-Towfiiq timetable ↗</a>
         </div>
       </div>
     </section>
@@ -184,7 +186,7 @@
   <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><div class="modal-ornament" aria-hidden="true">✦</div><button class="modal-close" type="button" id="modalClose" aria-label="Close dialog">×</button><div class="modal-kicker" id="modalKicker">MASJID AT-TOWFIQ</div><h2 id="modalTitle">More information</h2><div class="modal-content" id="modalContent"></div><button class="button button-dark modal-dismiss" type="button" id="modalDismiss">Understood <span>↗</span></button></div></div>
   <dialog id="timetableDialog" class="timetable-dialog" aria-labelledby="monthHeading">
     <div class="timetable-dialog-head"><div><div class="card-eyebrow">PRAYER TIMES · BOLTON</div><h2 id="monthHeading">Monthly timetable</h2></div><button id="timetableClose" class="timetable-close" aria-label="Close monthly timetable" type="button">×</button></div>
-    <p class="timetable-legal">Beginning times are <strong>calculated references, not confirmed At-Towfiq times</strong>, unless a day is explicitly marked as masjid-approved. Blank jama’ah columns mean the masjid has not supplied an approved schedule. Please confirm before travelling.</p>
+    <p class="timetable-legal">Beginning times are <strong>calculated references, not confirmed At-Towfiq times</strong>, unless a day is explicitly marked as masjid-approved. Blank iqamah (jama’ah) columns mean the masjid has not supplied its approved schedule to this website. Consult the linked published listing and confirm with the masjid before travelling.</p>
     <div class="timetable-tools"><button type="button" id="monthPrev" aria-label="Previous month">←</button><label for="monthPicker">Select month</label><input type="month" id="monthPicker"><button type="button" id="monthNext" aria-label="Next month">→</button><button type="button" id="downloadTimetable" disabled>Download reference CSV ↓</button></div>
     <div id="monthlyRows" class="monthly-scroll" role="region" tabindex="0" aria-label="Monthly prayer timetable">Loading…</div>
     <p class="timetable-footer">All times use Europe/London (GMT/BST). Asr calculation uses the Hanafi option for the reference only. <a href="https://waqt.uk/attowfiiq/" target="_blank" rel="noopener noreferrer">View independent published timetable ↗</a></p>

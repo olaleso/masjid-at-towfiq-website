@@ -53,8 +53,13 @@ if "X-Robots-Tag: noindex" not in (SITE / "_headers").read_text():
     problems.append("Preview noindex HTTP header missing")
 if "Disallow: /" not in (SITE / "robots.txt").read_text():
     problems.append("Preview robots.txt safeguard missing")
-if "ILLUSTRATIVE UNTIL VERIFIED" not in (SITE / "index.html").read_text():
-    problems.append("Prominent unverified content disclaimer missing")
+html = (SITE / "index.html").read_text(encoding="utf-8")
+if "WEBSITE CONCEPT PREVIEW" in html:
+    problems.append("Concept-preview banner must be removed")
+if "calculated references, not confirmed At-Towfiq times" not in html:
+    problems.append("Prayer calculation disclaimer missing")
+if 'id="externalTimetable"' not in html:
+    problems.append("Independent iqamah timetable link missing")
 # Prayer-times configuration is part of the deployable publication contract.
 config_path = SITE / 'data' / 'prayer-config.json'
 if not config_path.is_file():

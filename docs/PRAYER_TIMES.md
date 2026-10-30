@@ -9,7 +9,7 @@ This is a **pre-launch reference feature**, not an approved source of congregati
 - Sunrise, the five salah starts, accessible monthly calendar dialog, and reference CSV export.
 - App fails closed if a calculated timetable cannot be retrieved; it does not show hardcoded plausible prayer times or pretend to know jama'ah.
 - Official masjid-approved daily schedule can override calculations and supply all jama'ah and Friday Jumu'ah times.
-- Link to an independent public listing for At-Towfiiq as an additional cross-check. This is not represented as a verified source or integrated automatically.
+- The prayer card clearly explains why iqamah is not yet shown and links directly to an independently published At-Towfiiq timetable. Third-party times are **not** automatically represented as masjid-approved.
 
 ## Calculation conventions **not yet authorised**
 
@@ -20,7 +20,7 @@ This is a **pre-launch reference feature**, not an approved source of congregati
 1. Obtain the actual committee-approved monthly PDF/Excel timetable (including Jumu'ah arrangements and DST date changes). Have the masjid confirm changes by an authorised person.
 2. Edit `public/data/prayer-config.json`. Set `official.approvedByMasjid` to `true` and `official.reviewedAt` to the actual ISO date (e.g. `2026-10-28`) **only after verification**.
 3. Add individual dates under `official.days` with `status: "approved"`, six start times and five jama'ah times, each in 24-hour `HH:MM`. Supply `jumuah` for verified Fridays only. Do not populate invented or estimated jama'ah times.
-4. Open a pull request for peer review. GitHub CI validates the JSON and structure. Merge to `main` only after checking with the official schedule; Cloudflare Pages auto-deploys.
+4. Open a pull request for peer review. GitHub CI validates the JSON and structure. Merge to `main` only after checking with the official schedule; Cloudflare Workers Builds auto-deploys.
 
 Entry *structure* (values below are deliberately placeholder strings, not real prayer times):
 
@@ -38,8 +38,8 @@ Entry *structure* (values below are deliberately placeholder strings, not real p
 
 - **Reference source:** `api.aladhan.com/v1/timings/{DD-MM-YYYY}` for individual days and `/v1/calendar/{year}/{month}` for full months.
 - Reference times are computed for Bolton-area coordinates and not the individual prayer halls, and can differ from official masjid timetables. No fake data is shown when the remote API is unavailable.
-- External `fetch` origin is permitted by Cloudflare Pages' `public/_headers` Content Security Policy.
-- This is intentionally no-login/no-database; the existing GitHub repository is used as the temporary editorial approval system. An authenticated Cloudflare Workers + D1 admin panel and CSV/PDF import are the next phase.
+- External `fetch` origin is permitted by Cloudflare Workers static assets' `public/_headers` Content Security Policy.
+- This is intentionally no-login/no-database; the existing GitHub repository is used as the temporary editorial approval system. An authenticated Cloudflare Workers + D1 admin panel and CSV/PDF import could simplify future edits.
 - Monthly CSV filenames include `reference-not-official` so an unverified schedule is not mistakenly forwarded as official.
 - No donation, Madrasah, email or other website components are altered by this feature.
 

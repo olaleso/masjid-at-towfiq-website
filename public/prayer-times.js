@@ -123,8 +123,8 @@
     $('#prayerToday').disabled = (selected === liveToday());
     rowBox.replaceChildren(...PRAYERS.map(([name,arabic]) => row(name,arabic,data.begins[name],data.jamaah[name],false)));
     sunriseEl.textContent = data.begins.Sunrise;
-    setStatus(data.official ? 'Masjid-approved schedule for this date' : 'Calculated beginnings only · NOT the masjid timetable',data.official ? 'approved':'reference');
-    info.textContent = data.official ? 'Verified against the masjid-approved daily schedule; all times are local to Bolton.' : 'Reference: AlAdhan · ' + config.calculation.methodLabel + ' · ' + config.calculation.schoolLabel + '. Calculation can differ from At-Towfiq. Jama’ah times will appear only after committee approval.';
+    setStatus(data.official ? 'Masjid-approved schedule for this date' : 'Calculated beginnings · iqamah awaiting masjid approval',data.official ? 'approved':'reference');
+    info.textContent = data.official ? 'Verified against the masjid-approved daily schedule; all times are local to Bolton.' : 'Reference: AlAdhan · ' + config.calculation.methodLabel + ' · ' + config.calculation.schoolLabel + '. Calculation can differ from At-Towfiq. Iqamah times are not yet confirmed on this website. Use the published At-Towfiiq timetable link above and confirm with the masjid before attending.';
     const friday = new Date(data.iso + 'T12:00:00Z').getUTCDay() === 5;
     fridayEl.textContent = friday ? (data.jumuah ? 'Jumu’ah jama’ah: ' + data.jumuah + ' (approved)' : 'Jumu’ah time has not been confirmed on this website. Please contact the masjid.') : 'Friday Jumu’ah times are published separately once confirmed by the masjid.';
     drawNext();
@@ -141,11 +141,23 @@
       if (!day) continue;
       for (const [name] of PRAYERS) options.push({name,at:ukTimestamp(day.iso,day.begins[name]),day});
     }
-    const next = options.filter(v=>v.at>now).sort((a,b)=>a.at-b.at)[0];
+    // Prefer the next approved congregation time when the masjid has supplied one.
+    // Otherwise keep the clearly labelled calculation-based beginning countdown.
+    const jamaahOptions=[];
+    for (const day of [current,nextDay]) {
+      if (!day || !day.official) continue;
+      for (const [name] of PRAYERS) {
+        if (day.jamaah[name]) jamaahOptions.push({name,at:ukTimestamp(day.iso,day.jamaah[name]),day});
+      }
+    }
+    const nextIqamah = jamaahOptions.filter(v=>v.at>now).sort((a,b)=>a.at-b.at)[0];
+    const next = nextIqamah || options.filter(v=>v.at>now).sort((a,b)=>a.at-b.at)[0];
     if (!next) {nextEl.textContent='Checking the next prayer…'; return;}
     const seconds = Math.max(0,Math.ceil((next.at-now)/1000));
     const h = Math.floor(seconds/3600), m = Math.floor(seconds%3600/60), s = seconds%60;
-    nextEl.textContent = 'Next beginning: ' + next.name + ' at ' + next.day.begins[next.name] + (next.day.iso!==today?' tomorrow':'') + ' · ' + (h? h+'h ':'') + String(m).padStart(2,'0')+'m '+String(s).padStart(2,'0')+'s' + (next.day.official?' (masjid approved)':' (calculated reference)');
+    const isIqamah = next === nextIqamah;
+    const nextTime = isIqamah ? next.day.jamaah[next.name] : next.day.begins[next.name];
+    nextEl.textContent = (isIqamah ? 'Next iqamah: ' : 'Next beginning: ') + next.name + ' at ' + nextTime + (next.day.iso!==today?' tomorrow':'') + ' · ' + (h? h+'h ':'') + String(m).padStart(2,'0')+'m '+String(s).padStart(2,'0')+'s' + (isIqamah ? ' (masjid approved)' : next.day.official ? ' (masjid approved)' : ' (calculated reference)');
     const active = rowBox.querySelectorAll('.prayer-row');
     active.forEach((r,i)=>r.classList.toggle('featured',next.day.iso === today && PRAYERS[i][0]===next.name));
   }
