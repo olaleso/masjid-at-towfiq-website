@@ -24,7 +24,7 @@
     document.addEventListener("click",e=>{
       if(nav.classList.contains("is-open")&&!nav.contains(e.target)&&!toggle.contains(e.target))close();
     });
-    const breakpoint=window.matchMedia("(min-width: 921px)");
+    const breakpoint=window.matchMedia("(min-width: 1121px)");
     if(typeof breakpoint.addEventListener==="function") breakpoint.addEventListener("change",e=>{if(e.matches)close();});
   }
 })();
