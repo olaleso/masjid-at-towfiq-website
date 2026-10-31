@@ -32,3 +32,33 @@
 
 /* Allow the additional Gallery link without squeezing the desktop header. */
 @media(min-width:1051px) and (max-width:1190px){.desktop-nav,.header-actions{display:none}.menu-toggle{display:flex;margin-left:auto}}
+
+/* A published photo deserves a clear, recognisable hero rather than the
+   near-opaque concept-image overlay. Preserve a dark text-safe left edge. */
+.hero.hero--real-photo .hero-photography{
+  opacity:1;
+  background-size:cover;
+  background-repeat:no-repeat;
+  transition:opacity .25s ease;
+}
+.hero.hero--real-photo .hero-photography::after{
+  background:linear-gradient(0deg,rgba(3,16,34,.28),transparent 38%);
+}
+.hero.hero--real-photo .hero-art{display:none}
+.hero.hero--real-photo .hero-geometry{opacity:.08}
+.hero.hero--real-photo .hero-noise{opacity:.12}
+.hero.hero--real-photo .hero-copy{text-shadow:0 2px 16px rgba(2,12,26,.22)}
+.hero.hero--real-photo .hero-photo-credit{
+  opacity:.9;
+  background:rgba(2,17,36,.45);
+  border-radius:5px;
+  padding:5px 9px;
+}
+@media(max-width:800px){
+  .hero.hero--real-photo .hero-photography{background-position:61% 50%!important}
+  .hero.hero--real-photo .hero-photography::after{
+    background:linear-gradient(90deg,rgba(3,17,37,.35),transparent 82%),
+      linear-gradient(0deg,rgba(3,17,37,.42),transparent 45%);
+  }
+  .hero.hero--real-photo .hero-copy{text-shadow:0 2px 15px rgba(2,12,26,.6)}
+}
