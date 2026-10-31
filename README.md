@@ -78,3 +78,13 @@ When the portal API is unavailable, the section shows a link to the masjid's pub
 The previous non-functional donation preview has been replaced by a factual project update at `#give` / `#new-masjid`. It displays a real photograph cropped from the community's June announcement, distinguishes the **new Temperance Street project** from the present Punch Street worship address, and reproduces the supplied charitable bank-transfer details with copy controls. No payment processing or bank login is performed.
 
 **Bank details** were sourced from the charity's supplied earlier appeal, not independently confirmed against current bank records. The website asks visitors to verify with the charity. Historic appeal targets, amounts raised and deadlines are deliberately omitted because they cannot be assumed to be current following the announced property milestone. Update project status and bank account details only with trustees' confirmation.
+
+## Public Madrasah website
+
+A dedicated public Madrasah At-Towfiq website now lives at `https://attowfiqmasjid.org/madrasah/` (static assets under `public/madrasah/`). The masjid's desktop, mobile and footer "Madrasah" links go directly to it rather than opening the old placeholder dialog. Cloudflare automatically serves a nested `index.html` at the trailing-slash URL; no new DNS or Worker is needed.
+
+This public site uses the **authentic Madrasah logo** from the existing `olaleso/madrasah-at-towfiq-portal` repository, and lists the same confirmed current venue, telephone and contact email as the masjid: **24 Punch Street, Bolton BL3 5BJ · 01204 775864 · info@attowfiiqmasjid.org**. The new Temperance Street masjid project is not presented as an active Madrasah location.
+
+The site describes Qaaidah and Arabic foundations, Qur'an/Hifdh/Murāja'ah, Islamic Studies, admissions enquiries, homework and family communications, and links staff and parents to the **existing secure portal** at `https://portal.attowfiqmasjid.org/`. No pupil information is stored or collected by the public site. Its admissions button is explicitly an **email enquiry**, not a public admissions submission; the authenticated admissions form remains staff-only. Class hours, fees and age ranges are deliberately omitted until the school confirms them.
+
+The existing site-wide `noindex` preview policy also applies to the Madrasah site; remove it only after approval of the entire public website. If a dedicated `madrasah.attowfiqmasjid.org` domain is desired later, it can be introduced without changing the secure portal. The public page is independently styled so it can be hosted separately later.

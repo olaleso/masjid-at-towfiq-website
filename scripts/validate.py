@@ -47,6 +47,39 @@ for ref in page.files:
         problems.append(f"Missing referenced file: {ref}")
 if not page.robots_noindex:
     problems.append("Preview robots noindex meta missing")
+# The separate public Madrasah site is served by the same static-assets Worker,
+# while pupil/admission data remains on the existing separate secure portal.
+madrasah_path = SITE / "madrasah" / "index.html"
+if not madrasah_path.is_file():
+    problems.append("Public Madrasah website missing")
+else:
+    madrasah_html = madrasah_path.read_text(encoding="utf-8")
+    madrasah_page = PageParser()
+    madrasah_page.feed(madrasah_html)
+    for ref in madrasah_page.id_refs:
+        if ref and ref not in madrasah_page.ids:
+            problems.append("Broken Madrasah anchor: #"+ref)
+    for ref in madrasah_page.files:
+        target = SITE / ref
+        if not (target.is_file() or (target.is_dir() and (target / "index.html").is_file())):
+            problems.append("Missing Madrasah asset or page: "+ref)
+    for expected in ["24 Punch Street", "BL3 5BJ", "01204 775864",
+                     "info@attowfiiqmasjid.org", "portal.attowfiqmasjid.org",
+                     'id="learning"', 'id="admissions"', 'id="families"']:
+        if expected not in madrasah_html:
+            problems.append("Public Madrasah detail missing: "+expected)
+    if 'name="robots" content="noindex' not in madrasah_html:
+        problems.append("Madrasah launch indexing safeguard missing")
+    if "student registration form" in madrasah_html.lower():
+        problems.append("Staff-only admissions must not be presented as a public submission form")
+    if "Temperance Street" not in madrasah_html:
+        problems.append("New building and current venue distinction missing")
+if "/madrasah/" not in (SITE / "index.html").read_text(encoding="utf-8"):
+    problems.append("Masjid website does not link to Madrasah public website")
+for madrasah_asset in ["madrasah/styles.css", "madrasah/site.js", "madrasah/assets/madrasah-logo.png"]:
+    if not (SITE / madrasah_asset).is_file():
+        problems.append("Madrasah static asset missing: "+madrasah_asset)
+
 if "X-Robots-Tag: noindex" not in (SITE / "_headers").read_text():
     problems.append("Preview noindex HTTP header missing")
 if "Disallow: /" not in (SITE / "robots.txt").read_text():

@@ -63,9 +63,6 @@
     else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
   });
 
-  const separateSite = () => openModal('THE MADRASAH HAS ITS OWN HOME', 'A dedicated Madrasah website',
-    '<p>As requested, the Madrasah is separate from this masjid website. Its admissions, parent/guardian accounts, student management and school communications will live on the dedicated Madrasah domain.</p><p><strong>This is a concept preview.</strong> Once the new Madrasah URL is confirmed, this link will open that external website directly.</p>');
-  ['#madrasahAction','#mobileMadrasah','#footerMadrasah'].forEach(s=>$(s).addEventListener('click',separateSite));
   const eventInfo={
     jumuah:['FRIDAY WORSHIP','Jumu’ah at At-Towfiq','<p>This page will show the verified Jumu’ah congregation time(s), khutbah language, accessibility guidance and any special Friday announcements.</p><p>Until the masjid provides confirmed information, no Friday service time has been advertised in this preview.</p>'],
     talks:['LEARNING AT THE MASJID','Knowledge & reflection','<p>A future hub for confirmed talks, Qur’an reflections, beneficial reminders and recordings from verified speakers, with topic filters and event registration where appropriate.</p><p>This card is a sample of the proposed programme categories, not an advertised event.</p>'],
