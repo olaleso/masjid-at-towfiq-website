@@ -79,6 +79,13 @@ export default {
     // Serve the public Madrasah under its own hostname using the existing
     // static-assets Worker. Other hostnames, including the masjid, are unchanged.
     const incoming=new URL(request.url);
+    // Eliminate duplicate Madrasah pages on the Masjid hostname:
+    // public Madrasah content has one canonical hostname for Google.
+    if((incoming.hostname==="attowfiqmasjid.org"||incoming.hostname==="www.attowfiqmasjid.org")&&
+       (incoming.pathname==="/madrasah"||incoming.pathname.startsWith("/madrasah/"))){
+      const suffix=incoming.pathname.slice("/madrasah".length)||"/";
+      return Response.redirect("https://madrasah.attowfiqmasjid.org"+suffix+incoming.search,301);
+    }
     if(incoming.hostname==="madrasah.attowfiqmasjid.org") {
       if(request.method!=="GET"&&request.method!=="HEAD")
         return new Response("Method not allowed",{status:405});
@@ -89,7 +96,15 @@ export default {
         :"/madrasah"+(incoming.pathname==="/"?"/":incoming.pathname);
       const assetUrl=new URL(incoming.href);
       assetUrl.pathname=assetPath;
-      return env.ASSETS.fetch(new Request(assetUrl.toString(),request));
+      const assetResponse=await env.ASSETS.fetch(new Request(assetUrl.toString(),request));
+      // The admission form stays noindex regardless of static _headers rewrite behaviour.
+      if(incoming.pathname==="/apply"||incoming.pathname.startsWith("/apply/")||
+         incoming.pathname==="/madrasah/apply"||incoming.pathname.startsWith("/madrasah/apply/")){
+        const protectedResponse=new Response(assetResponse.body,assetResponse);
+        protectedResponse.headers.set("X-Robots-Tag","noindex, nofollow");
+        return protectedResponse;
+      }
+      return assetResponse;
     }
     if(new URL(request.url).pathname==="/api/public/videos") {
       if(request.method!=="GET")return json({error:"Method not allowed"},405);

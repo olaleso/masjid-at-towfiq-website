@@ -1,0 +1,5 @@
+# Madrasah At-Towfiq — public website
+User-agent: *
+Allow: /
+Disallow: /api/
+Sitemap: https://madrasah.attowfiqmasjid.org/sitemap.xml

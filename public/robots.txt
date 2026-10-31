@@ -1,3 +1,5 @@
-# Draft preview. Change only after the masjid approves production launch.
+# Masjid At-Towfiq — public website
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /api/
+Sitemap: https://attowfiqmasjid.org/sitemap.xml

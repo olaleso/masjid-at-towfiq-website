@@ -45,8 +45,10 @@ for ref in page.id_refs:
 for ref in page.files:
     if not (SITE / ref).is_file():
         problems.append(f"Missing referenced file: {ref}")
-if not page.robots_noindex:
-    problems.append("Preview robots noindex meta missing")
+if page.robots_noindex:
+    problems.append("Public Masjid homepage must allow search indexing")
+if '<link rel="canonical" href="https://attowfiqmasjid.org/">' not in (SITE / "index.html").read_text(encoding="utf-8"):
+    problems.append("Masjid canonical URL missing")
 # The separate public Madrasah site is served by the same static-assets Worker,
 # while pupil/admission data remains on the existing separate secure portal.
 madrasah_path = SITE / "madrasah" / "index.html"
@@ -68,8 +70,10 @@ else:
                      'id="learning"', 'id="admissions"', 'id="families"']:
         if expected not in madrasah_html:
             problems.append("Public Madrasah detail missing: "+expected)
-    if 'name="robots" content="noindex' not in madrasah_html:
-        problems.append("Madrasah launch indexing safeguard missing")
+    if madrasah_page.robots_noindex:
+        problems.append("Public Madrasah homepage must allow search indexing")
+    if '<link rel="canonical" href="https://madrasah.attowfiqmasjid.org/">' not in madrasah_html:
+        problems.append("Madrasah canonical URL missing")
     if "student registration form" in madrasah_html.lower():
         problems.append("Staff-only admissions must not be presented as a public submission form")
     if "Temperance Street" not in madrasah_html:
@@ -124,10 +128,29 @@ for madrasah_asset in ["madrasah/styles.css", "madrasah/site.js", "madrasah/asse
 
 if "connect-src 'self' https://portal.attowfiqmasjid.org" not in (SITE / "_headers").read_text():
     problems.append("Madrasah public application fetch would be blocked by Content Security Policy")
-if "X-Robots-Tag: noindex" not in (SITE / "_headers").read_text():
-    problems.append("Preview noindex HTTP header missing")
-if "Disallow: /" not in (SITE / "robots.txt").read_text():
-    problems.append("Preview robots.txt safeguard missing")
+headers_text = (SITE / "_headers").read_text(encoding="utf-8")
+if "X-Robots-Tag: noindex" not in headers_text:
+    problems.append("Student admission form noindex header missing")
+if "/*\n  X-Content-Type-Options:" not in headers_text:
+    problems.append("Site-wide security headers missing")
+if "/*\n  X-Robots-Tag: noindex" in headers_text:
+    problems.append("Public websites must not use a site-wide noindex header")
+for host,robots_path,sitemap_path in [
+    ("attowfiqmasjid.org",SITE/"robots.txt",SITE/"sitemap.xml"),
+    ("madrasah.attowfiqmasjid.org",SITE/"madrasah"/"robots.txt",SITE/"madrasah"/"sitemap.xml")
+]:
+    robots = robots_path.read_text(encoding="utf-8")
+    sitemap = sitemap_path.read_text(encoding="utf-8")
+    if "Disallow: /\n" in robots:
+        problems.append(host+" still blocks all crawlers")
+    if "Sitemap: https://"+host+"/sitemap.xml" not in robots:
+        problems.append(host+" robots file must advertise its sitemap")
+    if "<loc>https://"+host+"/</loc>" not in sitemap:
+        problems.append(host+" sitemap missing canonical homepage")
+    if "portal.attowfiqmasjid.org" in sitemap or "/apply/" in sitemap:
+        problems.append(host+" sitemap must not include private portal or admission forms")
+if "Response.redirect(\"https://madrasah.attowfiqmasjid.org\"" not in (SITE.parent/"src"/"worker.mjs").read_text():
+    problems.append("Duplicate Madrasah pages need canonical hostname redirect")
 html = (SITE / "index.html").read_text(encoding="utf-8")
 if "WEBSITE CONCEPT PREVIEW" in html:
     problems.append("Concept-preview banner must be removed")
@@ -198,4 +221,4 @@ else:
 if problems:
     print("FAILED:\n" + "\n".join(f" - {p}" for p in problems))
     sys.exit(1)
-print(f"PASS: {len(page.ids)} IDs, {len(page.id_refs)} anchors, {len(page.files)} local assets; preview safeguards present.")
+print(f"PASS: {len(page.ids)} IDs, {len(page.id_refs)} anchors, {len(page.files)} local assets; public SEO and protected admission checks passed.")
