@@ -10,6 +10,6 @@ jobs:
       - name: Check HTML assets and preview safeguards
         run: python3 scripts/validate.py
       - name: Check JavaScript syntax
-        run: node --check public/script.js && node --check public/prayer-live.js && node --check src/worker.mjs && node --check public/madrasah/application.js && node --check public/madrasah/site.js
+        run: node --check public/community.js && node --check public/script.js && node --check public/prayer-live.js && node --check src/worker.mjs && node --check public/madrasah/application.js && node --check public/madrasah/site.js
       - name: Test MasjidBox prayer feed
         run: node --test tests/prayer-feed.test.mjs
