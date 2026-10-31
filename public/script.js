@@ -79,7 +79,7 @@
     },{threshold:.07,rootMargin:'0px 0px 30px 0px'});
     $$('.reveal').forEach(el=>observer.observe(el));
   } else $$('.reveal').forEach(el=>el.classList.add('visible'));
-  const sections=['home','prayer-times','videos','services','whatson','visit'];
+  const sections=['home','prayer-times','videos','gallery','services','whatson','visit'];
   const navLinks=$$('.desktop-nav .nav-link');
   function updateActive(){
     let current='home';
