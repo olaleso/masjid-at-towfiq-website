@@ -72,3 +72,9 @@ The previous redundant full-page prayer card has been replaced with a native **L
 The **admin source of truth** is the separate portal at `https://portal.attowfiqmasjid.org/`, under **Community → Website videos**. Only published entries are returned by `GET https://portal.attowfiqmasjid.org/api/public/masjid-videos`. The masjid Worker exposes the same data from `GET /api/public/videos` after validating the public metadata. No portal private data, API tokens, YouTube credentials or editor actions are exposed by the public website.
 
 When the portal API is unavailable, the section shows a link to the masjid's public YouTube channel instead of inventing recordings or keeping obsolete cached video listings. No database migration or subsequent website rebuild is needed when an administrator adds a video. The portal source code itself must first be deployed once.
+
+## New Masjid building appeal
+
+The previous non-functional donation preview has been replaced by a factual project update at `#give` / `#new-masjid`. It displays a real photograph cropped from the community's June announcement, distinguishes the **new Temperance Street project** from the present Punch Street worship address, and reproduces the supplied charitable bank-transfer details with copy controls. No payment processing or bank login is performed.
+
+**Bank details** were sourced from the charity's supplied earlier appeal, not independently confirmed against current bank records. The website asks visitors to verify with the charity. Historic appeal targets, amounts raised and deadlines are deliberately omitted because they cannot be assumed to be current following the announced property milestone. Update project status and bank account details only with trustees' confirmation.

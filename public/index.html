@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="masjidbox.css">
   <link rel="stylesheet" href="videos.css">
   <link rel="stylesheet" href="services.css">
+  <link rel="stylesheet" href="project.css">
 </head>
 <body>
   <div class="utility-bar">
@@ -52,7 +53,7 @@
       </nav>
       <div class="header-actions">
         <button class="madrasah-link" id="madrasahAction" type="button" title="Separate Madrasah website">Madrasah <span aria-hidden="true">↗</span></button>
-        <a href="#give" class="nav-donate">Support us <span aria-hidden="true">↗</span></a>
+        <a href="#give" class="nav-donate">Donate to the project <span aria-hidden="true">↗</span></a>
       </div>
       <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
     </div>
@@ -65,7 +66,7 @@
           <a href="#service-funeral">Funeral service</a>
           <a href="#service-sheikhs">Book the sheikhs</a>
         </div>
-      </details><a href="#visit">Visit us</a><a href="#give">Support the masjid</a><button id="mobileMadrasah" type="button">Madrasah website ↗</button>
+      </details><a href="#visit">Visit us</a><a href="#give">New masjid project · Donate</a><button id="mobileMadrasah" type="button">Madrasah website ↗</button>
     </nav>
   </header>
   <main>
@@ -211,6 +212,7 @@
           <article class="programme-card reveal"><div class="programme-visual visual-knowledge"><div class="programme-big-letter" lang="ar">تدبُّر</div><span>KNOWLEDGE</span></div><div class="programme-body"><div class="programme-category">REFLECTION & LEARNING</div><h3>Talks & reminders</h3><p>Beneficial reminders and shared learning for our spiritual development.</p><button type="button" class="text-cta" data-event="talks">Explore learning <span>↗</span></button></div></article>
           <article class="programme-card reveal"><div class="programme-visual visual-together"><div class="programme-big-letter" lang="ar">جماعة</div><span>COMMUNITY</span></div><div class="programme-body"><div class="programme-category">COMING TOGETHER</div><h3>Community gatherings</h3><p>Opportunities to connect through Ramadan, Eid and shared community moments.</p><button type="button" class="text-cta" data-event="gatherings">Explore gatherings <span>↗</span></button></div></article>
         </div>
+        <p class="project-announcement"><strong>Our new masjid project:</strong> Alhamdulillah, a property has been secured on Temperance Street. <a href="#give">Read the update and support the appeal ↗</a></p>
         <div class="news-strip reveal"><span class="news-pill">MASJID ANNOUNCEMENTS</span><div><strong>A clear home for important updates.</strong><span>Jumu’ah changes, Eid notices, events and appeals will appear here when published.</span></div><button type="button" id="alertsAction">Get updates <span>↗</span></button></div>
       </div>
     </section>
@@ -227,11 +229,71 @@
       </div>
     </section>
 
-    <section class="give-section" id="give"><div class="site-shell give-inner"><div class="give-left reveal"><div class="section-kicker light-kicker">05 / SADAQAH & SUPPORT</div><h2>Small acts.<br><em>Lasting good.</em></h2><p>Every act of generosity helps sustain a place of prayer, learning and support for the community. Your kindness makes a difference.</p><div class="giving-verse">“Whatever good you put forward for yourselves — you will find it with Allah.” <span>— QUR’AN 2:110 (PARAPHRASE)</span></div></div><div class="give-panel reveal"><div class="give-top"><span class="give-panel-kicker">SUPPORT THE MASJID</span><span class="give-icon" aria-hidden="true">✦</span></div><h3>Give with intention.</h3><p>Choose an illustrative amount to preview the giving journey.</p><div class="amount-grid" role="group" aria-label="Choose a donation amount"><button type="button" class="amount-button" data-amount="10">£10</button><button type="button" class="amount-button selected" data-amount="25" aria-pressed="true">£25</button><button type="button" class="amount-button" data-amount="50">£50</button><button type="button" class="amount-button" data-amount="100">£100</button></div><label for="customAmount" class="amount-label">Or enter a custom amount (£)</label><input id="customAmount" type="number" inputmode="decimal" placeholder="Other amount" min="1" max="100000"><div class="give-choice"><label><input type="radio" name="donationKind" value="one-off" checked> One-off</label><label><input type="radio" name="donationKind" value="monthly"> Monthly</label></div><button type="button" class="button button-gold give-button" id="donateAction">Continue to giving preview <span>↗</span></button><small class="donation-note">Design demonstration only — no money is collected. Payment and Gift Aid require approved setup.</small></div></div></section>
+    <section class="new-masjid-section" id="give" aria-labelledby="projectHeading">
+      <span id="new-masjid" class="new-masjid-anchor" aria-hidden="true"></span>
+      <div class="site-shell">
+        <div class="new-masjid-header reveal">
+          <div>
+            <p class="new-masjid-eyebrow">OUR NEXT CHAPTER · MASJID AT-TOWFIQ</p>
+            <h2 id="projectHeading">Our new masjid project</h2>
+            <p class="new-masjid-lead">Alhamdulillah, a new home for our growing community is taking shape. The masjid has secured a new property and arrangements are now progressing for its next chapter.</p>
+          </div>
+          <span class="new-masjid-status"><span aria-hidden="true"></span> Property secured · Arrangements in progress</span>
+        </div>
+
+        <div class="new-masjid-layout">
+          <div class="new-masjid-story reveal">
+            <figure class="new-masjid-building">
+              <img src="assets/new-masjid-temperance-street.webp" alt="The brick building on Temperance Street pictured in Masjid At-Towfiq's new-property announcement" width="170" height="115" loading="lazy" decoding="async">
+              <figcaption>THE NEW BUILDING · TEMPERANCE STREET, BOLTON</figcaption>
+            </figure>
+            <div class="new-masjid-story-body">
+              <h3>A place to serve generations to come.</h3>
+              <p>This is a significant milestone for At-Towfiiq Islamic and Cultural Charity. Our community's generosity and du’as have helped bring the vision of a new masjid within reach.</p>
+              <p>As arrangements continue for the property, donations remain important to support the project and the work ahead. Whether you can give, share the appeal or make du’a, your support is valued.</p>
+              <p class="new-masjid-location"><strong>New property:</strong> Temperance Street, Bolton BL3 5BX</p>
+              <p class="new-masjid-location-detail">This is the new project location, not a replacement for the current prayer and visiting address at 24 Punch Street. Please use the current masjid address until an official move is announced.</p>
+              <a href="https://wa.me/?text=Support%20Masjid%20At-Towfiq%27s%20new%20building%20project%20in%20Bolton%3A%20https%3A%2F%2Fattowfiqmasjid.org%2F%23give" target="_blank" rel="noopener noreferrer" class="new-masjid-share">Share the appeal <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <aside class="new-masjid-bank reveal" aria-labelledby="bankHeading">
+            <div class="new-masjid-bank-top">
+              <p class="new-masjid-bank-eyebrow">DONATE BY BANK TRANSFER</p>
+              <h3 id="bankHeading">Help take the next step.</h3>
+              <p>Every contribution makes a difference. If you wish to support the new masjid project, you can make a direct bank transfer to the charity.</p>
+            </div>
+            <div class="new-masjid-bank-fields">
+              <div class="new-masjid-bank-field new-masjid-account-name">
+                <span>Account name</span>
+                <strong>AT-TOWFIIQ ISLAMIC AND CULTURAL CHARITY</strong>
+                <button type="button" class="bank-copy-button" data-copy-bank="AT-TOWFIIQ ISLAMIC AND CULTURAL CHARITY" aria-label="Copy charity account name">Copy</button>
+              </div>
+              <div class="new-masjid-bank-field">
+                <span>Sort code</span>
+                <strong>40-12-25</strong>
+                <button type="button" class="bank-copy-button" data-copy-bank="40-12-25" aria-label="Copy bank sort code">Copy</button>
+              </div>
+              <div class="new-masjid-bank-field">
+                <span>Account number</span>
+                <strong>72268922</strong>
+                <button type="button" class="bank-copy-button" data-copy-bank="72268922" aria-label="Copy bank account number">Copy</button>
+              </div>
+            </div>
+            <p class="new-masjid-reference">Suggested transfer reference: <strong>NEW MASJID</strong></p>
+            <button type="button" class="new-masjid-copy-all" id="copyBankDetails">Copy all bank details <span aria-hidden="true">↗</span></button>
+            <p id="bankCopyStatus" class="new-masjid-copy-status" role="status" aria-live="polite"></p>
+            <p class="new-masjid-bank-disclaimer">Bank details are taken from the masjid's donation leaflet. Please verify the beneficiary details with the charity before making a payment. This website does not process transfers or collect your banking information.</p>
+            <p class="new-masjid-charity-number">Registered charity in England &amp; Wales: 1147347</p>
+          </aside>
+        </div>
+        <p class="new-masjid-appeal-note">The earlier fundraising leaflet and community announcement reported figures and deadlines at different stages. We have not displayed these as current totals while updated figures are being confirmed.</p>
+      </div>
+    </section>
 
     <section class="closing-section"><div class="site-shell closing-inner"><span lang="ar" class="closing-arabic">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ</span><h2>May peace be upon you.</h2><p>And may this always be a place where hearts come together.</p><a href="#top" class="back-top">BACK TO TOP ↑</a></div></section>
   </main>
-  <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#videos">Lectures &amp; khutbahs</a><a href="#whatson">What's on</a><a href="#services">Services</a></div><div><h4>GET INVOLVED</h4><a href="#give">Donate</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><button type="button" id="footerMadrasah">Madrasah website ↗</button></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
+  <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#videos">Lectures &amp; khutbahs</a><a href="#whatson">What's on</a><a href="#services">Services</a></div><div><h4>GET INVOLVED</h4><a href="#give">New masjid appeal</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><button type="button" id="footerMadrasah">Madrasah website ↗</button></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
   <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><div class="modal-ornament" aria-hidden="true">✦</div><button class="modal-close" type="button" id="modalClose" aria-label="Close dialog">×</button><div class="modal-kicker" id="modalKicker">MASJID AT-TOWFIQ</div><h2 id="modalTitle">More information</h2><div class="modal-content" id="modalContent"></div><button class="button button-dark modal-dismiss" type="button" id="modalDismiss">Understood <span>↗</span></button></div></div>
 
   <dialog class="masjid-video-dialog" id="masjidVideoDialog" aria-labelledby="masjidVideoDialogTitle">
@@ -241,5 +303,6 @@
   <script src="script.js"></script>
   <script src="prayer-live.js" defer></script>
   <script src="videos.js" defer></script>
+  <script src="project.js" defer></script>
 </body>
 </html>

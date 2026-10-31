@@ -70,6 +70,19 @@ if not (SITE / "services.css").is_file():
 if 'class="welcome-section' in html or 'class="services-section' in html:
     problems.append("Old community sections still present")
 
+if 'id="give"' not in html or 'id="copyBankDetails"' not in html:
+    problems.append("New masjid appeal and bank details missing")
+for bank_text in ["AT-TOWFIIQ ISLAMIC AND CULTURAL CHARITY", "40-12-25", "72268922"]:
+    if bank_text not in html:
+        problems.append(f"Bank transfer detail missing: {bank_text}")
+if "Continue to giving preview" in html or "id=\"donateAction\"" in html:
+    problems.append("Obsolete donation preview must be removed")
+if 'src="assets/new-masjid-temperance-street.webp"' not in html:
+    problems.append("Authentic new building photograph missing")
+for project_asset in ["project.css", "project.js", "assets/new-masjid-temperance-street.webp"]:
+    if not (SITE / project_asset).is_file():
+        problems.append("New masjid project asset missing: "+project_asset)
+
 for asset in ["videos.css","videos.js"]:
     if not (SITE / asset).is_file():
         problems.append("Website video asset missing: "+asset)

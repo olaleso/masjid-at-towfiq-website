@@ -75,26 +75,6 @@
   $('#alertsAction').addEventListener('click',()=>openModal('COMMUNITY COMMUNICATIONS','Masjid announcements',
     '<p>The proposed live website includes a subscribe-by-email option for Jumu’ah notices, Ramadan and Eid updates, event announcements and community reminders.</p><p>To respect privacy, subscriptions will be added only after the masjid selects a mailing provider, publishes a privacy notice and enables verified consent. <strong>No subscription is collected by this demonstration.</strong></p>'));
 
-  // Demonstration donation chooser (no banking/payment integration)
-  let amount=25;
-  $$('.amount-button').forEach(b=>b.addEventListener('click',()=>{
-    amount=Number(b.dataset.amount);
-    $$('.amount-button').forEach(el=>{el.classList.toggle('selected',el===b);el.setAttribute('aria-pressed',String(el===b));});
-    $('#customAmount').value='';
-  }));
-  $('#customAmount').addEventListener('input',()=>{
-    const input=Number($('#customAmount').value);
-    amount=Number.isFinite(input)?input:0;
-    $$('.amount-button').forEach(el=>{el.classList.remove('selected');el.setAttribute('aria-pressed','false');});
-  });
-  $('#donateAction').addEventListener('click',()=>{
-    if(!Number.isFinite(amount)||amount<1||amount>100000){
-      openModal('DONATION PREVIEW','Enter a valid amount','<p>Please enter an amount between £1 and £100,000 to preview this flow. No money is processed on this prototype.</p>');return;
-    }
-    const kind=document.querySelector('input[name="donationKind"]:checked').value;
-    openModal('DONATION FLOW • CONCEPT ONLY','Your giving journey',
-      `<p>You selected <strong>£${amount.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2})} ${kind === 'monthly'?'per month':'one-off'}</strong> to support Masjid At-Towfiq.</p><p>A production version can securely connect to Stripe, provide the approved donation fund choices, offer UK Gift Aid declarations where eligible, and send receipts.</p><p><strong>No payment was taken or initiated.</strong> The masjid's authorised payment details and donation policy must be approved before launch.</p>`);
-  });
   // Scroll-based appearance. Accessible fallback for browsers without IntersectionObserver.
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
     const observer=new IntersectionObserver(entries=>{
