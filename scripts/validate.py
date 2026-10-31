@@ -96,6 +96,28 @@ if not (SITE / "madrasah" / "apply" / "index.html").is_file():
 for admissions_asset in ["madrasah/application.css", "madrasah/application.js"]:
     if not (SITE / admissions_asset).is_file():
         problems.append("Admissions asset missing: "+admissions_asset)
+# The applicant-facing wizard must have four distinct steps and a final review.
+admissions_page = (SITE / "madrasah" / "apply" / "index.html").read_text(encoding="utf-8")
+application = PageParser()
+application.feed(admissions_page)
+for step in range(4):
+    if f'data-panel="{step}"' not in admissions_page or f'data-goto-step="{step}"' not in admissions_page:
+        problems.append("Four-step admission wizard missing step "+str(step+1))
+for expected in ['id="madrasahAdmissionForm"', 'id="applicationReview"', 'id="submitAdmission"',
+                 'id="nextStep"', 'id="backStep"', 'id="admissionAvailability"',
+                 'name="guardian_email"', 'name="consent_first_aid"',
+                 'name="consent_photos"', 'name="parent_confirmed"', 'id="previousInstitute"']:
+    if expected not in admissions_page:
+        problems.append("Online admission wizard missing required element: "+expected)
+if "portal.attowfiqmasjid.org/api/public/admissions" not in (SITE / "madrasah" / "application.js").read_text(encoding="utf-8"):
+    problems.append("Public admissions must submit to existing portal API")
+if not application.robots_noindex:
+    problems.append("Student application page must remain excluded from indexing")
+for ref in application.files:
+    target = SITE / ref
+    if not (target.is_file() or (target.is_dir() and (target / "index.html").is_file())):
+        problems.append("Missing wizard asset: "+ref)
+
 for madrasah_asset in ["madrasah/styles.css", "madrasah/site.js", "madrasah/assets/madrasah-logo.png"]:
     if not (SITE / madrasah_asset).is_file():
         problems.append("Madrasah static asset missing: "+madrasah_asset)
