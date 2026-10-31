@@ -219,6 +219,60 @@ else:
             problems.append("workers_dev should remain false for dashboard-managed routes")
     except (ValueError, TypeError, AttributeError) as exc:
         problems.append(f"Invalid Wrangler configuration: {exc}")
+
+# Local search metadata must match what the visitor sees and the published venue.
+import re
+import hashlib
+import base64
+
+canonical_local_pages = [
+    ("masjid", SITE / "index.html", "https://attowfiqmasjid.org/", "Mosque", "Masjid At-Towfiq"),
+    ("madrasah", SITE / "madrasah" / "index.html", "https://madrasah.attowfiqmasjid.org/", "EducationalOrganization", "Madrasah At-Towfiq")
+]
+local_headers = (SITE / "_headers").read_text(encoding="utf-8")
+for short_name, html_path, url, entity_type, entity_name in canonical_local_pages:
+    content = html_path.read_text(encoding="utf-8")
+    matches = re.findall(r'<script type="application/ld\+json">([\s\S]*?)</script>', content)
+    if len(matches) != 1:
+        problems.append(f"{short_name} must have exactly one JSON-LD data block")
+        continue
+    script_content = matches[0]
+    try:
+        entity = json.loads(script_content)
+        graph = entity.get("@graph", [])
+        entities = [item for item in graph if item.get("@type") == entity_type]
+        if len(entities) != 1:
+            problems.append(f"{short_name} must contain exactly one {entity_type} entity")
+            continue
+        location = entities[0]
+        if location.get("name") != entity_name or location.get("url") != url:
+            problems.append(f"{short_name} structured name or URL differs from public page")
+        address = location.get("address", {})
+        if (address.get("streetAddress"), address.get("addressLocality"),
+                address.get("postalCode"), address.get("addressCountry")) != (
+                "24 Punch Street", "Bolton", "BL3 5BJ", "GB"):
+            problems.append(f"{short_name} structured location must be the current Punch Street venue")
+        if (location.get("telephone"), location.get("email")) != (
+                "+44 1204 775864", "info@attowfiiqmasjid.org"):
+            problems.append(f"{short_name} structured contact details must match public site")
+        if any(k in location for k in ("openingHours", "openingHoursSpecification", "aggregateRating", "review", "geo")):
+            problems.append(f"{short_name} schema must not invent hours, ratings or coordinates")
+        if not any(item.get("@type") == "WebPage" and item.get("url") == url for item in graph):
+            problems.append(f"{short_name} schema missing canonical WebPage")
+        if not any(item.get("@type") == "WebSite" and item.get("url") == url for item in graph):
+            problems.append(f"{short_name} schema missing canonical WebSite")
+        digest = base64.b64encode(hashlib.sha256(script_content.encode("utf-8")).digest()).decode("ascii")
+        if "'sha256-" + digest + "'" not in local_headers:
+            problems.append(f"{short_name} JSON-LD SHA-256 is absent from Content Security Policy")
+    except (ValueError, TypeError, AttributeError) as exc:
+        problems.append(f"Invalid {short_name} structured data: {exc}")
+    if "Bolton" not in content or "24 Punch Street" not in content:
+        problems.append(f"{short_name} current address must also be visible to visitors")
+    if url not in content:
+        problems.append(f"{short_name} canonical public domain is missing")
+if "script-src 'self' 'unsafe-inline'" in local_headers:
+    problems.append("SEO markup must not weaken the script Content Security Policy")
+
 if problems:
     print("FAILED:\n" + "\n".join(f" - {p}" for p in problems))
     sys.exit(1)

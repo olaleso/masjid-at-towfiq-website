@@ -5,7 +5,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com https://i.ytimg.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://portal.attowfiqmasjid.org; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-+2NvwoEREdnYMGvA6QOfokueagDHR6decUbAA66KAng=' 'sha256-v4kUue/ohBixFy63+fvaWBdSdER9DSjqSQt1GdV+Vfo='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com https://i.ytimg.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://portal.attowfiqmasjid.org; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests
 
 # Keep the public form out of results; visitors reach it from the Madrasah homepage.
 https://madrasah.attowfiqmasjid.org/apply/*
