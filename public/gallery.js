@@ -54,16 +54,27 @@
       const preferred=photos.find(p=>p.featured)||photos[0];
       grid.replaceChildren();
       photos.forEach(p=>grid.appendChild(tile(p,photos.length>1&&p.id===preferred.id)));
-      // Only a real, approved gallery photograph replaces the concept hero image.
+      // Avoid swapping the homepage to a blank image if the photo API is unavailable.
+      // A published gallery photo must load successfully before replacing concept photography.
       const hero=document.querySelector('.hero-photography');
-      if(hero){
-        hero.style.backgroundImage='linear-gradient(90deg,rgba(4,17,36,.98) 0%,rgba(5,27,57,.95) 34%,rgba(6,28,58,.57) 72%,rgba(5,17,37,.6)),url("/api/public/gallery/photo/'+encodeURIComponent(preferred.id)+'")';
-        hero.style.backgroundPosition='center 46%';
+      const heroSection=document.querySelector('.hero');
+      const imageUrl='/api/public/gallery/photo/'+encodeURIComponent(preferred.id);
+      if(hero&&heroSection){
+        const preload=new Image();
+        preload.onload=()=>{
+          hero.style.backgroundImage='linear-gradient(90deg,rgba(4,17,36,.93) 0%,rgba(5,27,57,.79) 30%,rgba(6,28,58,.14) 66%,rgba(5,17,37,.06) 100%),url("'+imageUrl+'")';
+          hero.style.backgroundPosition='64% 48%';
+          heroSection.classList.add('hero--real-photo');
+          const heroCredit=document.querySelector('.hero-photo-credit');
+          if(heroCredit)heroCredit.textContent='Inside Masjid At-Towfiq · authentic community photography';
+          const footerCredit=document.querySelector('.footer-credit');
+          if(footerCredit)footerCredit.textContent='Authentic photography of Masjid At-Towfiq · published with permission.';
+        };
+        preload.onerror=()=>{
+          console.warn('The selected gallery photo is published but its image could not be loaded.');
+        };
+        preload.src=imageUrl;
       }
-      const heroCredit=document.querySelector('.hero-photo-credit');
-      if(heroCredit)heroCredit.textContent='Inside Masjid At-Towfiq · authentic community photography';
-      const footerCredit=document.querySelector('.footer-credit');
-      if(footerCredit)footerCredit.textContent='Authentic photography of Masjid At-Towfiq · published with permission.';
     }catch(err){
       // Gallery must never break prayer information, admissions or other masjid content.
       console.warn('Gallery images not available:',err);
