@@ -107,6 +107,38 @@ export default {
       return assetResponse;
     }
 
+
+    // Community feature flag and approved events come from the existing portal.
+    // The masjid website preserves its current design when the portal flag is OFF
+    // or the upstream community feed cannot be reached.
+    if(incoming.pathname==="/api/public/community"){
+      if(request.method!=="GET")return json({error:"Method not allowed"},405);
+      try{
+        const response=await fetch("https://portal.attowfiqmasjid.org/api/public/masjid-community",
+          {headers:{Accept:"application/json"},signal:AbortSignal.timeout(8000)});
+        if(!response.ok)throw Error("Community feed HTTP "+response.status);
+        if(Number(response.headers.get("content-length")||0)>70000)throw Error("Community feed too large");
+        const feed=await response.json();
+        if(feed?.enabled!==true)return json({enabled:false,events:[],announcements:[]},200,"public, max-age=15, s-maxage=30");
+        const cleanEvent=e=>({
+          id:String(e.id||"").slice(0,60),title:String(e.title||"").slice(0,120),
+          body:String(e.body||"").slice(0,1200),event_date:String(e.event_date||"").slice(0,10),
+          event_time:String(e.event_time||"").slice(0,5),location:String(e.location||"").slice(0,160)
+        });
+        const cleanNotice=e=>({
+          id:String(e.id||"").slice(0,60),title:String(e.title||"").slice(0,120),
+          body:String(e.body||"").slice(0,1200),pinned:e.pinned===true
+        });
+        if(!Array.isArray(feed.events)||!Array.isArray(feed.announcements))
+          throw Error("Invalid community feed");
+        const events=feed.events.filter(x=>typeof x.title==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x.event_date)).slice(0,9).map(cleanEvent);
+        const announcements=feed.announcements.filter(x=>typeof x.title==="string").slice(0,5).map(cleanNotice);
+        return json({enabled:true,events,announcements},200,"public, max-age=15, s-maxage=30");
+      }catch(err){
+        console.error("Masjid community feed unavailable",err instanceof Error?err.message:String(err));
+        return json({enabled:false,events:[],announcements:[]},200,"public, max-age=5");
+      }
+    }
     if(incoming.pathname==="/api/public/gallery"){
       if(request.method!=="GET")return json({error:"Method not allowed"},405);
       try{
