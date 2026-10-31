@@ -1,0 +1,31 @@
+
+/* Authentic Masjid At-Towfiq photo gallery */
+.masjid-gallery-section{background:#f4f1e9;color:#163451;overflow:hidden;scroll-margin-top:120px}
+.masjid-gallery-intro{display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:end;margin-bottom:34px}
+.masjid-gallery-eyebrow{font-size:11px;font-weight:800;letter-spacing:.22em;color:#9d7a38;margin:0 0 20px}
+.masjid-gallery-intro h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(37px,5.8vw,66px);font-weight:400;line-height:1.12;letter-spacing:-.035em;margin:0}
+.masjid-gallery-intro h2 em{font-weight:400;color:#ad8848}
+.masjid-gallery-intro>p{font-size:16px;line-height:1.85;color:#50647a;max-width:490px;margin:0}
+.masjid-gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;min-height:140px}
+.masjid-gallery-empty{grid-column:1/-1;padding:42px;border:1px dashed #c8c4b9;border-radius:18px;background:#faf8f3;text-align:center;color:#657080}
+.masjid-photo-card{position:relative;overflow:hidden;border:0;border-radius:17px;display:block;min-height:220px;aspect-ratio:4/3;background:#dfdfd8;padding:0;cursor:pointer;box-shadow:0 12px 32px rgba(20,38,50,.12);text-align:left;isolation:isolate}
+.masjid-photo-card:focus-visible{outline:4px solid #bd994e;outline-offset:3px}
+.masjid-photo-card img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center 41%;display:block;transition:transform .45s ease}
+.masjid-photo-card:hover img,.masjid-photo-card:focus-visible img{transform:scale(1.035)}
+.masjid-photo-card::after{content:'';position:absolute;inset:36% 0 0;background:linear-gradient(transparent,rgba(4,20,40,.76));pointer-events:none}
+.masjid-photo-title{position:absolute;left:19px;right:19px;bottom:19px;color:#fff;font-size:17px;font-weight:700;line-height:1.4;z-index:1;text-shadow:0 1px 3px rgba(0,0,0,.25)}
+.masjid-photo-label{display:block;color:#e8ca8b;font-size:10px;letter-spacing:.17em;font-weight:800;margin-bottom:4px}
+.masjid-photo-card.is-featured{grid-column:span 2;aspect-ratio:1.65}
+.masjid-gallery-footnote{margin:22px 0 0;font-size:11px;letter-spacing:.08em;color:#627287}
+.masjid-gallery-dialog{border:0;background:transparent;max-width:min(1050px,94vw);max-height:92vh;width:100%;padding:0;overflow:visible}
+.masjid-gallery-dialog::backdrop{background:rgba(2,13,28,.90)}
+.masjid-gallery-dialog-inner{position:relative;background:#0b1b30;border-radius:15px;overflow:hidden;box-shadow:0 20px 65px rgba(0,0,0,.45)}
+.masjid-gallery-dialog-inner img{display:block;width:100%;height:auto;max-height:72vh;object-fit:contain;background:#111d2b}
+.masjid-gallery-dialog-caption{padding:17px 24px 23px;color:#e8edf2}
+.masjid-gallery-dialog-caption h3{color:#fff;font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500;margin:0 0 5px}
+.masjid-gallery-dialog-caption p{color:#cad4df;font-size:14px;line-height:1.6;margin:0}
+.masjid-gallery-dialog-close{position:absolute;right:13px;top:13px;z-index:2;background:rgba(1,18,38,.82);border:1px solid rgba(255,255,255,.25);color:white;border-radius:50%;width:41px;height:41px;font-size:27px;line-height:1;cursor:pointer}
+.masjid-gallery-dialog-close:focus-visible{outline:3px solid #d4b36f}
+@media(max-width:900px){.masjid-gallery-intro{gap:23px;grid-template-columns:1fr}.masjid-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.masjid-photo-card.is-featured{grid-column:span 2}}
+@media(max-width:600px){.masjid-gallery-grid{grid-template-columns:1fr;gap:13px}.masjid-photo-card,.masjid-photo-card.is-featured{grid-column:auto;aspect-ratio:1.35;min-height:240px}.masjid-gallery-intro h2{font-size:41px}.masjid-gallery-intro>p{font-size:14px}.masjid-gallery-dialog-caption{padding:15px 18px}.masjid-gallery-empty{padding:25px}}
+@media(prefers-reduced-motion:reduce){.masjid-photo-card img{transition:none}}
