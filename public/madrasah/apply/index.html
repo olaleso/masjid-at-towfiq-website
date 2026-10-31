@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#173753">
+<meta name="description" content="Official Madrasah At-Towfiq admission application for parents and guardians in Bolton.">
+<link rel="canonical" href="https://madrasah.attowfiqmasjid.org/apply/">
+<link rel="icon" href="https://attowfiqmasjid.org/assets/at-towfiq-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/madrasah/styles.css">
+<link rel="stylesheet" href="/madrasah/application.css">
+<script src="/madrasah/site.js" defer></script>
+<script src="/madrasah/application.js" defer></script>
+<title>Student Admissions | Madrasah At-Towfiq</title>
+</head>
+<body>
+<a class="skip-link" href="#application">Skip to admission application</a>
+<div class="announcement"><div class="shell announcement-inner"><span><span class="announcement-dot" aria-hidden="true"></span> Madrasah At-Towfiq · Bolton</span><div class="announcement-contact"><a href="tel:+441204775864">01204 775864</a><span class="announcement-divider" aria-hidden="true"></span><a href="mailto:info@attowfiiqmasjid.org">info@attowfiiqmasjid.org</a></div></div></div>
+<header class="site-header"><div class="shell header-inner">
+<a class="identity" href="https://madrasah.attowfiqmasjid.org/"><img src="/madrasah/assets/madrasah-logo.png" alt="Madrasah At-Towfiq logo" width="66" height="66"><span class="identity-copy"><strong>Madrasah At-Towfiq</strong><small>Learning with purpose · Bolton</small></span></a>
+<button class="mobile-menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primaryNav"><span></span><span></span><span></span></button>
+<nav id="primaryNav" class="primary-nav" aria-label="Main navigation"><a href="https://madrasah.attowfiqmasjid.org/#about">About</a><a href="https://madrasah.attowfiqmasjid.org/#learning">Our learning</a><a href="https://madrasah.attowfiqmasjid.org/#admissions" aria-current="page">Admissions</a><a href="https://madrasah.attowfiqmasjid.org/#families">For families</a><a href="https://madrasah.attowfiqmasjid.org/#visit">Visit</a><a class="nav-signin" href="https://portal.attowfiqmasjid.org/" target="_blank" rel="noopener noreferrer">Portal sign in <span aria-hidden="true">↗</span></a></nav>
+</div></header>
+<main id="application">
+<section class="application-hero"><div class="shell application-hero-inner"><div><p class="section-kicker">MADRASAH AT-TOWFIQ · ADMISSIONS</p><h1>Apply for admission</h1><p>Welcome. Please complete this application as the child's parent or legal guardian. Your information goes directly to the Madrasah admissions team for confidential review.</p></div><div class="application-hero-ref"><strong>ONE APPLICATION PER CHILD</strong><span>Applications are reviewed before a place is confirmed. You do not need a portal account to apply.</span></div></div></section>
+<section class="application-main"><div class="shell application-layout">
+<div class="application-content">
+ <div id="admissionAvailability" class="application-status" role="status" aria-live="polite">Checking that online admissions are available…</div>
+ <div class="application-progress"><span>Student information</span><span>Parent / guardian</span><span>Previous learning</span><span>Health & declarations</span></div>
+ <form id="madrasahAdmissionForm" novalidate>
+  <input id="formStartedAt" name="form_started_at" type="hidden">
+  <div class="honeypot-field" aria-hidden="true"><label for="contactWebsite">Website (leave blank)</label><input type="text" name="website" id="contactWebsite" tabindex="-1" autocomplete="off"></div>
+  <fieldset class="application-fieldset" id="student-details">
+   <legend><span class="application-step">01</span> Student's details</legend>
+   <p class="application-fieldset-intro">The child's identity and home contact information.</p>
+   <div class="application-form-grid">
+    <label>Student surname <span aria-hidden="true">*</span><input name="last_name" type="text" autocomplete="family-name" maxlength="80" required></label>
+    <label>Student forename <span aria-hidden="true">*</span><input name="first_name" type="text" autocomplete="given-name" maxlength="80" required></label>
+    <label>Date of birth <span aria-hidden="true">*</span><input name="dob" type="date" required></label>
+    <label>Gender <span aria-hidden="true">*</span><select name="gender" required><option value="">Select</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select></label>
+    <label class="wide">Home address <span aria-hidden="true">*</span><textarea name="home_address" rows="2" maxlength="260" autocomplete="street-address" required></textarea></label>
+    <label>Postcode <span aria-hidden="true">*</span><input type="text" name="postcode" autocomplete="postal-code" maxlength="16" required></label>
+    <label>Home telephone number (optional)<input type="tel" name="home_telephone" maxlength="40" autocomplete="tel-national"></label>
+   </div>
+  </fieldset>
+  <fieldset class="application-fieldset" id="guardian-details">
+   <legend><span class="application-step">02</span> Parent / guardian details</legend>
+   <p class="application-fieldset-intro">The adult responsible for this application and who we can contact.</p>
+   <div class="application-form-grid">
+    <label class="wide">Parent / guardian full name <span aria-hidden="true">*</span><input name="guardian_name" type="text" maxlength="120" required autocomplete="name"></label>
+    <label>Relationship to student <span aria-hidden="true">*</span><select name="guardian_relationship" required><option value="">Select</option><option>Mother</option><option>Father</option><option>Grandparent</option><option>Legal guardian</option><option>Other</option></select></label>
+    <label>Parent / guardian mobile <span aria-hidden="true">*</span><input name="guardian_phone" type="tel" maxlength="40" autocomplete="tel" required></label>
+    <label>Emergency telephone (optional)<input name="emergency_phone" type="tel" maxlength="40"></label>
+    <label class="wide">Parent / guardian email address <span aria-hidden="true">*</span><input name="guardian_email" type="email" maxlength="254" required autocomplete="email"></label>
+   </div>
+  </fieldset>
+  <fieldset class="application-fieldset" id="learning-details">
+   <legend><span class="application-step">03</span> Previous learning</legend>
+   <p class="application-fieldset-intro">This helps our teachers understand your child's starting level; it does not determine admission automatically.</p>
+   <div class="application-form-grid">
+    <label class="wide">Has the student attended another madrasah before? <span aria-hidden="true">*</span>
+      <select name="previous_attended" id="previousAttended" required><option value="">Choose an option</option><option value="yes">Yes</option><option value="no">No</option><option value="unknown">Not known</option></select>
+    </label>
+    <label class="wide previous-institute" id="previousInstituteRow" hidden>Name of previous institute / madrasah <span aria-hidden="true">*</span><input name="previous_institute" id="previousInstitute" type="text" maxlength="150"></label>
+    <div class="wide application-check-group">
+      <strong>Current Arabic and Qur’an level</strong><small>Select all that apply. The teacher can confirm the level during assessment.</small>
+      <label><input name="level_starting" type="checkbox"> Starting now / beginner</label>
+      <label><input name="level_qaaidah" type="checkbox"> Currently studying Qaaidah</label>
+      <label><input name="level_quran" type="checkbox"> Currently reading Qur’an</label>
+      <label><input name="arabic_read_write" type="checkbox"> Can read and write Arabic</label>
+    </div>
+    <label>Qaaidah current page number (if known)<input type="text" name="qaaidah_page" maxlength="55" placeholder="e.g. page 15"></label>
+    <label>Qur’an current surah / passage (if known)<input type="text" name="quran_surah" maxlength="100" placeholder="e.g. Surah Al-Nas"></label>
+   </div>
+  </fieldset>
+  <fieldset class="application-fieldset" id="declarations">
+   <legend><span class="application-step">04</span> Health, support and declarations</legend>
+   <p class="application-fieldset-intro">Provide only relevant details necessary to help the madrasah care for and support your child.</p>
+   <div class="application-form-grid">
+    <label class="wide">Medical information (optional)<textarea name="medical_information" maxlength="1600" rows="2" placeholder="Anything the team should know for safe participation"></textarea></label>
+    <label class="wide">Allergies (optional)<textarea name="allergies" maxlength="1000" rows="2" placeholder="Known allergies, if any"></textarea></label>
+    <label class="wide">Additional learning needs (optional)<textarea name="additional_learning_needs" maxlength="1600" rows="2" placeholder="Any learning or accessibility support needed"></textarea></label>
+    <div class="wide application-consents">
+      <h3>Parent / guardian consent choices</h3>
+      <p>Please make each choice separately. Leaving a box unchecked means consent has not been given.</p>
+      <label><input name="consent_first_aid" type="checkbox"> I consent to emergency first aid where necessary.</label>
+      <label><input name="consent_photos" type="checkbox"> I consent to appropriate photographs for internal learning records.</label>
+    </div>
+    <label class="wide">Additional notes (optional)<textarea name="message" maxlength="1500" rows="2" placeholder="Anything else relevant to the application"></textarea></label>
+    <div class="wide application-parent-confirm">
+      <label><input name="parent_confirmed" type="checkbox" required> <span>I am the child's parent or legal guardian and confirm that the information provided is accurate to the best of my knowledge. I understand that applying does not guarantee a place and that the madrasah may contact me about the application. <strong>(Required)</strong></span></label>
+    </div>
+   </div>
+  </fieldset>
+  <div class="application-submit">
+    <div><p><strong>Ready to submit?</strong></p><p>Only authorised madrasah staff can review applications. On successful submission, keep your application reference for enquiries.</p></div>
+    <button class="button button-primary" id="submitAdmission" type="submit" disabled>Submit admission application <span aria-hidden="true">↗</span></button>
+  </div>
+  <div class="application-feedback" id="applicationFeedback" role="status" aria-live="polite"></div>
+ </form>
+ <div id="applicationSuccess" class="application-success" hidden tabindex="-1">
+   <span class="success-symbol" aria-hidden="true">✓</span>
+   <h2>Application received</h2>
+   <p>Your application has been submitted to Madrasah At-Towfiq. This is not confirmation of a school place.</p>
+   <div class="success-reference"><span>APPLICATION REFERENCE</span><strong id="successReference">—</strong><button type="button" id="copyReference">Copy reference</button></div>
+   <p id="successEmailMessage"></p>
+   <p>Please retain your reference and contact the madrasah if you need to make any changes.</p>
+   <a class="button button-primary" href="https://madrasah.attowfiqmasjid.org/">Return to Madrasah homepage <span aria-hidden="true">↗</span></a>
+ </div>
+</div>
+<aside class="application-sidebar" aria-label="Admissions information">
+ <div class="application-aside-card"><h2>Before you apply</h2><p>Please have your child's name, date of birth, address and your contact details ready.</p><ul><li>Submit one form for each child.</li><li>There is no fee to submit this application.</li><li>Our admissions team will review the details and contact you about next steps.</li><li>Do not send sensitive documents unless requested through an approved secure process.</li></ul></div>
+ <div class="application-aside-contact"><p class="aside-mini">NEED HELP?</p><strong>Madrasah At-Towfiq</strong><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">info@attowfiiqmasjid.org</a></div>
+ <div class="application-aside-privacy"><strong>Your information matters.</strong><p>The form is submitted over an encrypted connection to our existing admissions portal. The madrasah uses it to assess the application, arrange placement and contact guardians. The choice about photographs is separate and optional. Please contact the madrasah for its full privacy notice, retention policy and safeguarding arrangements.</p></div>
+</aside>
+</div></section>
+</main>
+<footer class="site-footer"><div class="shell footer-upper"><div class="footer-brand"><img src="/madrasah/assets/madrasah-logo.png" alt="" width="70" height="70"><div><strong>Madrasah At-Towfiq</strong><span>Faith · Knowledge · Character</span></div></div><div class="footer-columns"><div><h3>Quick links</h3><a href="https://madrasah.attowfiqmasjid.org/">Madrasah home</a><a href="https://portal.attowfiqmasjid.org/" target="_blank" rel="noopener noreferrer">Parent, staff & admin sign in ↗</a></div><div><h3>Contact</h3><span>24 Punch Street, Bolton</span><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">info@attowfiiqmasjid.org</a></div><div><h3>Community</h3><a href="https://attowfiqmasjid.org/">Masjid At-Towfiq</a></div></div></div><div class="shell footer-bottom"><span>© <span id="currentYear">2026</span> Madrasah At-Towfiq. All rights reserved.</span><span>Part of the At-Towfiq community in Bolton.</span></div></footer>
+</body></html>

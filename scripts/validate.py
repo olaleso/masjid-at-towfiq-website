@@ -74,8 +74,17 @@ else:
         problems.append("Staff-only admissions must not be presented as a public submission form")
     if "Temperance Street" not in madrasah_html:
         problems.append("New building and current venue distinction missing")
-if "/madrasah/" not in (SITE / "index.html").read_text(encoding="utf-8"):
-    problems.append("Masjid website does not link to Madrasah public website")
+if "https://madrasah.attowfiqmasjid.org/" not in (SITE / "index.html").read_text(encoding="utf-8"):
+    problems.append("Masjid website does not link to the public Madrasah domain")
+if "https://madrasah.attowfiqmasjid.org/" not in (SITE / "madrasah" / "index.html").read_text(encoding="utf-8"):
+    problems.append("New Madrasah domain is missing from the public site")
+if "madrasah.attowfiqmasjid.org" not in (SITE.parent / "src" / "worker.mjs").read_text(encoding="utf-8"):
+    problems.append("Cloudflare hostname dispatch missing")
+if not (SITE / "madrasah" / "apply" / "index.html").is_file():
+    problems.append("Parent-facing public admissions form missing")
+for admissions_asset in ["madrasah/application.css", "madrasah/application.js"]:
+    if not (SITE / admissions_asset).is_file():
+        problems.append("Admissions asset missing: "+admissions_asset)
 for madrasah_asset in ["madrasah/styles.css", "madrasah/site.js", "madrasah/assets/madrasah-logo.png"]:
     if not (SITE / madrasah_asset).is_file():
         problems.append("Madrasah static asset missing: "+madrasah_asset)
@@ -143,8 +152,8 @@ else:
             problems.append("Prayer feed Worker entrypoint missing")
         if wrangler.get("assets", {}).get("binding") != "ASSETS":
             problems.append("Cloudflare ASSETS binding missing")
-        if "/api/*" not in wrangler.get("assets", {}).get("run_worker_first", []):
-            problems.append("Prayer API route must run Worker first")
+        if wrangler.get("assets", {}).get("run_worker_first") is not True:
+            problems.append("All-requests Worker routing must be enabled to dispatch the Madrasah hostname")
         if "routes" in wrangler or "route" in wrangler:
             problems.append("Routes should remain managed in the Cloudflare dashboard")
         if wrangler.get("workers_dev") is not False:

@@ -76,6 +76,21 @@ function json(body,status=200,cache="no-store") {
 }
 export default {
   async fetch(request,env) {
+    // Serve the public Madrasah under its own hostname using the existing
+    // static-assets Worker. Other hostnames, including the masjid, are unchanged.
+    const incoming=new URL(request.url);
+    if(incoming.hostname==="madrasah.attowfiqmasjid.org") {
+      if(request.method!=="GET"&&request.method!=="HEAD")
+        return new Response("Method not allowed",{status:405});
+      if(incoming.pathname.startsWith("/api/"))
+        return new Response("Not found",{status:404});
+      const assetPath=incoming.pathname.startsWith("/madrasah/")
+        ?incoming.pathname
+        :"/madrasah"+(incoming.pathname==="/"?"/":incoming.pathname);
+      const assetUrl=new URL(incoming.href);
+      assetUrl.pathname=assetPath;
+      return env.ASSETS.fetch(new Request(assetUrl.toString(),request));
+    }
     if(new URL(request.url).pathname==="/api/public/videos") {
       if(request.method!=="GET")return json({error:"Method not allowed"},405);
       try{
