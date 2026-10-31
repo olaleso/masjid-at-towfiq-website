@@ -133,7 +133,8 @@ if "X-Robots-Tag: noindex" not in headers_text:
     problems.append("Student admission form noindex header missing")
 if "/*\n  X-Content-Type-Options:" not in headers_text:
     problems.append("Site-wide security headers missing")
-if "/*\n  X-Robots-Tag: noindex" in headers_text:
+global_headers = headers_text.split("\n\n",1)[0]
+if "\n  X-Robots-Tag: noindex" in global_headers:
     problems.append("Public websites must not use a site-wide noindex header")
 for host,robots_path,sitemap_path in [
     ("attowfiqmasjid.org",SITE/"robots.txt",SITE/"sitemap.xml"),
