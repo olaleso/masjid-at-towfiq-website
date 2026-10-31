@@ -122,6 +122,8 @@ for madrasah_asset in ["madrasah/styles.css", "madrasah/site.js", "madrasah/asse
     if not (SITE / madrasah_asset).is_file():
         problems.append("Madrasah static asset missing: "+madrasah_asset)
 
+if "connect-src 'self' https://portal.attowfiqmasjid.org" not in (SITE / "_headers").read_text():
+    problems.append("Madrasah public application fetch would be blocked by Content Security Policy")
 if "X-Robots-Tag: noindex" not in (SITE / "_headers").read_text():
     problems.append("Preview noindex HTTP header missing")
 if "Disallow: /" not in (SITE / "robots.txt").read_text():
