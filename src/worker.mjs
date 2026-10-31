@@ -106,6 +106,45 @@ export default {
       }
       return assetResponse;
     }
+
+    if(incoming.pathname==="/api/public/gallery"){
+      if(request.method!=="GET")return json({error:"Method not allowed"},405);
+      try{
+        const response=await fetch("https://portal.attowfiqmasjid.org/api/public/masjid-photos",
+          {headers:{Accept:"application/json"},signal:AbortSignal.timeout(8000)});
+        if(!response.ok)throw Error("Photo feed HTTP "+response.status);
+        const payload=await response.json();
+        if(!Array.isArray(payload.items))throw Error("Invalid gallery feed");
+        const items=payload.items.slice(0,12).filter(p=>
+          /^[a-f0-9-]{36}$/.test(p.id)&&typeof p.title==="string"&&typeof p.alt==="string"
+        ).map(p=>({id:p.id,title:p.title.slice(0,120),alt:p.alt.slice(0,160),
+          featured:p.featured===true,updated_at:typeof p.updated_at==="string"?p.updated_at:null}));
+        return json({items},200,"public, max-age=30, s-maxage=60");
+      }catch(err){
+        console.error("Masjid gallery feed unavailable",err instanceof Error?err.message:String(err));
+        return json({error:"Gallery temporarily unavailable"},503);
+      }
+    }
+    if(incoming.pathname.startsWith("/api/public/gallery/photo/")){
+      if(request.method!=="GET")return new Response("Method not allowed",{status:405});
+      const pid=incoming.pathname.slice("/api/public/gallery/photo/".length);
+      if(!/^[a-f0-9-]{36}$/.test(pid))return new Response("Photo not found",{status:404});
+      try{
+        const response=await fetch("https://portal.attowfiqmasjid.org/api/public/masjid-photo/"+pid,
+          {headers:{Accept:"image/jpeg"},signal:AbortSignal.timeout(8000)});
+        if(!response.ok)return new Response("Photo not found",{status:response.status===404?404:503});
+        if(response.headers.get("content-type")?.split(";")[0]!=="image/jpeg")throw Error("Invalid image response");
+        const bytes=await response.arrayBuffer();
+        if(bytes.byteLength<500||bytes.byteLength>250000)throw Error("Invalid image size");
+        return new Response(bytes,{status:200,headers:{
+          "Content-Type":"image/jpeg","Cache-Control":"public, max-age=60, s-maxage=120",
+          "X-Content-Type-Options":"nosniff"
+        }});
+      }catch(err){
+        console.error("Masjid photograph unavailable",err instanceof Error?err.message:String(err));
+        return new Response("Photo unavailable",{status:503});
+      }
+    }
     if(new URL(request.url).pathname==="/api/public/videos") {
       if(request.method!=="GET")return json({error:"Method not allowed"},405);
       try{
