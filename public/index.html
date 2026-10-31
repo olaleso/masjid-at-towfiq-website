@@ -66,6 +66,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="masjidbox.css">
   <link rel="stylesheet" href="videos.css">
+  <link rel="stylesheet" href="gallery.css">
   <link rel="stylesheet" href="services.css">
   <link rel="stylesheet" href="project.css">
 </head>
@@ -87,6 +88,7 @@
         <a href="#home" class="nav-link active">Home</a>
         <a href="#prayer-times" class="nav-link">Prayer times</a>
         <a href="#videos" class="nav-link">Lectures &amp; khutbahs</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
         <a href="#whatson" class="nav-link">What's on</a>
         <details class="nav-services">
           <summary class="nav-link nav-services-trigger" data-nav="#services">Services <span class="nav-services-chevron" aria-hidden="true"></span></summary>
@@ -106,7 +108,7 @@
       <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
     </div>
     <nav class="mobile-nav" id="mobileMenu" aria-label="Mobile navigation" hidden>
-      <a href="#home">Home</a><a href="#prayer-times">Prayer times</a><a href="#videos">Videos</a><a href="#whatson">What's on</a><details class="mobile-services">
+      <a href="#home">Home</a><a href="#prayer-times">Prayer times</a><a href="#videos">Videos</a><a href="#gallery">Gallery</a><a href="#whatson">What's on</a><details class="mobile-services">
         <summary>Services <span aria-hidden="true">⌄</span></summary>
         <div class="mobile-services-items">
           <a href="#service-nikah">Marriage (Nikah) service</a>
@@ -165,6 +167,29 @@
     </section>
 
 
+
+    <section class="masjid-gallery-section section-space" id="gallery" aria-labelledby="masjidGalleryHeading">
+      <div class="site-shell">
+        <div class="masjid-gallery-intro">
+          <div>
+            <p class="masjid-gallery-eyebrow">OUR MASJID · IN PICTURES</p>
+            <h2 id="masjidGalleryHeading">Life at <em>Masjid At-Towfiq.</em></h2>
+          </div>
+          <p>Discover our prayer hall, welcoming spaces and everyday moments of worship and community through authentic photographs shared by the masjid.</p>
+        </div>
+        <div class="masjid-gallery-grid" id="masjidGallery" aria-live="polite">
+          <p class="masjid-gallery-empty">Photographs of our masjid will appear here as they are approved for publication.</p>
+        </div>
+        <p class="masjid-gallery-footnote">Original photographs · Respecting the privacy of our worshippers.</p>
+      </div>
+    </section>
+    <dialog id="masjidGalleryDialog" class="masjid-gallery-dialog" aria-labelledby="masjidGalleryDialogTitle">
+      <div class="masjid-gallery-dialog-inner">
+        <button type="button" class="masjid-gallery-dialog-close" id="masjidGalleryClose" aria-label="Close photograph">×</button>
+        <img id="masjidGalleryDialogImage" alt="">
+        <div class="masjid-gallery-dialog-caption"><h3 id="masjidGalleryDialogTitle">Masjid At-Towfiq</h3><p id="masjidGalleryDialogDescription"></p></div>
+      </div>
+    </dialog>
 
     <section class="masjid-videos-section" id="videos" aria-labelledby="masjidVideosHeading">
       <div class="site-shell masjid-videos-inner">
@@ -340,7 +365,7 @@
 
     <section class="closing-section"><div class="site-shell closing-inner"><span lang="ar" class="closing-arabic">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ</span><h2>May peace be upon you.</h2><p>And may this always be a place where hearts come together.</p><a href="#top" class="back-top">BACK TO TOP ↑</a></div></section>
   </main>
-  <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#videos">Lectures &amp; khutbahs</a><a href="#whatson">What's on</a><a href="#services">Services</a></div><div><h4>GET INVOLVED</h4><a href="#give">New masjid appeal</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><a href="https://madrasah.attowfiqmasjid.org/">Madrasah website ↗</a></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
+  <footer class="site-footer"><div class="site-shell footer-top"><div class="footer-brand"><img src="assets/at-towfiq-logo.png" alt="At-Towfiq emblem"><div><strong>MASJID AT-TOWFIQ</strong><span>A home for prayer. A heart for Bolton.</span></div></div><div class="footer-links"><div><h4>EXPLORE</h4><a href="#home">Home</a><a href="#prayer-times">Prayer timetable</a><a href="#videos">Lectures &amp; khutbahs</a><a href="#gallery">Gallery</a><a href="#whatson">What's on</a><a href="#services">Services</a></div><div><h4>GET INVOLVED</h4><a href="#give">New masjid appeal</a><a href="#visit">Visit us</a><a href="mailto:info@attowfiiqmasjid.org?subject=Volunteering%20enquiry">Volunteer enquiry</a><a href="https://madrasah.attowfiqmasjid.org/">Madrasah website ↗</a></div><div><h4>FIND US</h4><p>24 Punch Street<br>Bolton, BL3 5BJ</p><a href="tel:+441204775864">01204 775864</a><a href="mailto:info@attowfiiqmasjid.org">Email us</a></div></div></div><div class="site-shell footer-bottom"><span>© <span id="currentYear">2026</span> Masjid At-Towfiq</span><span>Registered charity no. 1147347 · Legal name: At-Towfiiq Islamic and Cultural Charity</span><span class="footer-credit">Concept photography: <a href="https://unsplash.com/fr/photos/interieur-de-la-mosquee-sMB8l9j1PQ8" target="_blank" rel="noopener">Rumman Amin / Cambridge Mosque</a>. Illustration in CSS/SVG, no AI-generated imagery.</span></div></footer>
   <div class="modal-backdrop" id="modalBackdrop" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"><div class="modal-ornament" aria-hidden="true">✦</div><button class="modal-close" type="button" id="modalClose" aria-label="Close dialog">×</button><div class="modal-kicker" id="modalKicker">MASJID AT-TOWFIQ</div><h2 id="modalTitle">More information</h2><div class="modal-content" id="modalContent"></div><button class="button button-dark modal-dismiss" type="button" id="modalDismiss">Understood <span>↗</span></button></div></div>
 
   <dialog class="masjid-video-dialog" id="masjidVideoDialog" aria-labelledby="masjidVideoDialogTitle">
@@ -350,6 +375,7 @@
   <script src="script.js"></script>
   <script src="prayer-live.js" defer></script>
   <script src="videos.js" defer></script>
+  <script src="gallery.js" defer></script>
   <script src="project.js" defer></script>
 </body>
 </html>
