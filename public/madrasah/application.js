@@ -108,7 +108,7 @@
       ["Notes",inputValue("message")]
     ]));
   }
-  function display(index){
+  function display(index,focusStep=true){
     if(index<0||index>3||finished)return;
     active=index;visited=Math.max(visited,index);
     panels.forEach((panel,i)=>{panel.hidden=i!==index;});
@@ -128,8 +128,10 @@
     showMessage("");
     // Preserve the user's inputs when changing steps. No data is persisted.
     const heading=panels[index].querySelector("h2");
-    if(heading)heading.focus({preventScroll:true});
-    stepper.scrollIntoView({behavior:"instant",block:"start"});
+    if(focusStep){
+      if(heading)heading.focus({preventScroll:true});
+      stepper.scrollIntoView({behavior:"auto",block:"start"});
+    }
   }
   function firstInvalid(panel){
     const controls=panel.querySelectorAll("input,select,textarea");
@@ -219,6 +221,6 @@
     try{await navigator.clipboard.writeText(value);document.getElementById("copyReference").textContent="Copied";}
     catch{document.getElementById("copyReference").textContent="Select and copy the reference above";}
   });
-  display(0);
+  display(0,false);
   probe();
 })();
