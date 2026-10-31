@@ -78,6 +78,17 @@ if "https://madrasah.attowfiqmasjid.org/" not in (SITE / "index.html").read_text
     problems.append("Masjid website does not link to the public Madrasah domain")
 if "https://madrasah.attowfiqmasjid.org/" not in (SITE / "madrasah" / "index.html").read_text(encoding="utf-8"):
     problems.append("New Madrasah domain is missing from the public site")
+# An admission link must be visible without scrolling and remain reachable on mobile.
+if "nav-apply" not in madrasah_html or "hero-apply" not in madrasah_html:
+    problems.append("Madrasah public homepage missing visible header / hero Apply for Admission buttons")
+if "mobile-admissions-bar" not in madrasah_html:
+    problems.append("Madrasah homepage missing persistent mobile admissions shortcut")
+admissions_target='https://madrasah.attowfiqmasjid.org/apply/'
+if madrasah_html.count(admissions_target)<4:
+    problems.append("Madrasah admission calls-to-action must point to official online application")
+if "Explore admissions" in madrasah_html:
+    problems.append("Ambiguous explore-admissions CTA remains on homepage")
+
 if "madrasah.attowfiqmasjid.org" not in (SITE.parent / "src" / "worker.mjs").read_text(encoding="utf-8"):
     problems.append("Cloudflare hostname dispatch missing")
 if not (SITE / "madrasah" / "apply" / "index.html").is_file():
