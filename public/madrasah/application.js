@@ -112,8 +112,11 @@
  });
  function setAvailability(ok,message){
   available=ok;
-  availability.textContent=message;
-  availability.classList.toggle('is-active',ok);
+  // A healthy admissions service needs no visual banner. Keep an accessible
+  // notice for genuine outages so parents know when submissions are disabled.
+  availability.hidden=ok;
+  availability.textContent=ok?'':message;
+  availability.classList.remove('is-active');
   availability.classList.toggle('is-unavailable',!ok);
   submit.disabled=!ok||sending;
  }
@@ -277,8 +280,9 @@
     'One acknowledgement email with your application references has been sent to the address provided.':
     'Your application records have been saved. Email delivery could not be confirmed; please keep the references shown.';
    success.hidden=false;
-   availability.textContent='Family application submitted securely.';
-   availability.classList.remove('is-unavailable');availability.classList.add('is-active');
+   // The dedicated success panel already confirms receipt.
+   availability.hidden=true;
+   availability.textContent='';
    success.focus({preventScroll:true});
    success.scrollIntoView({behavior:'smooth',block:'start'});
   }catch(error){
