@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#173753">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="description" content="Apply to Madrasah At-Towfiq in Bolton. Four clear steps to submit your child's admission application securely.">
+  <meta name="description" content="Apply to Madrasah At-Towfiq in Bolton. Four clear steps to apply for one or more children securely.">
   <link rel="canonical" href="https://madrasah.attowfiqmasjid.org/apply/">
   <link rel="icon" href="https://attowfiqmasjid.org/assets/at-towfiq-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
     <div class="shell apply-shell">
       <div class="apply-page-heading">
         <div><p class="apply-overline">STUDENT ADMISSIONS</p><h1>Apply to join Madrasah At-Towfiq</h1>
-        <p>Complete one application for each child. No portal account is required.</p></div>
+        <p>Apply for up to six children using one form. Enter guardian details once; each child is reviewed individually. No portal account is required.</p></div>
         <a class="apply-back-link" href="https://madrasah.attowfiqmasjid.org/">← Back to Madrasah</a>
       </div>
       <div class="admission-wizard-card">
@@ -51,20 +51,19 @@
             <section class="wizard-panel" data-panel="0" aria-labelledby="stepTitle1">
               <div class="wizard-body-grid">
                 <div class="wizard-form-main">
-                  <div class="wizard-headline"><p class="wizard-kicker">CHILD DETAILS</p><h2 id="stepTitle1" tabindex="-1">Tell us about your child</h2><p>Please provide your child's basic information so we can begin the admissions process.</p></div>
-                  <fieldset class="application-fieldset" id="student-details">
-   <legend><span class="application-step">01</span> Student's details</legend>
-   <p class="application-fieldset-intro">The child's identity and home contact information.</p>
+                  <div class="wizard-headline"><p class="wizard-kicker">CHILD DETAILS</p><h2 id="stepTitle1" tabindex="-1">Tell us about your children</h2><p>Start with your first child. Select <strong>Add another child</strong> for any siblings applying at the same time.</p></p></div>
+                  <div id="childIdentityList"><fieldset class="application-fieldset child-identity-set" id="student-details" data-child-basic="0">
+   <legend><span class="application-step">01</span> <span class="child-legend-text">Child 1 details</span></legend>
+   <p class="application-fieldset-intro">Provide the child's name, date of birth and gender. Your shared address is entered on the next step.</p>
    <div class="application-form-grid">
     <label>Student surname <span aria-hidden="true">*</span><input name="last_name" type="text" autocomplete="family-name" maxlength="80" required></label>
     <label>Student forename <span aria-hidden="true">*</span><input name="first_name" type="text" autocomplete="given-name" maxlength="80" required></label>
     <label>Date of birth <span aria-hidden="true">*</span><input name="dob" type="date" required></label>
     <label>Gender <span aria-hidden="true">*</span><select name="gender" required><option value="">Select</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select></label>
-    <label class="wide">Home address <span aria-hidden="true">*</span><textarea name="home_address" rows="2" maxlength="260" autocomplete="street-address" required></textarea></label>
-    <label>Postcode <span aria-hidden="true">*</span><input type="text" name="postcode" autocomplete="postal-code" maxlength="16" required></label>
-    <label>Home telephone number (optional)<input type="tel" name="home_telephone" maxlength="40" autocomplete="tel-national"></label>
+
    </div>
-  </fieldset>
+  </fieldset></div>
+  <div class="application-child-actions"><button class="child-add-button" id="addAnotherChild" type="button">+ Add another child</button><span id="childCountNote" aria-live="polite">1 child added · Maximum 6</span></div>
                 </div>
                 <aside class="wizard-side" aria-label="Admissions help">
                   <div class="wizard-aside-box"><h3>Why we ask for this</h3><ul class="check-points"><li>Helps us get to know your child</li><li>Supports a safe learning environment</li><li>Helps teachers plan appropriate support</li><li>Creates an accurate application record</li></ul></div>
@@ -75,11 +74,14 @@
             <section class="wizard-panel" data-panel="1" aria-labelledby="stepTitle2" hidden>
               <div class="wizard-body-grid">
                 <div class="wizard-form-main">
-                  <div class="wizard-headline"><p class="wizard-kicker">GUARDIAN DETAILS</p><h2 id="stepTitle2" tabindex="-1">Tell us about your family</h2><p>We will use these details to contact you about the application and any next steps.</p></div>
+                  <div class="wizard-headline"><p class="wizard-kicker">GUARDIAN DETAILS</p><h2 id="stepTitle2" tabindex="-1">Tell us about your family</h2><p>These contact and household details are shared across every child in your family application.</p></div>
                   <fieldset class="application-fieldset" id="guardian-details">
    <legend><span class="application-step">02</span> Parent / guardian details</legend>
-   <p class="application-fieldset-intro">The adult responsible for this application and who we can contact.</p>
+   <p class="application-fieldset-intro">Enter these details once for all children applying.</p>
    <div class="application-form-grid">
+    <label class="wide">Home address <span aria-hidden="true">*</span><textarea name="home_address" rows="2" maxlength="260" autocomplete="street-address" required></textarea></label>
+    <label>Postcode <span aria-hidden="true">*</span><input type="text" name="postcode" autocomplete="postal-code" maxlength="16" required></label>
+    <label>Home telephone number (optional)<input type="tel" name="home_telephone" maxlength="40" autocomplete="tel-national"></label>
     <label class="wide">Parent / guardian full name <span aria-hidden="true">*</span><input name="guardian_name" type="text" maxlength="120" required autocomplete="name"></label>
     <label>Relationship to student <span aria-hidden="true">*</span><select name="guardian_relationship" required><option value="">Select</option><option>Mother</option><option>Father</option><option>Grandparent</option><option>Legal guardian</option><option>Other</option></select></label>
     <label>Parent / guardian mobile <span aria-hidden="true">*</span><input name="guardian_phone" type="tel" maxlength="40" autocomplete="tel" required></label>
@@ -97,8 +99,8 @@
             <section class="wizard-panel" data-panel="2" aria-labelledby="stepTitle3" hidden>
               <div class="wizard-body-grid">
                 <div class="wizard-form-main">
-                  <div class="wizard-headline"><p class="wizard-kicker">ADDITIONAL INFORMATION</p><h2 id="stepTitle3" tabindex="-1">Help us understand your child's needs</h2><p>Tell us about previous learning and any support your child may need.</p></div>
-                  <fieldset class="application-fieldset" id="learning-details">
+                  <div class="wizard-headline"><p class="wizard-kicker">ADDITIONAL INFORMATION</p><h2 id="stepTitle3" tabindex="-1">Help us understand each child's needs</h2><p>Complete the learning and support information separately for each child added in Step 1.</p></div>
+                  <div id="childSupportList"><div class="child-support-set" data-child-support="0"><h3 class="child-support-heading">Child 1 · Learning &amp; support</h3><fieldset class="application-fieldset" id="learning-details">
    <legend><span class="application-step">03</span> Previous learning</legend>
    <p class="application-fieldset-intro">This helps our teachers understand your child's starting level; it does not determine admission automatically.</p>
    <div class="application-form-grid">
@@ -133,7 +135,7 @@
     <label class="wide">Additional notes (optional)<textarea name="message" maxlength="1500" rows="2" placeholder="Anything else relevant to the application"></textarea></label>
     
    </div>
-  </fieldset>
+  </fieldset></div></div>
                 </div>
                 <aside class="wizard-side">
                   <div class="wizard-aside-box"><h3>Your child's learning</h3><p>Not sure about their current level? Select the closest option or leave the optional page and surah fields blank. Teachers can confirm the starting level.</p></div>
@@ -144,12 +146,12 @@
             <section class="wizard-panel" data-panel="3" aria-labelledby="stepTitle4" hidden>
               <div class="wizard-body-grid">
                 <div class="wizard-form-main">
-                  <div class="wizard-headline"><p class="wizard-kicker">REVIEW &amp; SUBMIT</p><h2 id="stepTitle4" tabindex="-1">Review your application</h2><p>Please check the information before submitting. Use the Edit buttons if you need to make a change.</p></div>
+                  <div class="wizard-headline"><p class="wizard-kicker">REVIEW &amp; SUBMIT</p><h2 id="stepTitle4" tabindex="-1">Review your application</h2><p>Check the shared guardian details and information for every child before sending your family application.</p></div>
                   <div id="applicationReview" class="review-sections" aria-live="polite"></div>
                   <div class="review-declaration"><h3>Parent / guardian declaration</h3><div class="wide application-parent-confirm">
-      <label><input name="parent_confirmed" type="checkbox" required> <span>I am the child's parent or legal guardian and confirm that the information provided is accurate to the best of my knowledge. I understand that applying does not guarantee a place and that the madrasah may contact me about the application. <strong>(Required)</strong></span></label>
+      <label><input name="parent_confirmed" type="checkbox" required> <span>I am the parent or legal guardian of the children included and confirm that the information provided is accurate to the best of my knowledge. I understand that applying does not guarantee a place and that the madrasah may contact me about the application. <strong>(Required)</strong></span></label>
     </div>
-                  <p>Submitting this application does not guarantee a place. Information is sent securely to the Madrasah At-Towfiq admissions team.</p></div>
+                  <p>Submitting a family application does not guarantee a place for any child. Each child's application is reviewed individually. Information is sent securely to the Madrasah At-Towfiq admissions team.</p></div>
                 </div>
                 <aside class="wizard-side">
                   <div class="wizard-aside-box"><h3>What happens next?</h3><ul class="number-points"><li>We receive your application in the secure admissions register.</li><li>Authorised staff review the details and available classes.</li><li>The team contacts you about the outcome and next steps.</li></ul></div>
@@ -160,14 +162,15 @@
             <div class="wizard-navigation">
               <div class="wizard-back-actions"><a href="https://madrasah.attowfiqmasjid.org/" id="cancelAdmission">Cancel</a><button type="button" class="wizard-back-button" id="backStep" hidden>← Back</button></div>
               <button type="button" class="wizard-next-button" id="nextStep">Continue <span aria-hidden="true">→</span></button>
-              <button type="submit" class="wizard-submit-button" id="submitAdmission" disabled hidden>Submit application <span aria-hidden="true">→</span></button>
+              <button type="submit" class="wizard-submit-button" id="submitAdmission" disabled hidden>Submit family application <span aria-hidden="true">→</span></button>
             </div>
             <p id="applicationFeedback" class="application-feedback" role="alert" aria-live="assertive"></p>
           </form>
           <div id="applicationSuccess" class="application-success" hidden tabindex="-1">
             <span class="success-symbol" aria-hidden="true">✓</span><h2>Application received</h2>
-            <p>Your application has been submitted to Madrasah At-Towfiq for review. This does not confirm a school place.</p>
+            <p>Your family application has been submitted to Madrasah At-Towfiq for review. Each child will be considered separately; this does not confirm a place.</p>
             <div class="success-reference"><span>APPLICATION REFERENCE</span><strong id="successReference">—</strong><button type="button" id="copyReference">Copy reference</button></div>
+            <div id="successChildren" class="success-children"></div>
             <p id="successEmailMessage"></p>
             <p>Keep your reference and contact the admissions team if you need to change information.</p>
             <a class="button button-primary" href="https://madrasah.attowfiqmasjid.org/">Return to Madrasah website <span aria-hidden="true">↗</span></a>
