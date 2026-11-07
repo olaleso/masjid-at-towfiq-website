@@ -319,8 +319,24 @@
         <div class="new-masjid-layout">
           <div class="new-masjid-story reveal">
             <figure class="new-masjid-building">
-              <img src="assets/new-masjid-temperance-street.webp" alt="The brick building on Temperance Street pictured in Masjid At-Towfiq's new-property announcement" width="170" height="115" loading="lazy" decoding="async">
-              <figcaption>THE NEW BUILDING · TEMPERANCE STREET, BOLTON</figcaption>
+              <div class="new-masjid-photo-fallback" id="newMasjidPhotoFallback">
+                <img src="assets/new-masjid-temperance-street.webp" alt="Previously published new masjid property photograph" width="200" height="150" loading="lazy">
+              </div>
+              <div class="new-masjid-photo-mosaic" id="newMasjidPhotoMosaic" hidden aria-label="Four genuine photographs of the new masjid property">
+                <button class="new-masjid-photo is-main" type="button" data-new-masjid-photo="0" aria-label="Open full photograph 1 of 4">
+                  <img data-src="assets/new-masjid-2026-front.webp" alt="Front elevation of the historic brick property on Temperance Street, Bolton, seen across the cobbled street" width="1140" height="1520" loading="lazy" decoding="async">
+                </button>
+                <button class="new-masjid-photo" type="button" data-new-masjid-photo="1" aria-label="Open full photograph 2 of 4">
+                  <img data-src="assets/new-masjid-2026-elevation.webp" alt="Straight-on view of the adjoining red brick buildings and historic chapel frontage" width="1140" height="1520" loading="lazy" decoding="async">
+                </button>
+                <button class="new-masjid-photo" type="button" data-new-masjid-photo="2" aria-label="Open full photograph 3 of 4">
+                  <img data-src="assets/new-masjid-2026-side.webp" alt="Side-on view of the property, showing the adjoining wing and street" width="1140" height="1520" loading="lazy" decoding="async">
+                </button>
+                <button class="new-masjid-photo" type="button" data-new-masjid-photo="3" aria-label="Open full photograph 4 of 4">
+                  <img data-src="assets/new-masjid-2026-corner.webp" alt="Corner view showing the historic chapel facade, front entrance and cobbled road" width="1140" height="1520" loading="lazy" decoding="async">
+                </button>
+              </div>
+              <figcaption>FOUR AUTHENTIC EXTERIOR VIEWS · TEMPERANCE STREET, BOLTON · SELECT A PHOTO TO ENLARGE</figcaption>
             </figure>
             <div class="new-masjid-story-body">
               <h3>A place to serve generations to come.</h3>
@@ -379,6 +395,17 @@
   <script src="videos.js" defer></script>
   <script src="gallery.js" defer></script>
   <script src="community.js" defer></script>
+  <dialog id="newMasjidPhotoDialog" class="new-masjid-photo-dialog" aria-labelledby="newMasjidPhotoDialogTitle">
+    <div class="new-masjid-photo-dialog-head"><h2 id="newMasjidPhotoDialogTitle">New masjid property · Bolton</h2>
+      <button type="button" id="newMasjidPhotoClose" aria-label="Close photograph">×</button></div>
+    <div class="new-masjid-photo-dialog-body">
+      <button type="button" id="newMasjidPhotoPrev" aria-label="Previous photograph">‹</button>
+      <img id="newMasjidPhotoFull" alt="" width="1140" height="1520">
+      <button type="button" id="newMasjidPhotoNext" aria-label="Next photograph">›</button>
+    </div>
+    <p id="newMasjidPhotoCaption"></p>
+  </dialog>
   <script src="project.js" defer></script>
+  <script src="project-gallery.js" defer></script>
 </body>
 </html>
