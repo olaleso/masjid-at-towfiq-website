@@ -48,6 +48,7 @@
   img.onerror=()=>reject(Error('Photo unavailable'));
   img.src=url;
  }))).then(()=>{
+  mosaic.querySelectorAll('img[data-src]').forEach(img=>{img.src=img.dataset.src;img.removeAttribute('data-src');});
   ready=true;
   fallback.hidden=true;
   mosaic.hidden=false;
