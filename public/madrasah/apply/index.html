@@ -44,7 +44,7 @@
           <li><button type="button" class="wizard-step" data-goto-step="3" disabled><span class="wizard-step-number">4</span><span class="wizard-step-label">Review &amp; submit</span></button></li>
         </ol>
         <div class="wizard-content">
-          <div class="application-status" id="admissionAvailability" role="status" aria-live="polite">Checking secure admissions availability…</div>
+          <div class="application-status" id="admissionAvailability" role="status" aria-live="polite" hidden></div>
           <form id="madrasahAdmissionForm" novalidate>
             <input type="hidden" id="formStartedAt" name="form_started_at">
             <div class="honeypot-field" aria-hidden="true"><label for="contactWebsite">Website (leave blank)</label><input id="contactWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
