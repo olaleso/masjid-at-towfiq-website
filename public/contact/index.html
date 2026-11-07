@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="robots" content="index,follow">
+ <meta name="theme-color" content="#0b233d">
+ <title>Contact Masjid At-Towfiq | Enquiries, Services &amp; Support</title>
+ <meta name="description" content="Contact Masjid At-Towfiq in Bolton. Send a secure website enquiry about Nikah, counselling, funeral services, scholars, volunteering and general questions.">
+ <link rel="canonical" href="https://attowfiqmasjid.org/contact/">
+ <link rel="icon" href="/assets/at-towfiq-logo.png" type="image/png">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="/contact/contact.css">
+ <script src="/contact/contact.js" defer></script>
+</head>
+<body>
+ <div class="utility"><div class="shell"><span>24 Punch Street, Bolton BL3 5BJ</span><span lang="ar">السَّلَامُ عَلَيْكُمْ</span><a href="/">Return to masjid website ↗</a></div></div>
+ <header class="site-header"><div class="shell header-content">
+   <a href="/" class="brand" aria-label="Masjid At-Towfiq homepage"><img src="/assets/at-towfiq-logo.png" alt="" width="63" height="63"><span><strong>MASJID <em>AT-TOWFIQ</em></strong><small>THE HEART OF OUR COMMUNITY</small></span></a>
+   <nav aria-label="Page navigation"><a href="/#services">Our services</a><a href="/#visit">Visit us</a><a href="/#prayer-times">Prayer times</a></nav>
+ </div></header>
+ <main class="shell">
+  <div class="page-intro"><p class="eyebrow">ENQUIRIES &amp; ASSISTANCE · BOLTON</p>
+   <h1>We're here to <em>help.</em></h1>
+   <p>Whether you're arranging a Nikah, looking for guidance or have a question about the masjid, you can contact our team directly through this page. No email application is needed.</p>
+  </div>
+  <div class="contact-layout">
+   <aside class="contact-information">
+    <p class="aside-eyebrow">MASJID AT-TOWFIQ</p>
+    <h2>Connect with your community.</h2>
+    <p class="aside-lead">Share your enquiry and a member of the masjid team can review it securely.</p>
+    <div class="aside-rule"></div>
+    <div class="contact-detail"><small>PHONE</small><a href="tel:+441204775864">01204 775864</a><span>For urgent funeral enquiries, please call directly.</span></div>
+    <div class="contact-detail"><small>FIND US</small><strong>24 Punch Street<br>Bolton BL3 5BJ</strong><a class="directions" href="https://www.google.com/maps/search/?api=1&amp;query=24%20Punch%20Street%20Bolton%20BL3%205BJ" target="_blank" rel="noopener noreferrer">Get directions ↗</a></div>
+    <div class="contact-detail"><small>YOUR PRIVACY</small><p>Information you provide will be used by authorised masjid administrators to handle your enquiry. Please avoid sharing sensitive medical or personal details in this form.</p></div>
+    <p class="aside-salaam" lang="ar">جَزَاكُمُ اللّٰهُ خَيْرًا</p>
+   </aside>
+   <section class="contact-form-panel" aria-labelledby="formHeading">
+    <div id="contactFormContent">
+      <p class="form-eyebrow">SEND A WEBSITE ENQUIRY</p>
+      <h2 id="formHeading">How can we help?</h2>
+      <p class="form-intro">Complete the short form and the masjid team will be able to review your message in its private inbox. Please allow time for a response.</p>
+      <form id="contactEnquiryForm" novalidate>
+       <input type="hidden" id="formStartedAt" name="form_started_at">
+       <div class="honey" aria-hidden="true"><label for="contactWeb">Website (leave blank)</label><input id="contactWeb" name="website" type="text" autocomplete="off" tabindex="-1"></div>
+       <div class="form-grid">
+        <label>Full name <span aria-hidden="true">*</span><input name="name" autocomplete="name" maxlength="100" required placeholder="Your full name"></label>
+        <label>Email address <span aria-hidden="true">*</span><input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com"></label>
+        <label>Phone number <small>Optional</small><input name="phone" type="tel" maxlength="35" autocomplete="tel" placeholder="Your phone number"></label>
+        <label>Enquiry type <span aria-hidden="true">*</span><select name="topic" id="enquiryTopic" required>
+          <option value="">Select a topic</option>
+          <option value="general">General enquiry</option>
+          <option value="nikah">Marriage (Nikah)</option>
+          <option value="counselling">Counselling and guidance</option>
+          <option value="funeral">Funeral services</option>
+          <option value="sheikh">Book a sheikh</option>
+          <option value="volunteering">Volunteering</option>
+          <option value="other">Other enquiry</option>
+         </select></label>
+        <label class="wide">Your message <span aria-hidden="true">*</span><textarea name="message" maxlength="2000" minlength="20" rows="6" required placeholder="Please give us a brief outline of how we can help (at least 20 characters)."></textarea></label>
+       </div>
+       <label class="privacy-check"><input type="checkbox" name="privacy_confirmed" required><span>I understand that the masjid will use these contact details to respond to my enquiry. <strong>(Required)</strong></span></label>
+       <div class="form-action"><button id="sendEnquiry" type="submit">Send enquiry securely <span aria-hidden="true">↗</span></button><small>No email app required</small></div>
+       <p class="form-status" id="contactStatus" role="alert" aria-live="assertive" hidden></p>
+      </form>
+     </div>
+     <div id="enquirySuccess" class="success-panel" hidden tabindex="-1">
+      <span class="success-icon" aria-hidden="true">✓</span>
+      <p class="form-eyebrow">ENQUIRY RECEIVED</p>
+      <h2>Thank you for getting in touch.</h2>
+      <p>Your message has been securely recorded for the masjid team. This is an acknowledgement, not a confirmed service booking.</p>
+      <p class="success-ref"><small>Your reference</small><strong id="enquiryReference"></strong></p>
+      <a href="/">Return to the masjid website ↗</a>
+     </div>
+   </section>
+  </div>
+  <p class="contact-footnote">For emergencies or time-sensitive funeral arrangements, call the masjid rather than relying solely on a web enquiry. Service availability must be confirmed by the team.</p>
+ </main>
+ <footer><div class="shell footer-content"><span>© <span id="currentYear"></span> Masjid At-Towfiq · Registered charity no. 1147347</span><a href="/">Masjid homepage</a><a href="https://madrasah.attowfiqmasjid.org/">Madrasah At-Towfiq</a></div></footer>
+</body></html>
