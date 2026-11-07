@@ -36,6 +36,7 @@
 .is-complete .wizard-step-number{background:#e8f3ea;border-color:#b7d2bd;color:#277449}
 .wizard-step-label{white-space:normal}
 .wizard-content{padding:0 clamp(23px,3.1vw,48px) 12px}
+.application-status[hidden]{display:none!important}
 .application-status{margin:28px 0 0;display:block;background:#f4f6f6;color:#5e7181;border:1px solid #e1e6e6;border-left:3px solid #a6b4bb;padding:11px 15px;font-size:12px;line-height:1.65}
 .application-status.is-active{background:#f1f7f3;border-color:#d1e4d7;border-left-color:#4c936a;color:#315e44}
 .application-status.is-unavailable{background:#fff4ee;border-color:#f0d5c7;border-left-color:#cb7f55;color:#794936}
