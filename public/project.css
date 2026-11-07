@@ -44,3 +44,27 @@
 @media(max-width:1090px){.new-masjid-header{align-items:start;flex-direction:column;gap:18px}.new-masjid-layout{grid-template-columns:1fr 1fr;gap:16px}.new-masjid-bank{padding:25px 24px}.new-masjid-building{flex-wrap:wrap}}
 @media(max-width:860px){.new-masjid-section{padding:65px 0}.new-masjid-layout{grid-template-columns:1fr}.new-masjid-building{flex-wrap:nowrap}.new-masjid-bank{padding:29px}}
 @media(max-width:500px){.new-masjid-section{padding:52px 0}.new-masjid-header h2{font-size:39px}.new-masjid-building{flex-wrap:wrap;padding:18px 18px 0}.new-masjid-building img{width:100%;max-width:310px;max-height:none}.new-masjid-story-body{padding:22px 19px}.new-masjid-bank{padding:25px 20px}.new-masjid-status{white-space:normal}}
+
+/* Real exterior-photography gallery, with the old image as a safe fallback. */
+.new-masjid-building{display:block;padding:18px 20px 0}
+.new-masjid-photo-fallback img{display:block;width:100%;height:210px;max-height:none;object-fit:cover;max-width:none;border:0}
+.new-masjid-photo-mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.new-masjid-photo-mosaic[hidden]{display:none!important}
+.new-masjid-photo{padding:0;position:relative;overflow:hidden;border:0;background:#dce2e5;min-width:0;cursor:zoom-in;aspect-ratio:1.27/1}
+.new-masjid-photo.is-main{grid-column:1/-1;aspect-ratio:16/9}
+.new-masjid-photo img{width:100%;height:100%;max-height:none;max-width:none;display:block;object-fit:cover;object-position:center 48%;border:0;transition:transform .25s ease}
+.new-masjid-photo.is-main img{object-position:center 47%}
+.new-masjid-photo:hover img{transform:scale(1.035)}
+.new-masjid-photo:focus-visible{outline:3px solid #a98c47;outline-offset:3px;z-index:1}
+.new-masjid-building figcaption{font-size:9px;line-height:1.8;color:#657589;margin-top:11px;font-weight:800;letter-spacing:.08em}
+.new-masjid-photo-dialog{width:min(94vw,850px);max-height:94vh;padding:0;border:1px solid #c1cad0;border-radius:15px;background:#081b31;color:#fff;box-shadow:0 20px 90px #0008}
+.new-masjid-photo-dialog::backdrop{background:rgba(3,15,30,.85);backdrop-filter:blur(5px)}
+.new-masjid-photo-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 16px}
+.new-masjid-photo-dialog-head h2{font-family:var(--serif);font-size:18px;font-weight:500;margin:0}
+.new-masjid-photo-dialog-head button{font-size:28px;border:0;background:transparent;color:#fff;min-width:40px;min-height:40px;cursor:pointer}
+.new-masjid-photo-dialog-body{display:grid;grid-template-columns:42px minmax(0,1fr) 42px;align-items:center;gap:7px;padding:6px 10px}
+.new-masjid-photo-dialog-body img{display:block;max-height:72vh;width:100%;height:auto;object-fit:contain;min-width:0}
+.new-masjid-photo-dialog-body button{min-height:70px;border:1px solid #ffffff50;background:#ffffff1a;color:#fff;border-radius:8px;font-size:35px;cursor:pointer}
+.new-masjid-photo-dialog>p{padding:4px 20px 17px;text-align:center;color:#d0d9e3;font-size:12px;margin:0;line-height:1.6}
+@media(max-width:500px){.new-masjid-building{padding:16px 16px 0}.new-masjid-photo.is-main{aspect-ratio:1.22/1}.new-masjid-photo-dialog-body{grid-template-columns:30px minmax(0,1fr) 30px;gap:4px;padding:4px}.new-masjid-photo-dialog-body button{font-size:25px}.new-masjid-photo-dialog-head h2{font-size:15px}}
+@media(prefers-reduced-motion:reduce){.new-masjid-photo img{transition:none}}
