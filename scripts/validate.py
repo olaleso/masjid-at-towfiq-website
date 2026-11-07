@@ -43,8 +43,34 @@ for ref in page.id_refs:
     if ref and ref not in page.ids:
         problems.append(f"Broken hash link #{ref}")
 for ref in page.files:
-    if not (SITE / ref).is_file():
+    target = SITE / ref
+    if not (target.is_file() or (target.is_dir() and (target / "index.html").is_file())):
         problems.append(f"Missing referenced file: {ref}")
+# Contact enquiries must open a first-party web form, not a visitor's email client.
+contact_file = SITE / "contact" / "index.html"
+if not contact_file.is_file():
+    problems.append("Public masjid contact page missing")
+else:
+    contact_page = PageParser()
+    contact_html = contact_file.read_text(encoding="utf-8")
+    contact_page.feed(contact_html)
+    for required in ['id="contactEnquiryForm"', 'id="enquiryTopic"', 'name="privacy_confirmed"',
+                     'id="contactStatus"', 'id="enquirySuccess"']:
+        if required not in contact_html:
+            problems.append("Masjid contact form element missing: "+required)
+    for asset in contact_page.files:
+        target = SITE / asset
+        if not (target.is_file() or (target.is_dir() and (target / "index.html").is_file())):
+            problems.append("Missing contact asset: "+asset)
+    if 'api/public/masjid-enquiries' not in (SITE / 'contact' / 'contact.js').read_text(encoding='utf-8'):
+        problems.append("Masjid contact form must send to secure portal inbox")
+home_html = (SITE / "index.html").read_text(encoding="utf-8")
+for topic in ('nikah','counselling','funeral','sheikh','volunteering'):
+    if f'/contact/?topic={topic}' not in home_html:
+        problems.append("Service enquiry must route through contact page: "+topic)
+if 'mailto:' in home_html:
+    problems.append("Masjid homepage still opens an email app from an enquiry link")
+
 if page.robots_noindex:
     problems.append("Public Masjid homepage must allow search indexing")
 if '<link rel="canonical" href="https://attowfiqmasjid.org/">' not in (SITE / "index.html").read_text(encoding="utf-8"):
