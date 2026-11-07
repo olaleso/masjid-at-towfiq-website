@@ -164,3 +164,23 @@
 }
 @media(max-width:370px){.review-pairs{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.wizard-step{transition:none}}
+
+/* Family application: separate sibling cards, shared guardian details and review. */
+.child-identity-set{position:relative;margin-bottom:18px;border:1px solid #d7e2e9!important;border-radius:14px}
+.child-identity-set:not(:first-child){padding-top:20px}
+.child-identity-set .child-legend-text{color:#153d5c;font-weight:800}
+.application-child-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:4px 0 17px}
+.child-add-button{border:1px solid #bba06b;border-radius:10px;color:#193f5d;background:#f6f0e1;padding:12px 18px;font-size:13px;font-weight:800;cursor:pointer}
+.child-add-button:hover{background:#ebdfc3}
+.child-add-button:focus-visible,.child-remove-button:focus-visible{outline:3px solid #b6954e;outline-offset:3px}
+.child-add-button:disabled{opacity:.55;cursor:not-allowed}
+.child-remove-button{display:block;margin:13px 0 0 auto;border:1px solid #efc5c5;background:#fff5f5;color:#8e3542;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:700;cursor:pointer}
+#childCountNote{font-size:12px;color:#657c8d}
+.child-support-set{padding:14px 0 3px}
+.child-support-set:not(:first-child){margin-top:24px;padding-top:28px;border-top:2px solid #d4e3ed}
+.child-support-heading{font:normal 23px/1.4 Georgia,serif!important;color:#173e59!important;margin:0 0 17px!important}
+.child-support-set .application-fieldset{margin-bottom:17px}
+.success-children{margin:22px 0;padding:18px 20px;text-align:left;background:#f0f5f8;border-radius:12px;border:1px solid #d9e5eb}
+.success-children h3{margin:0 0 11px;color:#173e59;font-size:15px}
+.success-children ul{margin:0;padding-left:20px;color:#395876;font-size:13px;line-height:2}
+@media(max-width:650px){.application-child-actions{align-items:stretch;flex-direction:column}.child-add-button{width:100%}.child-support-heading{font-size:21px!important}}
